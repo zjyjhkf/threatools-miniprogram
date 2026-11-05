@@ -1,0 +1,18 @@
+<view class="cib">
+  <input
+    class="cib-input"
+    value="{{inner}}"
+    placeholder="{{placeholder}}"
+    placeholder-class="cib-ph"
+    focus="{{focus}}"
+    cursor-spacing="20"
+    maxlength="200"
+    adjust-position
+    confirm-type="send"
+    bindinput="onInput"
+    bindfocus="onFocus"
+    bindblur="onBlur"
+    bindconfirm="onSend"
+  />
+  <text class="cib-send {{inner ? 'is-on' : ''}}" bindtap="onSend">{{sending ? '发送中' : '发送'}}</text>
+</view>

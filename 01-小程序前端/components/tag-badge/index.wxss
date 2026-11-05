@@ -1,0 +1,24 @@
+.tb {
+  height: 36rpx;
+  padding: 0 12rpx;
+  border-radius: 8rpx;
+  font-size: 20rpx;
+  line-height: 36rpx;
+  display: inline-block;
+}
+.tb-hot {
+  background: rgba(255, 107, 53, 0.12);
+  color: #ff6b35;
+}
+.tb-new {
+  background: #e8f0ff;
+  color: #2f6bff;
+}
+.tb-reviewing {
+  background: #fef3c7;
+  color: #b45309;
+}
+.tb-collected {
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+}

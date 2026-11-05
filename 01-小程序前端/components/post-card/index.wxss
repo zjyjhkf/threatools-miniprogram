@@ -1,0 +1,113 @@
+:host {
+  display: block;
+}
+.pc {
+  background: #ffffff;
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 24rpx rgba(16, 24, 40, 0.06);
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+.pc-head {
+  display: flex;
+  align-items: center;
+}
+.pc-avatar {
+  width: 72rpx;
+  height: 72rpx;
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pc-avatar-ph {
+  width: 44rpx;
+  height: 44rpx;
+  color: #2f6bff;
+}
+.pc-meta {
+  display: flex;
+  flex-direction: column;
+}
+.pc-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #101828;
+  line-height: 40rpx;
+}
+.pc-time {
+  font-size: 24rpx;
+  color: #98a2b3;
+  line-height: 34rpx;
+}
+.pc-follow {
+  height: 56rpx;
+  padding: 0 24rpx;
+  border-radius: 999rpx;
+  background: #e8f0ff;
+  color: #2f6bff;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+}
+.pc-follow.is-on {
+  background: #f2f4f7;
+  color: #667085;
+}
+.pc-text {
+  margin-top: 24rpx;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: #344054;
+}
+.pc-grid {
+  margin-top: 24rpx;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+}
+.pc-grid-3 image-ph,
+.pc-grid image-ph {
+  width: 218rpx;
+}
+.pc-topics {
+  margin-top: 24rpx;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+.pc-actions {
+  margin-top: 24rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+}
+.pc-act {
+  display: flex;
+  align-items: center;
+  margin-right: 48rpx;
+}
+.pc-icon {
+  width: 40rpx;
+  height: 40rpx;
+  color: #667085;
+}
+.pc-count {
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  color: #667085;
+}
+.pc-like-on {
+  color: #ff6b35;
+}
+.pc-count-on {
+  color: #ff6b35;
+}
+.pc-collect-on {
+  color: #f59e0b;
+}
+.pc-compact {
+  box-shadow: none;
+  border-radius: 0;
+  padding: 24rpx 32rpx;
+}

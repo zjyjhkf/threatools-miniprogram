@@ -1,0 +1,19 @@
+<view class="sb">
+  <view class="sb-box" catchtap="onTap">
+    <view class="icon icon-search sb-icon"></view>
+    <input
+      wx:if="{{!readonly}}"
+      class="sb-input"
+      value="{{value}}"
+      placeholder="{{placeholder}}"
+      placeholder-class="sb-ph"
+      focus="{{focus}}"
+      confirm-type="search"
+      bindinput="onInput"
+      bindconfirm="onConfirm"
+    />
+    <text wx:else class="sb-input sb-placeholder">{{value || placeholder}}</text>
+    <view wx:if="{{value && !readonly}}" class="icon icon-close sb-clear" catchtap="onClear"></view>
+  </view>
+  <text wx:if="{{showCancel}}" class="sb-cancel" bindtap="onCancel">取消</text>
+</view>

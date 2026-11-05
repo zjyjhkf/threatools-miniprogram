@@ -1,0 +1,9 @@
+<view class="sr">
+  <block wx:for="{{items}}" wx:key="label">
+    <view class="sr-item" data-index="{{index}}" bindtap="onTap">
+      <text class="sr-value">{{item.value}}</text>
+      <text class="sr-label">{{item.label}}</text>
+    </view>
+    <view wx:if="{{index < items.length - 1}}" class="sr-line"></view>
+  </block>
+</view>

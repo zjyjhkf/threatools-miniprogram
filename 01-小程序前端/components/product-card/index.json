@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "image-ph": "/components/image-ph/index",
+    "tag-badge": "/components/tag-badge/index"
+  }
+}

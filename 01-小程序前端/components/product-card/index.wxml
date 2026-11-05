@@ -1,0 +1,17 @@
+<view wx:if="{{mode === 'row'}}" class="pd-row" catchtap="onTap">
+  <image-ph src="{{product.cover}}" w="180" h="180" radius="16rpx" label="" show-text="{{false}}" />
+  <view class="pd-row-body flex-1">
+    <text class="pd-name ellipsis-2">{{product.name}}</text>
+    <text class="pd-tagline ellipsis-2">{{product.tagline}}</text>
+    <text class="pd-link">了解详情 ›</text>
+  </view>
+</view>
+
+<view wx:else class="pd-grid" catchtap="onTap">
+  <image-ph src="{{product.cover}}" w="330" h="330" radius="16rpx" label="330×330" />
+  <view class="pd-grid-body">
+    <text class="pd-name ellipsis-1">{{product.name}}</text>
+    <text class="pd-tagline ellipsis-2">{{product.tagline}}</text>
+    <text class="pd-link">了解详情 ›</text>
+  </view>
+</view>

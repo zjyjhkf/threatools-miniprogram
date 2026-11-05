@@ -1,0 +1,157 @@
+[
+  {
+    "id": "1",
+    "name": "空气压力波按摩仪",
+    "model": "APM-200",
+    "category": "rehab",
+    "tagline": "专业腿部放松恢复 · 双腔气囊",
+    "tags": ["热门", "运动康复"],
+    "images": ["", "", "", ""],
+    "features": [
+      { "icon": "layers", "title": "双腔分压", "desc": "左腿右腿独立气室，压力可分区调节" },
+      { "icon": "gauge", "title": "六档气压", "desc": "30–120 mmHg 循序加压，模拟肌肉泵" },
+      { "icon": "timer", "title": "20 分钟定时", "desc": "睡前放松或训练后恢复，一键启动" }
+    ],
+    "specs": [
+      { "label": "额定电压", "value": "DC 12V" },
+      { "label": "气压范围", "value": "30–120 mmHg" },
+      { "label": "电池容量", "value": "4000mAh" },
+      { "label": "续航", "value": "约 6 小时" },
+      { "label": "净重", "value": "1.8kg" },
+      { "label": "尺寸", "value": "520×320×180mm" },
+      { "label": "材质", "value": "尼龙复合面料" },
+      { "label": "适用腿围", "value": "30–60cm" },
+      { "label": "配件清单", "value": "主机 ×1、气腿套 ×2、电源适配器 ×1、说明书 ×1" }
+    ],
+    "suitableFor": ["久坐人群", "运动爱好者", "术后康复"],
+    "video": { "cover": "", "url": "https://www.w3schools.com/html/mov_bbb.mp4", "duration": 192 },
+    "collectCount": 210,
+    "sort": 100,
+    "status": 1,
+    "relatedIds": ["2", "3"]
+  },
+  {
+    "id": "2",
+    "name": "筋膜枪",
+    "model": "MG-100",
+    "category": "recovery",
+    "tagline": "深层肌肉放松 · 五档力度",
+    "tags": ["热门"],
+    "images": ["", "", "", ""],
+    "features": [
+      { "icon": "gauge", "title": "五档力度", "desc": "从日常放松到训练后深层放松" },
+      { "icon": "timer", "title": "静音设计", "desc": "运行噪音低于 45 分贝" },
+      { "icon": "layers", "title": "四种枪头", "desc": "球头、平头、叉头、子弹头按部位切换" }
+    ],
+    "specs": [
+      { "label": "额定电压", "value": "DC 24V" },
+      { "label": "档位", "value": "5 档" },
+      { "label": "电池容量", "value": "2500mAh" },
+      { "label": "续航", "value": "约 4 小时" },
+      { "label": "净重", "value": "0.9kg" },
+      { "label": "尺寸", "value": "240×180×60mm" },
+      { "label": "材质", "value": "铝合金机身" },
+      { "label": "噪音", "value": "≤45dB" },
+      { "label": "配件清单", "value": "主机 ×1、枪头 ×4、收纳包 ×1" }
+    ],
+    "suitableFor": ["健身人群", "跑后放松", "久坐肩颈"],
+    "video": { "cover": "", "url": "https://www.w3schools.com/html/mov_bbb.mp4", "duration": 156 },
+    "collectCount": 180,
+    "sort": 90,
+    "status": 1,
+    "relatedIds": ["1", "3"]
+  },
+  {
+    "id": "3",
+    "name": "电动泡沫轴",
+    "model": "FR-300",
+    "category": "recovery",
+    "tagline": "自转滚压 · 三档震动",
+    "tags": ["新"],
+    "images": ["", "", "", ""],
+    "features": [
+      { "icon": "layers", "title": "电动自转", "desc": "无需借助体重，轻压即可滚压" },
+      { "icon": "gauge", "title": "三档震动", "desc": "放松强度可逐级递进" },
+      { "icon": "timer", "title": "定时关机", "desc": "10 分钟自动停止，避免过度按压" }
+    ],
+    "specs": [
+      { "label": "额定电压", "value": "DC 12V" },
+      { "label": "档位", "value": "3 档" },
+      { "label": "电池容量", "value": "3000mAh" },
+      { "label": "续航", "value": "约 5 小时" },
+      { "label": "净重", "value": "1.2kg" },
+      { "label": "尺寸", "value": "450×140mm" },
+      { "label": "材质", "value": "EVA + ABS" },
+      { "label": "承重", "value": "≤120kg" },
+      { "label": "配件清单", "value": "主机 ×1、充电线 ×1、说明书 ×1" }
+    ],
+    "suitableFor": ["跑后恢复", "下肢紧张", "居家放松"],
+    "video": { "cover": "", "url": "https://www.w3schools.com/html/mov_bbb.mp4", "duration": 120 },
+    "collectCount": 96,
+    "sort": 80,
+    "status": 1,
+    "relatedIds": ["1", "2"]
+  },
+  {
+    "id": "4",
+    "name": "BFR 血流加压带",
+    "model": "BFR-50",
+    "category": "rehab",
+    "tagline": "渐进加压 · 康复训练辅助",
+    "tags": ["运动康复"],
+    "images": ["", "", "", ""],
+    "features": [
+      { "icon": "gauge", "title": "精准控压", "desc": "20–200 mmHg 可调，逐档加严" },
+      { "icon": "timer", "title": "训练计时", "desc": "充压、保持、放松三段提示" },
+      { "icon": "layers", "title": "双带独立", "desc": "左右肢独立控制，可单侧训练" }
+    ],
+    "specs": [
+      { "label": "额定电压", "value": "DC 12V" },
+      { "label": "气压范围", "value": "20–200 mmHg" },
+      { "label": "电池容量", "value": "2200mAh" },
+      { "label": "续航", "value": "约 3 小时" },
+      { "label": "净重", "value": "0.7kg" },
+      { "label": "尺寸", "value": "200×120×45mm" },
+      { "label": "材质", "value": "医用级 TPU" },
+      { "label": "适用臂围", "value": "25–45cm" },
+      { "label": "配件清单", "value": "主机 ×1、加压带 ×2、收纳袋 ×1" }
+    ],
+    "suitableFor": ["康复期训练", "肌力维持", "专业训练"],
+    "video": { "cover": "", "url": "https://www.w3schools.com/html/mov_bbb.mp4", "duration": 210 },
+    "collectCount": 64,
+    "sort": 70,
+    "status": 1,
+    "relatedIds": ["1", "5"]
+  },
+  {
+    "id": "5",
+    "name": "便携气体检测仪",
+    "model": "GAS-10",
+    "category": "portable",
+    "tagline": "环境空气监测 · 随身携带",
+    "tags": ["新"],
+    "images": ["", "", "", ""],
+    "features": [
+      { "icon": "gauge", "title": "多气体检测", "desc": "支持常见环境气体指标监测" },
+      { "icon": "timer", "title": "实时刷新", "desc": "3 秒刷新一次，异常声光提示" },
+      { "icon": "layers", "title": "小巧便携", "desc": "口袋尺寸，运动场景随身带" }
+    ],
+    "specs": [
+      { "label": "额定电压", "value": "DC 5V" },
+      { "label": "检测方式", "value": "扩散式" },
+      { "label": "电池容量", "value": "1200mAh" },
+      { "label": "续航", "value": "约 8 小时" },
+      { "label": "净重", "value": "0.18kg" },
+      { "label": "尺寸", "value": "90×55×25mm" },
+      { "label": "材质", "value": "PC + 硅胶" },
+      { "label": "防护等级", "value": "IP54" },
+      { "label": "配件清单", "value": "主机 ×1、挂绳 ×1、充电线 ×1" }
+    ],
+    "suitableFor": ["户外运动", "场馆环境", "日常随行"],
+    "video": { "cover": "", "url": "https://www.w3schools.com/html/mov_bbb.mp4", "duration": 96 },
+    "collectCount": 38,
+    "sort": 60,
+    "status": 1,
+    "relatedIds": ["2", "3"]
+  }
+]

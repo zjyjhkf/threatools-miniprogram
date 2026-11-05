@@ -1,0 +1,70 @@
+<view class="topics">
+  <nav-bar back title="话题广场" bind:back="back" />
+
+  <view class="t-search">
+    <search-bar
+      value="{{keyword}}"
+      readonly="{{!searching}}"
+      focus="{{searching}}"
+      placeholder="搜索话题"
+      showCancel="{{searching}}"
+      bind:tap="startSearch"
+      bind:input="onKeyword"
+      bind:cancel="stopSearch"
+    />
+  </view>
+
+  <view wx:if="{{status === 'loading'}}" class="t-body">
+    <skeleton type="card" count="3" />
+  </view>
+
+  <empty-state
+    wx:elif="{{status === 'error'}}"
+    type="error"
+    title="网络开小差了"
+    btnText="点击重试"
+    bind:action="onRetry"
+  />
+
+  <empty-state wx:elif="{{status === 'empty'}}" type="empty" title="没有找到相关话题" desc="换个关键词试试" />
+
+  <block wx:else>
+    <view wx:if="{{hot.length}}" class="t-hot">
+      <text class="t-section">热门话题</text>
+      <view wx:for="{{hot}}" wx:key="id" class="t-hot-card" data-id="{{item.id}}" bindtap="openTopic">
+        <view class="t-rank {{item.rank === 1 ? 'r1' : item.rank === 2 ? 'r2' : item.rank === 3 ? 'r3' : 'rn'}}">
+          {{item.rank}}
+        </view>
+        <view class="t-hot-body flex-1">
+          <text class="t-hot-name ellipsis-1">{{item.name}}</text>
+          <text class="t-hot-desc ellipsis-1">{{item.description}}</text>
+          <text class="t-hot-count">{{item.postText}} 条讨论</text>
+        </view>
+        <view class="t-join" data-id="{{item.id}}" catchtap="joinTopic">参与</view>
+      </view>
+    </view>
+
+    <view class="t-all">
+      <text class="t-section">全部话题</text>
+      <view class="t-grid">
+        <view wx:for="{{all}}" wx:key="id" class="t-grid-item" data-id="{{item.id}}" bindtap="openTopic">
+          <text class="t-grid-name ellipsis-1">#{{item.name}}</text>
+          <text class="t-grid-count">{{item.postText}} 条讨论</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view class="t-space"></view>
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+  <dialog
+    show="{{dialog.show}}"
+    title="{{dialog.title}}"
+    content="{{dialog.content}}"
+    confirmText="{{dialog.confirmText}}"
+    cancelText="{{dialog.cancelText}}"
+    danger="{{dialog.danger}}"
+    bind:confirm="onDialogConfirm"
+    bind:cancel="closeDialog"
+  />
+</view>

@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "filter-chips": "/components/filter-chips/index",
+    "course-card": "/components/course-card/index",
+    "picker-sheet": "/components/picker-sheet/index",
+    "skeleton": "/components/skeleton/index",
+    "empty-state": "/components/empty-state/index",
+    "loading-more": "/components/loading-more/index"
+  }
+}

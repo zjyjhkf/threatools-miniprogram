@@ -1,0 +1,96 @@
+<view class="up">
+  <nav-bar
+    back
+    overlay
+    title="{{navSolid ? user.nickname : ''}}"
+    theme="{{navSolid ? 'light' : 'dark'}}"
+    transparent="{{!navSolid}}"
+    bind:back="back"
+  />
+
+  <image-ph src="" w="750" h="320" radius="0" label="个人头图 750×320" />
+
+  <view wx:if="{{status === 'loading'}}" class="up-loading">
+    <skeleton type="detail" />
+  </view>
+
+  <empty-state
+    wx:elif="{{status === 'notfound'}}"
+    type="empty"
+    title="用户不存在"
+    desc="该用户可能已注销"
+    btnText="返回"
+    bind:action="back"
+  />
+
+  <empty-state
+    wx:elif="{{status === 'error'}}"
+    type="error"
+    title="网络开小差了"
+    btnText="点击重试"
+    bind:action="onRetry"
+  />
+
+  <block wx:else>
+    <!-- 头像上浮 -80，父级不裁切 -->
+    <view class="up-card">
+      <view class="avatar up-avatar">
+        <image wx:if="{{user.avatar}}" class="avatar-img" src="{{user.avatar}}" mode="aspectFill" />
+        <view wx:else class="icon icon-user up-avatar-ph"></view>
+      </view>
+      <view class="up-info">
+        <text class="up-name">{{user.nickname}}</text>
+        <text class="up-id">ID: {{user.id}}</text>
+        <text class="up-bio">{{user.bio || '这个人很懒，什么都没写'}}</text>
+      </view>
+      <view wx:if="{{!user.isSelf}}" class="up-follow {{user.followed ? 'is-on' : ''}}" bindtap="toggleFollow">
+        {{user.followed ? '已关注' : '关注'}}
+      </view>
+    </view>
+
+    <view class="up-stats">
+      <view class="up-stat">
+        <text class="up-stat-value">{{postText}}</text>
+        <text class="up-stat-label">动态</text>
+      </view>
+      <view class="up-stat-line"></view>
+      <view class="up-stat">
+        <text class="up-stat-value">{{likeText}}</text>
+        <text class="up-stat-label">获赞</text>
+      </view>
+      <view class="up-stat-line"></view>
+      <view class="up-stat">
+        <text class="up-stat-value">{{followText}}</text>
+        <text class="up-stat-label">关注</text>
+      </view>
+    </view>
+
+    <view class="up-grid">
+      <view wx:for="{{posts}}" wx:key="id" class="up-grid-item" data-id="{{item.id}}" bindtap="openPost">
+        <image-ph src="{{item.coverImage}}" w="343" h="343" radius="16rpx" label="" show-text="{{false}}" />
+        <view wx:if="{{!item.coverImage}}" class="up-grid-text">{{item.content}}</view>
+      </view>
+    </view>
+
+    <empty-state
+      wx:if="{{!posts.length && !loadingMore}}"
+      type="empty"
+      title="TA 还没有发布内容"
+      compact
+    />
+
+    <view class="up-space"></view>
+  </block>
+
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+  <dialog
+    show="{{dialog.show}}"
+    title="{{dialog.title}}"
+    content="{{dialog.content}}"
+    confirmText="{{dialog.confirmText}}"
+    cancelText="{{dialog.cancelText}}"
+    danger="{{dialog.danger}}"
+    bind:confirm="onDialogConfirm"
+    bind:cancel="closeDialog"
+  />
+</view>

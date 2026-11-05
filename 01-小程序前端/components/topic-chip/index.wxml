@@ -1,0 +1,4 @@
+<view class="tc {{size === 's' ? 'tc-s' : ''}}" catchtap="onTap">
+  <text class="tc-text">#{{name}}</text>
+  <view wx:if="{{closable}}" class="icon icon-close tc-close" catchtap="onClose"></view>
+</view>

@@ -1,0 +1,26 @@
+{
+  "miniprogramRoot": "01-小程序前端/",
+  "compileType": "miniprogram",
+  "projectname": "jianheng-community",
+  "description": "健衡运动社区 1.0（前端 01-小程序前端 + 后端 02-后端服务）",
+  "appid": "wx1d74ed07f229eba7",
+  "libVersion": "3.17.6",
+  "setting": {
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "enhance": true,
+    "urlCheck": false,
+    "coverView": true,
+    "showShadowRootInWxmlPanel": true,
+    "compileHotReLoad": true
+  },
+  "packOptions": {
+    "ignore": [
+      { "value": "02-后端服务", "type": "folder" },
+      { "value": "前置文档", "type": "folder" }
+    ],
+    "include": []
+  },
+  "condition": {}
+}

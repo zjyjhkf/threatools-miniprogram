@@ -1,0 +1,25 @@
+<view wx:if="{{show}}" class="ps-mask" catchtap="onCancel">
+  <view class="ps" catchtap="noop">
+    <view class="ps-handle"></view>
+    <view class="ps-head">
+      <text class="ps-cancel" bindtap="onCancel">{{cancelText}}</text>
+      <text class="ps-title">{{title}}</text>
+      <text class="ps-confirm" bindtap="onConfirm">{{confirmText}}</text>
+    </view>
+    <scroll-view class="ps-body" scroll-y>
+      <block wx:if="{{mode === 'single'}}">
+        <view
+          wx:for="{{options}}"
+          wx:key="value"
+          class="ps-option {{current === item.value ? 'is-on' : ''}}"
+          data-value="{{item.value}}"
+          bindtap="onPick"
+        >
+          <text>{{item.label}}</text>
+          <view wx:if="{{current === item.value}}" class="icon icon-check ps-check"></view>
+        </view>
+      </block>
+      <slot wx:else></slot>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,54 @@
+/* 组件宿主需撑满 swiper-item，否则内部 height:100% 链路断裂 */
+:host {
+  display: block;
+  height: 100%;
+}
+.cp {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f5f7fa;
+}
+.cp-filter {
+  height: 88rpx;
+  padding: 0 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f5f7fa;
+}
+.cp-topics {
+  display: flex;
+  align-items: center;
+}
+.cp-topics-text {
+  font-size: 24rpx;
+  color: #667085;
+}
+.cp-topics-arrow {
+  width: 24rpx;
+  height: 24rpx;
+  color: #98a2b3;
+}
+.cp-scroll {
+  flex: 1;
+  height: 0;
+}
+.cp-offline {
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  background: #fef3c7;
+  color: #b45309;
+  font-size: 24rpx;
+}
+.cp-list {
+  padding: 0 32rpx;
+}
+.cp-item {
+  margin-bottom: 24rpx;
+}
+/* R-02：列表底部留 120rpx 占位，保证最后一张卡可完整滚出、不被 FAB 遮挡 */
+.cp-bottom-space {
+  height: calc(120rpx + 98rpx + env(safe-area-inset-bottom));
+}

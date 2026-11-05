@@ -1,0 +1,70 @@
+<view class="cp">
+  <view class="cp-filter">
+    <filter-chips options="{{types}}" value="{{type}}" bind:change="onTypeChange" />
+    <view class="cp-topics" bindtap="onTopics">
+      <text class="cp-topics-text">话题广场</text>
+      <view class="icon icon-arrow cp-topics-arrow"></view>
+    </view>
+  </view>
+
+  <scroll-view
+    class="cp-scroll"
+    scroll-y
+    scroll-top="{{scrollTop}}"
+    lower-threshold="200"
+    refresher-enabled
+    refresher-triggered="{{refreshing}}"
+    bindrefresherrefresh="onRefresh"
+    bindscrolltolower="onLoadMore"
+  >
+    <view wx:if="{{offline}}" class="cp-offline">网络不可用</view>
+
+    <view wx:if="{{status === 'loading'}}" class="cp-list">
+      <skeleton type="card" count="3" />
+    </view>
+
+    <empty-state
+      wx:elif="{{status === 'error'}}"
+      type="error"
+      title="网络开小差了"
+      desc="检查网络后重试"
+      btnText="点击重试"
+      bind:action="onRetry"
+    />
+
+    <empty-state
+      wx:elif="{{status === 'empty' && type === 'follow'}}"
+      type="empty"
+      title="还没有关注的人"
+      desc="关注感兴趣的作者，这里就会出现 TA 的动态"
+      btnText="去推荐看看"
+      bind:action="onEmptyAction"
+    />
+
+    <empty-state
+      wx:elif="{{status === 'empty'}}"
+      type="empty"
+      title="还没有内容"
+      desc="成为第一个分享运动日常的人"
+      btnText="刷新看看"
+      bind:action="onEmptyAction"
+    />
+
+    <view wx:else class="cp-list">
+      <view wx:for="{{list}}" wx:key="id" class="cp-item">
+        <post-card
+          post="{{item}}"
+          bind:tap="onCardTap"
+          bind:comment="onCardComment"
+          bind:like="onLike"
+          bind:collect="onCollect"
+          bind:follow="onFollow"
+          bind:author="onAuthor"
+          bind:topic="onTopic"
+        />
+      </view>
+      <loading-more status="{{moreStatus}}" bind:retry="onRetryMore" />
+      <view class="cp-bottom-space"></view>
+    </view>
+  </scroll-view>
+</view>

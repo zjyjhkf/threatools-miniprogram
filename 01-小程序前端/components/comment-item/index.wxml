@@ -1,0 +1,28 @@
+<view class="ci">
+  <view class="avatar ci-avatar">
+    <image wx:if="{{comment.user.avatar}}" class="avatar-img" src="{{comment.user.avatar}}" mode="aspectFill" />
+    <view wx:else class="icon icon-user ci-avatar-ph"></view>
+  </view>
+  <view class="ci-body flex-1">
+    <view class="ci-head">
+      <text class="ci-name">{{comment.user.nickname}}</text>
+      <text class="ci-time">{{timeText}}</text>
+    </view>
+    <text class="ci-text" bindlongpress="onLongPress">{{comment.content}}</text>
+    <view class="ci-foot">
+      <text class="ci-reply" bindtap="onReply">回复</text>
+      <view class="ci-like" bindtap="onLike">
+        <view class="icon {{comment.liked ? 'icon-like-fill ci-on' : 'icon-like'}} ci-like-icon"></view>
+        <text class="ci-like-count {{comment.liked ? 'ci-on' : ''}}">{{likeText}}</text>
+      </view>
+    </view>
+
+    <view wx:if="{{childCount}}" class="ci-children">
+      <view wx:for="{{comment.children}}" wx:key="id" class="ci-child" data-item="{{item}}" bindtap="onChildReply">
+        <text class="ci-name">{{item.user.nickname}}</text>
+        <text wx:if="{{item.replyToUser}}" class="ci-replyto"> 回复 {{item.replyToUser.nickname}}</text>
+        <text class="ci-text">：{{item.content}}</text>
+      </view>
+    </view>
+  </view>
+</view>

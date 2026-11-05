@@ -1,0 +1,30 @@
+.toast {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 428rpx;
+  max-width: 560rpx;
+  min-height: 88rpx;
+  padding: 20rpx 32rpx;
+  box-sizing: border-box;
+  background: rgba(16, 24, 40, 0.8);
+  border-radius: 24rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1000;
+  animation: toastIn 0.15s ease-out;
+}
+@keyframes toastIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

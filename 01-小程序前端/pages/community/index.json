@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "community-pane": "/panes/community-pane/index",
+    "course-pane": "/panes/course-pane/index",
+    "product-pane": "/panes/product-pane/index"
+  }
+}

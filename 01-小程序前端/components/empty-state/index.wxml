@@ -1,0 +1,6 @@
+<view class="es {{compact ? 'es-compact' : ''}}">
+  <view class="icon icon-{{icon}} es-icon {{type === 'error' ? 'es-icon-error' : ''}}"></view>
+  <text class="es-title">{{title}}</text>
+  <text wx:if="{{desc}}" class="es-desc">{{desc}}</text>
+  <view wx:if="{{btnText}}" class="es-btn" bindtap="onAction">{{btnText}}</view>
+</view>

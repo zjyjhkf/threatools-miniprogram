@@ -1,0 +1,8 @@
+<view class="au" style="width: {{size}}rpx; height: {{size}}rpx">
+  <image wx:if="{{src}}" class="au-img" src="{{src}}" mode="aspectFill" />
+  <view wx:else class="icon icon-user au-ph"></view>
+  <button class="au-btn" open-type="chooseAvatar" bindchooseavatar="onChoose">
+    <view class="icon icon-camera au-cam"></view>
+  </button>
+  <view wx:if="{{uploading}}" class="au-mask">上传中</view>
+</view>

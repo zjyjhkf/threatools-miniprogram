@@ -1,0 +1,56 @@
+.au {
+  position: relative;
+  border-radius: 999rpx;
+  background: #e8f0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.au-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 999rpx;
+}
+.au-ph {
+  width: 64rpx;
+  height: 64rpx;
+  color: #2f6bff;
+}
+.au-btn {
+  position: absolute;
+  right: -4rpx;
+  bottom: -4rpx;
+  width: 48rpx;
+  height: 48rpx;
+  padding: 0;
+  margin: 0;
+  border-radius: 999rpx;
+  background: #2f6bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4rpx solid #ffffff;
+  line-height: 1;
+}
+.au-btn::after {
+  border: none;
+}
+.au-cam {
+  width: 26rpx;
+  height: 26rpx;
+  color: #ffffff;
+}
+.au-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 999rpx;
+  background: rgba(16, 24, 40, 0.45);
+  color: #ffffff;
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

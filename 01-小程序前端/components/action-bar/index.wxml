@@ -1,0 +1,9 @@
+<view class="ab">
+  <view wx:if="{{showCollect}}" class="ab-collect" bindtap="onCollect">
+    <view class="icon {{collected ? 'icon-collect-fill ab-on' : 'icon-collect'}} ab-icon"></view>
+    <text class="ab-label {{collected ? 'ab-on' : ''}}">收藏</text>
+  </view>
+  <view class="flex-1"></view>
+  <button wx:if="{{primaryShare}}" class="ab-primary ab-share-btn" open-type="share">{{primaryText}}</button>
+  <view wx:else class="ab-primary {{disabled ? 'is-disabled' : ''}}" bindtap="onPrimary">{{primaryText}}</view>
+</view>

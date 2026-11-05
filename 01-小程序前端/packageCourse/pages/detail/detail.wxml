@@ -1,0 +1,128 @@
+<view class="cd">
+  <nav-bar
+    back
+    overlay
+    title="{{navSolid ? course.title : ''}}"
+    theme="{{navSolid ? 'light' : 'dark'}}"
+    transparent="{{!navSolid}}"
+    bind:back="back"
+  />
+
+  <image-ph src="{{course.cover}}" w="750" h="422" radius="0" label="课程头图 750×422" />
+
+  <view wx:if="{{status === 'loading'}}" class="cd-loading">
+    <skeleton type="detail" />
+  </view>
+
+  <empty-state
+    wx:elif="{{status === 'notfound'}}"
+    type="empty"
+    title="课程不存在或已下架"
+    btnText="返回"
+    bind:action="back"
+  />
+
+  <empty-state
+    wx:elif="{{status === 'error'}}"
+    type="error"
+    title="网络开小差了"
+    btnText="点击重试"
+    bind:action="onRetry"
+  />
+
+  <block wx:else>
+    <view class="cd-head">
+      <text class="cd-title">{{course.title}}</text>
+      <view class="cd-metas">
+        <text class="cd-meta">{{difficultyText}}</text>
+        <text class="cd-meta">{{course.actionCount}} 个动作</text>
+        <text class="cd-meta">{{durText}}</text>
+        <text class="cd-meta">{{learnText}} 人学过</text>
+      </view>
+    </view>
+
+    <view class="cd-coach">
+      <view class="avatar cd-coach-avatar">
+        <image wx:if="{{course.coach.avatar}}" class="avatar-img" src="{{course.coach.avatar}}" mode="aspectFill" />
+        <view wx:else class="icon icon-user cd-coach-ph"></view>
+      </view>
+      <view class="flex-1">
+        <text class="cd-coach-name">{{course.coach.name}}</text>
+        <text class="cd-coach-title">{{course.coach.title}}</text>
+      </view>
+    </view>
+
+    <view class="cd-block">
+      <text class="cd-block-title">课程介绍</text>
+      <view class="cd-intro {{expanded ? '' : 'ellipsis-3'}}">{{course.intro}}</view>
+      <text class="cd-expand" bindtap="toggleExpand">{{expanded ? '收起' : '展开'}}</text>
+    </view>
+
+    <view class="cd-block">
+      <text class="cd-block-title">适合人群</text>
+      <view class="cd-tags">
+        <text wx:for="{{course.suitableFor}}" wx:key="*this" class="cd-tag">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="cd-block">
+      <view class="cd-block-head">
+        <text class="cd-block-title">课程章节</text>
+        <text class="cd-block-extra">{{chapters.length}} 节</text>
+      </view>
+      <view class="cd-chapters">
+        <view
+          wx:for="{{chapters}}"
+          wx:key="id"
+          class="cd-chapter {{lastChapter === index ? 'is-on' : ''}}"
+          data-index="{{index}}"
+          bindtap="playChapter"
+        >
+          <text class="cd-chapter-idx">{{item.idx}}</text>
+          <view class="flex-1">
+            <text class="cd-chapter-title">{{item.title}}</text>
+          </view>
+          <text class="cd-chapter-dur">{{item.durText}}</text>
+          <view class="icon icon-play cd-chapter-play"></view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{related.length}}" class="cd-block">
+      <text class="cd-block-title">相关课程</text>
+      <scroll-view class="cd-related" scroll-x enable-flex show-scrollbar="{{false}}">
+        <view
+          wx:for="{{related}}"
+          wx:key="id"
+          class="cd-related-item"
+          data-id="{{item.id}}"
+          bindtap="openRelated"
+        >
+          <image-ph src="{{item.cover}}" w="300" h="170" radius="16rpx" label="" show-text="{{false}}" />
+          <text class="cd-related-title ellipsis-2">{{item.title}}</text>
+        </view>
+      </scroll-view>
+    </view>
+
+    <view class="cd-bottom-space"></view>
+
+    <action-bar
+      primaryText="开始训练"
+      collected="{{course.collected}}"
+      bind:primary="startTraining"
+      bind:collect="toggleCollect"
+    />
+  </block>
+
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+  <dialog
+    show="{{dialog.show}}"
+    title="{{dialog.title}}"
+    content="{{dialog.content}}"
+    confirmText="{{dialog.confirmText}}"
+    cancelText="{{dialog.cancelText}}"
+    danger="{{dialog.danger}}"
+    bind:confirm="onDialogConfirm"
+    bind:cancel="closeDialog"
+  />
+</view>

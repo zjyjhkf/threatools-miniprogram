@@ -1,0 +1,115 @@
+<view class="mine">
+  <nav-bar title="我的" show-setting bind:action="goSettings" />
+
+  <!-- 已登录 M02 -->
+  <block wx:if="{{isLogin}}">
+    <view class="header">
+      <view class="avatar header-avatar">
+        <image wx:if="{{user.avatar}}" class="avatar-img" src="{{user.avatar}}" mode="aspectFill" />
+        <view wx:else class="icon icon-user header-avatar-ph"></view>
+      </view>
+      <view class="header-name">{{user.nickname || '微信用户'}}</view>
+      <view class="header-id">ID: {{user.id}}</view>
+      <view class="header-bio" bindtap="goEditProfile">{{user.bio || '这个人很懒，什么都没写'}}</view>
+      <view class="header-edit" bindtap="goEditProfile">编辑 ›</view>
+    </view>
+
+    <!-- R-01：头部 440rpx，简介固定 top 336rpx，完善度卡上浮 -40rpx -->
+    <view wx:if="{{!done}}" class="complete-card">
+      <view class="complete-head">
+        <text class="complete-title">资料完善度</text>
+        <text class="complete-count">{{completeness.filled}}/{{completeness.total}} 项</text>
+      </view>
+      <view class="complete-bar">
+        <view class="complete-bar-inner" style="width: {{percent}}%"></view>
+      </view>
+      <view class="complete-foot">
+        <text class="complete-desc">补全身体档案，获得更贴合的训练建议</text>
+        <text class="complete-action" bindtap="goComplete">去完善 ›</text>
+      </view>
+    </view>
+    <view wx:else class="complete-done" bindtap="goComplete">
+      <text class="complete-done-text">资料已完善</text>
+      <view class="icon icon-check complete-done-icon"></view>
+    </view>
+
+    <view class="group">
+      <view class="cell" bindtap="goProfile">
+        <text class="cell-label">个人信息</text>
+        <view class="cell-right">
+          <view class="icon icon-arrow cell-arrow"></view>
+        </view>
+      </view>
+      <view class="cell-line"></view>
+      <view class="cell" bindtap="goBody">
+        <text class="cell-label">身体档案与运动目标</text>
+        <view class="cell-right">
+          <tag-badge wx:if="{{!done}}" text="待完善" type="hot" />
+          <view class="icon icon-arrow cell-arrow"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="group">
+      <view class="cell" bindtap="goFavorites">
+        <text class="cell-label">我的收藏</text>
+        <view class="cell-right">
+          <text class="cell-value">{{favoriteCount}}</text>
+          <view class="icon icon-arrow cell-arrow"></view>
+        </view>
+      </view>
+      <view class="cell-line"></view>
+      <view class="cell" bindtap="goSettings">
+        <text class="cell-label">设置</text>
+        <view class="cell-right">
+          <view class="icon icon-arrow cell-arrow"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="version">
+      <text class="version-text">{{version}}</text>
+      <text class="version-text">{{copyright}}</text>
+    </view>
+  </block>
+
+  <!-- 未登录 M01 -->
+  <block wx:else>
+    <view class="header header-guest">
+      <view class="avatar header-avatar">
+        <view class="icon icon-user header-avatar-ph"></view>
+      </view>
+      <view class="header-name">未登录</view>
+      <view class="header-id">登录后完善你的运动档案</view>
+      <view class="guest-btn" bindtap="goLogin">微信一键登录</view>
+    </view>
+
+    <view class="group group-guest">
+      <view class="cell" bindtap="goLogin">
+        <text class="cell-label cell-disabled">个人信息</text>
+        <view class="icon icon-arrow cell-arrow"></view>
+      </view>
+      <view class="cell-line"></view>
+      <view class="cell" bindtap="goLogin">
+        <text class="cell-label cell-disabled">身体档案与运动目标</text>
+        <view class="icon icon-arrow cell-arrow"></view>
+      </view>
+    </view>
+
+    <view class="group group-guest">
+      <view class="cell" bindtap="goLogin">
+        <text class="cell-label cell-disabled">我的收藏</text>
+        <view class="icon icon-arrow cell-arrow"></view>
+      </view>
+    </view>
+
+    <view class="guest-note">登录后可点赞、收藏、发布动态，并完善你的身体档案</view>
+    <view class="version">
+      <text class="version-text">{{version}}</text>
+      <text class="version-text">{{copyright}}</text>
+    </view>
+  </block>
+
+  <view class="tabbar-space"></view>
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+</view>

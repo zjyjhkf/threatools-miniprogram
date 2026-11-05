@@ -1,0 +1,23 @@
+/* R-02：bottom = TabBar 可视高 98rpx + 40rpx + 安全区（166rpx 已含 68 指示条，不可重复叠加） */
+.fab {
+  position: fixed;
+  right: 32rpx;
+  bottom: calc(98rpx + 40rpx + env(safe-area-inset-bottom));
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(135deg, #2f6bff, #5b9bff);
+  box-shadow: 0 12rpx 32rpx rgba(16, 24, 40, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.fab:active {
+  opacity: 0.86;
+}
+.fab-icon {
+  width: 48rpx;
+  height: 48rpx;
+  color: #ffffff;
+}

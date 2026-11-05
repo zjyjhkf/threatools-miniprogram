@@ -1,0 +1,55 @@
+.sk-card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+}
+.sk-row {
+  display: flex;
+  align-items: center;
+}
+.sk-avatar {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 999rpx;
+  background: #eef0f3;
+}
+.sk-lines {
+  margin-left: 20rpx;
+}
+.sk-line {
+  height: 24rpx;
+  border-radius: 8rpx;
+  background: #eef0f3;
+}
+.sk-block {
+  margin-top: 24rpx;
+  width: 100%;
+  height: 300rpx;
+  border-radius: 16rpx;
+  background: #eef0f3;
+}
+.sk-detail {
+  padding: 32rpx;
+  background: #ffffff;
+}
+.sk-hero {
+  width: 100%;
+  height: 386rpx;
+  border-radius: 16rpx;
+  background: #eef0f3;
+}
+.sk-blink {
+  animation: skFade 1.2s ease-in-out infinite;
+}
+@keyframes skFade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}

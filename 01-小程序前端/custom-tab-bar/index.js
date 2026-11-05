@@ -1,0 +1,17 @@
+Component({
+  options: { styleIsolation: 'apply-shared' },
+  data: {
+    selected: 0,
+    list: [
+      { pagePath: '/pages/community/index', text: '发现', icon: 'compass' },
+      { pagePath: '/pages/mine/index', text: '我的', icon: 'user' }
+    ]
+  },
+  methods: {
+    onTap(e) {
+      const index = e.currentTarget.dataset.index
+      if (index === this.data.selected) return
+      wx.switchTab({ url: this.data.list[index].pagePath })
+    }
+  }
+})

@@ -1,0 +1,95 @@
+<view class="pe">
+  <nav-bar back title="编辑资料" bind:back="onBack">
+    <view slot="right">
+      <view class="pe-save {{saving ? 'is-disabled' : ''}}" bindtap="save">{{saving ? '保存中' : '保存'}}</view>
+    </view>
+  </nav-bar>
+
+  <view wx:if="{{status === 'loading'}}" class="pe-loading">
+    <skeleton type="detail" />
+  </view>
+
+  <empty-state wx:elif="{{status === 'error'}}" type="error" title="加载失败" btnText="点击重试" bind:action="onRetry" />
+
+  <block wx:else>
+    <view class="pe-avatar">
+      <avatar-uploader src="{{form.avatar}}" size="160" uploading="{{uploading}}" bind:choose="onAvatar" />
+      <text class="pe-avatar-tip">点击右下角更换头像</text>
+    </view>
+
+    <view class="pe-group">
+      <form-row
+        label="昵称"
+        field="nickname"
+        value="{{form.nickname}}"
+        type="input"
+        placeholder="2–20 个字符"
+        maxlength="20"
+        arrow="{{false}}"
+        error="{{errors.nickname}}"
+        bind:input="onField"
+      />
+      <view class="cell-line"></view>
+      <form-row label="性别" field="gender" value="{{genderLabel}}" type="readonly" bind:tap="openGender" />
+      <view class="cell-line"></view>
+      <form-row
+        label="出生日期"
+        field="birthday"
+        value="{{form.birthday}}"
+        type="date"
+        placeholder="请选择出生日期"
+        error="{{errors.birthday}}"
+        bind:change="onDate"
+      />
+      <view class="cell-line"></view>
+      <picker mode="region" value="{{form.city}}" bindchange="onCity">
+        <view class="pe-row">
+          <text class="pe-label">城市</text>
+          <view class="pe-right">
+            <text class="pe-value {{form.city ? '' : 'is-empty'}}">{{form.city || '请选择城市'}}</text>
+            <view class="icon icon-arrow pe-arrow"></view>
+          </view>
+        </view>
+      </picker>
+    </view>
+
+    <view class="pe-group pe-bio">
+      <view class="pe-bio-head">
+        <text class="pe-label">个人简介</text>
+        <text class="pe-count">{{form.bio.length}}/30</text>
+      </view>
+      <textarea
+        class="pe-textarea"
+        value="{{form.bio}}"
+        placeholder="介绍一下你自己"
+        placeholder-class="pe-ph"
+        maxlength="30"
+        bindinput="onBio"
+      />
+      <text wx:if="{{errors.bio}}" class="pe-error">{{errors.bio}}</text>
+    </view>
+
+    <view class="pe-tip">昵称、头像与简介会展示在你的主页和社区动态中</view>
+  </block>
+
+  <picker-sheet
+    show="{{genderShow}}"
+    title="选择性别"
+    options="{{genderOptions}}"
+    value="{{form.gender}}"
+    bind:confirm="pickGender"
+    bind:cancel="closeGender"
+  />
+
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+  <dialog
+    show="{{dialog.show}}"
+    title="{{dialog.title}}"
+    content="{{dialog.content}}"
+    confirmText="{{dialog.confirmText}}"
+    cancelText="{{dialog.cancelText}}"
+    danger="{{dialog.danger}}"
+    bind:confirm="onDialogConfirm"
+    bind:cancel="closeDialog"
+  />
+</view>

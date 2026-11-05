@@ -1,0 +1,80 @@
+.ps-mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(16, 24, 40, 0.45);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+}
+.ps {
+  width: 100%;
+  max-height: 80vh;
+  background: #ffffff;
+  border-radius: 24rpx 24rpx 0 0;
+  padding-bottom: env(safe-area-inset-bottom);
+  display: flex;
+  flex-direction: column;
+  animation: psUp 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes psUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.ps-handle {
+  width: 80rpx;
+  height: 8rpx;
+  border-radius: 999rpx;
+  background: #e4e7ec;
+  margin: 16rpx auto 0;
+}
+.ps-head {
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  border-bottom: 1rpx solid #e4e7ec;
+}
+.ps-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #101828;
+}
+.ps-cancel {
+  font-size: 28rpx;
+  color: #667085;
+}
+.ps-confirm {
+  font-size: 28rpx;
+  color: #2f6bff;
+  font-weight: 600;
+}
+.ps-body {
+  max-height: 60vh;
+}
+.ps-option {
+  height: 104rpx;
+  padding: 0 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #344054;
+  border-bottom: 1rpx solid #f2f4f7;
+}
+.ps-option.is-on {
+  color: #2f6bff;
+  font-weight: 600;
+}
+.ps-check {
+  width: 36rpx;
+  height: 36rpx;
+  color: #2f6bff;
+}

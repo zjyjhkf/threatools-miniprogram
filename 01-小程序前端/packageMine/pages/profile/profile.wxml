@@ -1,0 +1,81 @@
+<view class="profile">
+  <nav-bar back title="个人信息" bind:back="back" />
+
+  <view wx:if="{{status === 'loading'}}" class="p-loading">
+    <skeleton type="detail" />
+  </view>
+
+  <empty-state
+    wx:elif="{{status === 'error'}}"
+    type="error"
+    title="加载失败"
+    btnText="点击重试"
+    bind:action="onRetry"
+  />
+
+  <block wx:else>
+    <view class="group">
+      <view class="cell p-avatar-cell">
+        <text class="cell-label">头像</text>
+        <view class="avatar p-avatar">
+          <image wx:if="{{user.avatar}}" class="avatar-img" src="{{user.avatar}}" mode="aspectFill" />
+          <view wx:else class="icon icon-user p-avatar-ph"></view>
+        </view>
+      </view>
+      <view class="cell-line"></view>
+      <view class="cell">
+        <text class="cell-label">昵称</text>
+        <text class="p-value">{{user.nickname || '未填写'}}</text>
+      </view>
+      <view class="cell-line"></view>
+      <view class="cell">
+        <text class="cell-label">性别</text>
+        <text class="p-value">{{genderText}}</text>
+      </view>
+      <view class="cell-line"></view>
+      <view class="cell">
+        <text class="cell-label">出生日期</text>
+        <text class="p-value">{{user.birthday || '未填写'}}</text>
+      </view>
+      <view class="cell-line"></view>
+      <view class="cell">
+        <text class="cell-label">城市</text>
+        <text class="p-value">{{user.city || '未填写'}}</text>
+      </view>
+      <view class="cell-line"></view>
+      <view class="cell">
+        <text class="cell-label">简介</text>
+        <text class="p-value ellipsis-1">{{user.bio || '未填写'}}</text>
+      </view>
+    </view>
+
+    <view class="group">
+      <view class="cell" bindtap="copyId">
+        <text class="cell-label">微信号</text>
+        <view class="cell-right">
+          <text class="p-value">{{user.wechatId}}</text>
+          <text class="p-copy">复制</text>
+        </view>
+      </view>
+      <view class="cell-line"></view>
+      <view class="cell">
+        <text class="cell-label">主页可见性</text>
+        <text class="p-value">{{visibilityText}}</text>
+      </view>
+    </view>
+
+    <view class="p-btn" bindtap="goEdit">编辑资料</view>
+  </block>
+
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+  <dialog
+    show="{{dialog.show}}"
+    title="{{dialog.title}}"
+    content="{{dialog.content}}"
+    confirmText="{{dialog.confirmText}}"
+    cancelText="{{dialog.cancelText}}"
+    danger="{{dialog.danger}}"
+    bind:confirm="onDialogConfirm"
+    bind:cancel="closeDialog"
+  />
+</view>

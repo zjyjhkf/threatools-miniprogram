@@ -1,0 +1,79 @@
+{
+  "1": [
+    {
+      "id": "101",
+      "userId": "100002",
+      "content": "同款酸痛，收藏了",
+      "parentId": "0",
+      "replyToUserId": null,
+      "likeCount": 12,
+      "liked": false,
+      "createdAt": "2026-11-03 08:02:00",
+      "children": [
+        {
+          "id": "102",
+          "userId": "100003",
+          "content": "请问泡沫轴选硬的还是软的？",
+          "parentId": "101",
+          "replyToUserId": "100002",
+          "likeCount": 5,
+          "liked": false,
+          "createdAt": "2026-11-03 08:20:00",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "103",
+      "userId": "100003",
+      "content": "坚持一周真的有用",
+      "parentId": "0",
+      "replyToUserId": null,
+      "likeCount": 3,
+      "liked": false,
+      "createdAt": "2026-11-03 08:40:00",
+      "children": []
+    }
+  ],
+  "2": [
+    {
+      "id": "201",
+      "userId": "100001",
+      "content": "跟着第四课做了三天，肩颈确实松了",
+      "parentId": "0",
+      "replyToUserId": null,
+      "likeCount": 8,
+      "liked": false,
+      "createdAt": "2026-11-02 22:10:00",
+      "children": []
+    }
+  ],
+  "3": [
+    {
+      "id": "301",
+      "userId": "100003",
+      "content": "这台用起来声音大吗？",
+      "parentId": "0",
+      "replyToUserId": null,
+      "likeCount": 2,
+      "liked": false,
+      "createdAt": "2026-11-02 13:00:00",
+      "children": [
+        {
+          "id": "302",
+          "userId": "100002",
+          "content": "很轻，晚上用不影响家人",
+          "parentId": "301",
+          "replyToUserId": "100003",
+          "likeCount": 4,
+          "liked": false,
+          "createdAt": "2026-11-02 13:20:00",
+          "children": []
+        }
+      ]
+    }
+  ],
+  "4": [],
+  "5": [],
+  "6": []
+}

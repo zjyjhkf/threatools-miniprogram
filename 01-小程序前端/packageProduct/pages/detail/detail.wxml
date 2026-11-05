@@ -1,0 +1,144 @@
+<view class="pd">
+  <nav-bar
+    back
+    overlay
+    title="{{navSolid ? product.name : ''}}"
+    theme="{{navSolid ? 'light' : 'dark'}}"
+    transparent="{{!navSolid}}"
+    bind:back="back"
+  />
+
+  <swiper class="pd-swiper" circular bindchange="onSwiperChange">
+    <swiper-item wx:for="{{images}}" wx:key="index">
+      <image-ph src="{{item}}" w="750" h="750" radius="0" label="产品图 750×750" show-text="{{false}}" />
+    </swiper-item>
+  </swiper>
+  <view class="pd-indicator">{{current + 1}}/{{images.length}}</view>
+
+  <view wx:if="{{status === 'loading'}}" class="pd-loading">
+    <skeleton type="detail" />
+  </view>
+
+  <empty-state
+    wx:elif="{{status === 'notfound'}}"
+    type="empty"
+    title="该产品已下架"
+    btnText="返回"
+    bind:action="back"
+  />
+
+  <empty-state
+    wx:elif="{{status === 'error'}}"
+    type="error"
+    title="网络开小差了"
+    btnText="点击重试"
+    bind:action="onRetry"
+  />
+
+  <block wx:else>
+    <view class="pd-head">
+      <text class="pd-name">{{product.name}}</text>
+      <text class="pd-model">型号 {{product.model}}</text>
+      <text class="pd-tagline">{{product.tagline}}</text>
+      <view class="pd-tags">
+        <tag-badge wx:for="{{product.tags}}" wx:key="*this" text="{{item}}" type="new" />
+      </view>
+    </view>
+
+    <!-- 价格位：0.1 不显示价格、不可购买 -->
+    <view class="pd-price">
+      <view class="pd-price-main">
+        <text class="pd-price-text">价格信息即将上线</text>
+      </view>
+      <text class="pd-price-note">0.1 版本暂不提供购买，仅支持产品了解与收藏</text>
+    </view>
+
+    <view class="pd-block">
+      <text class="pd-block-title">产品特点</text>
+      <view wx:for="{{product.features}}" wx:key="title" class="pd-feature">
+        <view class="pd-feature-icon">
+          <view class="icon icon-check pd-feature-ic"></view>
+        </view>
+        <view class="flex-1">
+          <text class="pd-feature-title">{{item.title}}</text>
+          <text class="pd-feature-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="pd-block">
+      <text class="pd-block-title">产品视频</text>
+      <view class="pd-video" bindtap="playVideo">
+        <image-ph wx:if="{{!playing}}" src="{{videoCover}}" w="686" h="386" radius="16rpx" label="视频封面 686×386" />
+        <video
+          wx:else
+          class="pd-video-player"
+          src="{{product.video.url}}"
+          autoplay
+          controls
+          object-fit="contain"
+          bindended="onVideoEnded"
+          binderror="onVideoError"
+        ></video>
+        <view wx:if="{{!playing}}" class="pd-video-play">
+          <view class="icon icon-play pd-video-icon"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="pd-block">
+      <view class="pd-block-head">
+        <text class="pd-block-title">规格参数</text>
+        <text class="pd-block-tip">长按可复制</text>
+      </view>
+      <view wx:for="{{product.specs}}" wx:key="label" class="pd-spec" data-item="{{item}}" bindlongpress="copySpec">
+        <text class="pd-spec-label">{{item.label}}</text>
+        <text class="pd-spec-value">{{item.value}}</text>
+      </view>
+    </view>
+
+    <view class="pd-block">
+      <text class="pd-block-title">适用人群</text>
+      <view class="pd-tags">
+        <text wx:for="{{product.suitableFor}}" wx:key="*this" class="pd-suit">{{item}}</text>
+      </view>
+    </view>
+
+    <view wx:if="{{product.related.length}}" class="pd-block">
+      <text class="pd-block-title">相关产品</text>
+      <view
+        wx:for="{{product.related}}"
+        wx:key="id"
+        class="pd-related"
+        data-id="{{item.id}}"
+        bindtap="openRelated"
+      >
+        <image-ph src="{{item.cover}}" w="120" h="120" radius="12rpx" label="" show-text="{{false}}" />
+        <text class="pd-related-name flex-1 ellipsis-1">{{item.name}}</text>
+        <view class="icon icon-arrow pd-related-arrow"></view>
+      </view>
+    </view>
+
+    <view class="pd-note">本页面仅用于产品信息展示，不构成任何购买或医疗建议</view>
+    <view class="pd-bottom-space"></view>
+
+    <action-bar
+      primaryText="分享给朋友"
+      primaryShare
+      collected="{{product.collected}}"
+      bind:collect="toggleCollect"
+    />
+  </block>
+
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+  <dialog
+    show="{{dialog.show}}"
+    title="{{dialog.title}}"
+    content="{{dialog.content}}"
+    confirmText="{{dialog.confirmText}}"
+    cancelText="{{dialog.cancelText}}"
+    danger="{{dialog.danger}}"
+    bind:confirm="onDialogConfirm"
+    bind:cancel="closeDialog"
+  />
+</view>

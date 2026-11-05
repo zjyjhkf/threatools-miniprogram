@@ -1,0 +1,77 @@
+[
+  {
+    "id": "100001",
+    "nickname": "运动达人",
+    "avatar": "",
+    "gender": "male",
+    "birthday": "1995-06-12",
+    "city": "广东省/深圳市",
+    "bio": "每周三次，专注下肢恢复",
+    "wechatId": "jh_user_100001",
+    "profileVisibility": "self",
+    "createdAt": "2025-10-22 09:12:00",
+    "postCount": 12,
+    "likeCount": 34000,
+    "followCount": 56,
+    "bodyProfile": {
+      "height": 175,
+      "weight": 68.0,
+      "goals": ["recovery", "posture", "endurance"],
+      "frequency": "3-4",
+      "level": "intermediate",
+      "focusParts": ["knee", "calf"],
+      "injuries": "",
+      "allowPublic": false
+    }
+  },
+  {
+    "id": "100002",
+    "nickname": "康复小林",
+    "avatar": "",
+    "gender": "female",
+    "birthday": "1993-03-08",
+    "city": "浙江省/杭州市",
+    "bio": "康复训练师，分享科学放松",
+    "wechatId": "jh_user_100002",
+    "profileVisibility": "public",
+    "createdAt": "2025-09-01 10:00:00",
+    "postCount": 28,
+    "likeCount": 18600,
+    "followCount": 120,
+    "bodyProfile": {
+      "height": 165,
+      "weight": 52.0,
+      "goals": ["posture", "recovery"],
+      "frequency": "5+",
+      "level": "advanced",
+      "focusParts": ["neck_shoulder", "lower_back"],
+      "injuries": "",
+      "allowPublic": true
+    }
+  },
+  {
+    "id": "100003",
+    "nickname": "夜跑阿凯",
+    "avatar": "",
+    "gender": "male",
+    "birthday": "1990-11-20",
+    "city": "上海市/上海市",
+    "bio": "10 公里爱好者",
+    "wechatId": "jh_user_100003",
+    "profileVisibility": "public",
+    "createdAt": "2026-01-15 20:30:00",
+    "postCount": 15,
+    "likeCount": 9200,
+    "followCount": 38,
+    "bodyProfile": {
+      "height": 180,
+      "weight": 72.5,
+      "goals": ["endurance", "muscle"],
+      "frequency": "3-4",
+      "level": "intermediate",
+      "focusParts": ["calf", "foot"],
+      "injuries": "右膝旧伤，跑量控制在 40 公里/周",
+      "allowPublic": false
+    }
+  }
+]

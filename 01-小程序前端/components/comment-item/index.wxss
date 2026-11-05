@@ -1,0 +1,85 @@
+.ci {
+  display: flex;
+  padding: 24rpx 0;
+}
+.ci-avatar {
+  width: 64rpx;
+  height: 64rpx;
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ci-avatar-ph {
+  width: 36rpx;
+  height: 36rpx;
+  color: #2f6bff;
+}
+.ci-body {
+  display: flex;
+  flex-direction: column;
+}
+.ci-head {
+  display: flex;
+  align-items: center;
+}
+.ci-name {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #344054;
+}
+.ci-time {
+  margin-left: 16rpx;
+  font-size: 24rpx;
+  color: #98a2b3;
+}
+.ci-text {
+  margin-top: 8rpx;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: #101828;
+  word-break: break-all;
+}
+.ci-foot {
+  margin-top: 12rpx;
+  display: flex;
+  align-items: center;
+}
+.ci-reply {
+  font-size: 24rpx;
+  color: #667085;
+}
+.ci-like {
+  margin-left: 40rpx;
+  display: flex;
+  align-items: center;
+}
+.ci-like-icon {
+  width: 32rpx;
+  height: 32rpx;
+  color: #98a2b3;
+}
+.ci-like-count {
+  margin-left: 8rpx;
+  font-size: 24rpx;
+  color: #98a2b3;
+}
+.ci-on {
+  color: #ff6b35;
+}
+.ci-children {
+  margin-top: 16rpx;
+  background: #f7f9fc;
+  border-radius: 16rpx;
+  padding: 16rpx 20rpx;
+}
+.ci-child {
+  font-size: 26rpx;
+  line-height: 40rpx;
+  color: #344054;
+  padding: 6rpx 0;
+}
+.ci-replyto {
+  font-size: 26rpx;
+  color: #667085;
+}

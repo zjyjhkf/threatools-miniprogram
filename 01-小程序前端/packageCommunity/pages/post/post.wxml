@@ -1,0 +1,136 @@
+<view class="post">
+  <nav-bar back title="动态详情" bind:back="back">
+    <view slot="right" class="post-more" bindtap="onMore">
+      <view class="icon icon-more post-more-icon"></view>
+    </view>
+  </nav-bar>
+
+  <view wx:if="{{status === 'loading'}}" class="post-loading">
+    <skeleton type="detail" />
+  </view>
+
+  <empty-state
+    wx:elif="{{status === 'notfound'}}"
+    type="empty"
+    title="内容不存在或已删除"
+    btnText="返回社区"
+    bind:action="backToFeed"
+  />
+
+  <empty-state
+    wx:elif="{{status === 'error'}}"
+    type="error"
+    title="网络开小差了"
+    btnText="点击重试"
+    bind:action="onEmptyRetry"
+  />
+
+  <block wx:else>
+    <!-- S06 审核中 -->
+    <view wx:if="{{reviewing}}" class="post-review">
+      <view class="icon icon-clock post-review-icon"></view>
+      <text>当前内容审核中，仅你可见</text>
+    </view>
+
+    <view class="post-author">
+      <view class="avatar post-avatar" bindtap="onAuthor">
+        <image wx:if="{{post.author.avatar}}" class="avatar-img" src="{{post.author.avatar}}" mode="aspectFill" />
+        <view wx:else class="icon icon-user post-avatar-ph"></view>
+      </view>
+      <view class="flex-1" bindtap="onAuthor">
+        <text class="post-name">{{post.author.nickname}}</text>
+        <text class="post-time">{{timeText}}</text>
+      </view>
+      <view wx:if="{{!post.isAuthor}}" class="post-follow {{post.followed ? 'is-on' : ''}}" bindtap="onFollow">
+        {{post.followed ? '已关注' : '关注'}}
+      </view>
+    </view>
+
+    <view class="post-content">{{post.content}}</view>
+
+    <block wx:if="{{post.images.length}}">
+      <view wx:if="{{post.images.length === 1}}" class="post-img" bindtap="previewImage">
+        <image-ph src="{{post.images[0].url}}" w="686" h="515" radius="16rpx" label="686×515" />
+      </view>
+      <view wx:else class="post-imgs" bindtap="previewImage">
+        <image-ph
+          wx:for="{{post.images}}"
+          wx:key="index"
+          src="{{item.url}}"
+          w="218"
+          h="218"
+          radius="16rpx"
+          label=""
+          show-text="{{false}}"
+        />
+      </view>
+    </block>
+
+    <view wx:if="{{post.topics.length}}" class="post-topics">
+      <view
+        wx:for="{{post.topics}}"
+        wx:key="id"
+        class="post-topic"
+        data-id="{{item.id}}"
+        bindtap="onTopic"
+      >#{{item.name}}</view>
+    </view>
+
+    <view class="post-stats">
+      <text class="post-stats-text">{{likeText}} 次赞</text>
+      <text class="post-stats-text">{{collectText}} 次收藏</text>
+      <text class="post-stats-text">全部评论 {{commentCount}}</text>
+    </view>
+
+    <view class="post-divider"></view>
+
+    <view class="post-comments">
+      <empty-state wx:if="{{!comments.length}}" type="empty" title="还没有评论，来说两句" compact />
+      <view wx:for="{{comments}}" wx:key="id">
+        <comment-item
+          comment="{{item}}"
+          bind:like="onLikeComment"
+          bind:reply="onReply"
+          bind:longpress="onCommentLongPress"
+        />
+      </view>
+      <loading-more status="{{commentMore}}" />
+    </view>
+
+    <view class="post-bottom-space"></view>
+
+    <view class="post-bar">
+      <view class="post-bar-input" bindtap="onFocusInput">
+        <text class="post-bar-ph">{{placeholder}}</text>
+      </view>
+      <view class="post-bar-act {{post.liked ? 'is-on' : ''}}" bindtap="onLike">
+        <view class="icon {{post.liked ? 'icon-like-fill' : 'icon-like'}} post-bar-icon"></view>
+        <text class="post-bar-count">{{post.likeCount}}</text>
+      </view>
+      <view class="post-bar-act {{post.collected ? 'is-collect' : ''}}" bindtap="onCollect">
+        <view class="icon {{post.collected ? 'icon-collect-fill' : 'icon-collect'}} post-bar-icon"></view>
+      </view>
+    </view>
+
+    <comment-input
+      wx:if="{{inputFocus}}"
+      focus="{{inputFocus}}"
+      placeholder="{{placeholder}}"
+      sending="{{sending}}"
+      bind:send="onSend"
+      bind:blur="onInputBlur"
+    />
+  </block>
+
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+  <dialog
+    show="{{dialog.show}}"
+    title="{{dialog.title}}"
+    content="{{dialog.content}}"
+    confirmText="{{dialog.confirmText}}"
+    cancelText="{{dialog.cancelText}}"
+    danger="{{dialog.danger}}"
+    bind:confirm="onDialogConfirm"
+    bind:cancel="closeDialog"
+  />
+</view>

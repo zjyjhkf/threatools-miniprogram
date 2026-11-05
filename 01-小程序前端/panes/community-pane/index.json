@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "filter-chips": "/components/filter-chips/index",
+    "post-card": "/components/post-card/index",
+    "skeleton": "/components/skeleton/index",
+    "empty-state": "/components/empty-state/index",
+    "loading-more": "/components/loading-more/index"
+  }
+}

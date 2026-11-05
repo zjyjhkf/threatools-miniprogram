@@ -1,0 +1,10 @@
+<view wx:if="{{show}}" class="dlg-mask" catchtap="onCancel">
+  <view class="dlg" catchtap="noop">
+    <text class="dlg-title">{{title}}</text>
+    <text wx:if="{{content}}" class="dlg-content">{{content}}</text>
+    <view class="dlg-actions">
+      <view wx:if="{{cancelText}}" class="dlg-btn dlg-cancel" bindtap="onCancel">{{cancelText}}</view>
+      <view class="dlg-btn {{danger ? 'dlg-danger' : 'dlg-primary'}}" bindtap="onConfirm">{{confirmText}}</view>
+    </view>
+  </view>
+</view>

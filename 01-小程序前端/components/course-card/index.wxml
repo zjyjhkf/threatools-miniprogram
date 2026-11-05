@@ -1,0 +1,26 @@
+<view wx:if="{{mode === 'hero'}}" class="cc-hero" catchtap="onTap">
+  <image-ph src="{{course.cover}}" w="686" h="386" radius="24rpx" label="686×386" />
+  <view class="cc-hero-mask">
+    <text class="cc-hero-tag">本周主推</text>
+    <text class="cc-hero-title">{{course.title}}</text>
+    <text class="cc-hero-desc">{{course.actionCount}} 个动作 · {{durText}} · {{course.coachName}}</text>
+  </view>
+</view>
+
+<view wx:elif="{{mode === 'column'}}" class="cc-col" catchtap="onTap">
+  <image-ph src="{{course.cover}}" w="686" h="386" radius="16rpx" label="686×386" />
+  <text class="cc-title">{{course.title}}</text>
+  <text class="cc-sub">{{course.actionCount}} 个动作 · {{durText}}</text>
+</view>
+
+<view wx:else class="cc-row" catchtap="onTap">
+  <image-ph src="{{course.cover}}" w="310" h="174" radius="16rpx" label="310×174" />
+  <view class="cc-body flex-1">
+    <text class="cc-title ellipsis-2">{{course.title}}</text>
+    <text class="cc-sub">{{course.actionCount}} 个动作 · {{durText}}</text>
+    <view class="cc-foot">
+      <text class="cc-coach">{{course.coachName}}</text>
+      <text class="cc-learn">{{learnText}} 人学过</text>
+    </view>
+  </view>
+</view>

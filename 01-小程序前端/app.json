@@ -1,0 +1,128 @@
+{
+  "pages": [
+    "pages/community/index",
+    "pages/mine/index"
+  ],
+  "subpackages": [
+    {
+      "root": "packageCommon",
+      "name": "common",
+      "pages": [
+        "pages/login/login",
+        "pages/search/search"
+      ]
+    },
+    {
+      "root": "packageCommunity",
+      "name": "community",
+      "pages": [
+        "pages/topics/topics",
+        "pages/topic-detail/topic-detail",
+        "pages/post/post",
+        "pages/publish/publish",
+        "pages/publish-result/publish-result",
+        "pages/user-profile/user-profile"
+      ]
+    },
+    {
+      "root": "packageCourse",
+      "name": "course",
+      "pages": [
+        "pages/detail/detail",
+        "pages/play/play"
+      ]
+    },
+    {
+      "root": "packageProduct",
+      "name": "product",
+      "pages": [
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "packageMine",
+      "name": "mine",
+      "pages": [
+        "pages/profile/profile",
+        "pages/profile-edit/profile-edit",
+        "pages/body-profile/body-profile",
+        "pages/favorites/favorites",
+        "pages/settings/settings"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/community/index": {
+      "network": "all",
+      "packages": [
+        "packageCommunity"
+      ]
+    },
+    "pages/mine/index": {
+      "network": "wifi",
+      "packages": [
+        "packageMine"
+      ]
+    }
+  },
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarTitleText": "健衡运动社区",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F7FA",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#98A2B3",
+    "selectedColor": "#2F6BFF",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/community/index",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "nav-bar": "/components/nav-bar/index",
+    "top-tabs": "/components/top-tabs/index",
+    "search-bar": "/components/search-bar/index",
+    "filter-chips": "/components/filter-chips/index",
+    "post-card": "/components/post-card/index",
+    "topic-chip": "/components/topic-chip/index",
+    "course-card": "/components/course-card/index",
+    "product-card": "/components/product-card/index",
+    "action-bar": "/components/action-bar/index",
+    "comment-item": "/components/comment-item/index",
+    "comment-input": "/components/comment-input/index",
+    "form-row": "/components/form-row/index",
+    "avatar-uploader": "/components/avatar-uploader/index",
+    "picker-sheet": "/components/picker-sheet/index",
+    "empty-state": "/components/empty-state/index",
+    "skeleton": "/components/skeleton/index",
+    "toast": "/components/toast/index",
+    "dialog": "/components/dialog/index",
+    "fab-publish": "/components/fab-publish/index",
+    "stat-row": "/components/stat-row/index",
+    "tag-badge": "/components/tag-badge/index",
+    "image-ph": "/components/image-ph/index",
+    "loading-more": "/components/loading-more/index"
+  },
+  "componentFramework": "glass-easel",
+  "lazyCodeLoading": "requiredComponents",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.writePhotosAlbum": {
+      "desc": "用于保存社区中的图片"
+    }
+  }
+}

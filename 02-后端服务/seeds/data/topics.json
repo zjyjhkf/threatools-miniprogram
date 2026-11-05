@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1",
+    "name": "跑后拉伸挑战",
+    "description": "每天 10 分钟，跑后不再硬邦邦",
+    "userCount": 12000,
+    "postCount": 34000,
+    "isHot": true,
+    "sort": 100
+  },
+  {
+    "id": "2",
+    "name": "久坐党自救指南",
+    "description": "8 小时久坐，也能松一松肩颈",
+    "userCount": 8600,
+    "postCount": 21000,
+    "isHot": true,
+    "sort": 90
+  },
+  {
+    "id": "3",
+    "name": "泡沫轴日常",
+    "description": "滚一滚，肌肉真的会松",
+    "userCount": 5400,
+    "postCount": 12800,
+    "isHot": true,
+    "sort": 80
+  },
+  {
+    "id": "4",
+    "name": "筋膜枪怎么用",
+    "description": "用对位置，放松才有效",
+    "userCount": 3200,
+    "postCount": 7600,
+    "isHot": true,
+    "sort": 70
+  },
+  {
+    "id": "5",
+    "name": "体态改善打卡",
+    "description": "圆肩驼背，从今天开始改",
+    "userCount": 2100,
+    "postCount": 4300,
+    "isHot": true,
+    "sort": 60
+  },
+  {
+    "id": "6",
+    "name": "增肌恢复餐",
+    "description": "练完吃什么，比练多久更重要",
+    "userCount": 980,
+    "postCount": 1800,
+    "isHot": false,
+    "sort": 10
+  }
+]

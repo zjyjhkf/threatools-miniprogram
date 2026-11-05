@@ -1,0 +1,109 @@
+<view class="search">
+  <view class="s-head" style="padding-top: {{statusBarHeight}}px">
+    <view class="icon icon-back s-back" bindtap="onCancel"></view>
+    <view class="s-bar">
+      <search-bar
+        value="{{keyword}}"
+        focus="{{autoFocus}}"
+        showCancel
+        bind:input="onInput"
+        bind:confirm="onConfirm"
+        bind:cancel="onCancel"
+      />
+    </view>
+  </view>
+
+  <!-- G02a 未输入 -->
+  <block wx:if="{{mode === 'idle'}}">
+    <view wx:if="{{history.length}}" class="block">
+      <view class="block-head">
+        <text class="block-title">搜索历史</text>
+        <view class="icon icon-trash block-icon" bindtap="clearHistory"></view>
+      </view>
+      <view class="chips">
+        <view wx:for="{{history}}" wx:key="*this" class="chip" data-word="{{item}}" bindtap="pickWord">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="block">
+      <view class="block-head">
+        <text class="block-title">热门搜索</text>
+      </view>
+      <view class="hot">
+        <view wx:for="{{hot}}" wx:key="id" class="hot-item" data-word="{{item.name}}" bindtap="pickWord">
+          <text class="hot-index {{index < 3 ? 'is-top' : ''}}">{{index + 1}}</text>
+          <text class="hot-name ellipsis-1">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- G02b 结果 -->
+  <block wx:else>
+    <view class="result-tabs">
+      <view
+        wx:for="{{tabs}}"
+        wx:key="value"
+        class="result-tab {{tab === item.value ? 'is-on' : ''}}"
+        data-value="{{item.value}}"
+        bindtap="onTabChange"
+      >{{item.label}}</view>
+    </view>
+
+    <view wx:if="{{searching}}" class="result-loading">搜索中…</view>
+
+    <block wx:else>
+      <view
+        wx:if="{{tab === 'all' && !counts.post && !counts.course && !counts.product}}"
+        class="result-empty"
+      >
+        <empty-state type="empty" title="没有找到相关内容" desc="换个关键词试试" compact />
+      </view>
+
+      <block wx:else>
+        <view wx:if="{{result.courses.length && tab !== 'post' && tab !== 'product'}}" class="block">
+          <view class="block-head">
+            <text class="block-title">课程</text>
+            <text wx:if="{{tab === 'all'}}" class="block-more" data-value="course" bindtap="viewAll">查看全部</text>
+          </view>
+          <view wx:for="{{result.courses}}" wx:key="id" class="result-item">
+            <course-card course="{{item}}" mode="row" bind:tap="openCourse" />
+          </view>
+        </view>
+
+        <view wx:if="{{result.products.length && tab !== 'post' && tab !== 'course'}}" class="block">
+          <view class="block-head">
+            <text class="block-title">产品</text>
+            <text wx:if="{{tab === 'all'}}" class="block-more" data-value="product" bindtap="viewAll">查看全部</text>
+          </view>
+          <view wx:for="{{result.products}}" wx:key="id" class="result-item">
+            <product-card product="{{item}}" mode="row" bind:tap="openProduct" />
+          </view>
+        </view>
+
+        <view wx:if="{{result.posts.length && tab !== 'course' && tab !== 'product'}}" class="block">
+          <view class="block-head">
+            <text class="block-title">社区</text>
+            <text wx:if="{{tab === 'all'}}" class="block-more" data-value="post" bindtap="viewAll">查看全部</text>
+          </view>
+          <view wx:for="{{result.posts}}" wx:key="id" class="result-post" data-id="{{item.id}}" bindtap="openPost">
+            <text class="result-post-text ellipsis-2">{{item.content}}</text>
+            <text class="result-post-author">{{item.author.nickname}}</text>
+          </view>
+        </view>
+      </block>
+    </block>
+  </block>
+
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+  <dialog
+    show="{{dialog.show}}"
+    title="{{dialog.title}}"
+    content="{{dialog.content}}"
+    confirmText="{{dialog.confirmText}}"
+    cancelText="{{dialog.cancelText}}"
+    danger="{{dialog.danger}}"
+    bind:confirm="onDialogConfirm"
+    bind:cancel="closeDialog"
+  />
+</view>

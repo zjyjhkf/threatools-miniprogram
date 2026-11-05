@@ -1,0 +1,25 @@
+:host {
+  display: inline-block;
+}
+.tc {
+  height: 44rpx;
+  padding: 0 16rpx;
+  border-radius: 999rpx;
+  background: #e8f0ff;
+  display: inline-flex;
+  align-items: center;
+}
+.tc-s {
+  height: 40rpx;
+}
+.tc-text {
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #2f6bff;
+}
+.tc-close {
+  width: 26rpx;
+  height: 26rpx;
+  margin-left: 8rpx;
+  color: #2f6bff;
+}

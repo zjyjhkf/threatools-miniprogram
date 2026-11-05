@@ -1,0 +1,16 @@
+<view
+  class="nav {{overlay ? 'nav-overlay' : ''}} {{transparent ? 'nav-transparent' : ''}} {{theme === 'dark' ? 'nav-dark' : ''}}"
+  style="padding-top: {{statusBarHeight}}px"
+>
+  <view class="nav-inner">
+    <view class="nav-side" bindtap="onBack">
+      <view wx:if="{{back}}" class="icon icon-back nav-icon"></view>
+    </view>
+    <view class="nav-title">{{title}}</view>
+    <view class="nav-side nav-side-right">
+      <slot name="right"></slot>
+      <view wx:if="{{showSearch}}" class="icon icon-search nav-icon" bindtap="onSearch"></view>
+      <view wx:if="{{showSetting}}" class="icon icon-setting nav-icon" bindtap="onSetting"></view>
+    </view>
+  </view>
+</view>

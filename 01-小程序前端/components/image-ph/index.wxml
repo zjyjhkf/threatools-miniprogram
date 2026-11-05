@@ -1,0 +1,18 @@
+<image
+  wx:if="{{src && !failed}}"
+  class="ph-img"
+  src="{{src}}"
+  mode="{{mode}}"
+  style="width: {{w}}rpx; height: {{h}}rpx; border-radius: {{radius}}"
+  binderror="onError"
+  catchtap="onTap"
+/>
+<view
+  wx:else
+  class="ph"
+  style="width: {{w}}rpx; height: {{h}}rpx; border-radius: {{radius}}"
+  catchtap="onTap"
+>
+  <view class="icon icon-image ph-icon"></view>
+  <text wx:if="{{showText && label}}" class="ph-label">图片占位 {{label}}</text>
+</view>

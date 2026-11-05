@@ -1,0 +1,80 @@
+<view class="pc {{compact ? 'pc-compact' : ''}}" catchtap="onTap">
+  <view class="pc-head">
+    <view class="avatar pc-avatar" catchtap="onAuthor">
+      <image wx:if="{{post.author.avatar}}" class="avatar-img" src="{{post.author.avatar}}" mode="aspectFill" />
+      <view wx:else class="icon icon-user pc-avatar-ph"></view>
+    </view>
+    <view class="pc-meta flex-1" catchtap="onAuthor">
+      <text class="pc-name">{{post.author.nickname}}</text>
+      <text class="pc-time">{{timeText}}</text>
+    </view>
+    <view
+      wx:if="{{showFollow}}"
+      class="pc-follow {{post.followed ? 'is-on' : ''}}"
+      catchtap="onFollow"
+    >{{post.followed ? '已关注' : '关注'}}</view>
+  </view>
+
+  <view wx:if="{{post.content}}" class="pc-text ellipsis-3">{{post.content}}</view>
+
+  <block wx:if="{{!compact && post.images.length}}">
+    <image-ph
+      wx:if="{{post.images.length === 1}}"
+      src="{{post.images[0].url}}"
+      w="686"
+      h="515"
+      radius="16rpx"
+      label="686×515"
+    />
+    <view wx:elif="{{grid}}" class="pc-grid">
+      <image-ph
+        wx:for="{{post.images}}"
+        wx:key="index"
+        src="{{item.url}}"
+        w="218"
+        h="218"
+        radius="16rpx"
+        label=""
+        show-text="{{false}}"
+      />
+    </view>
+    <view wx:else class="pc-grid pc-grid-3">
+      <image-ph
+        wx:for="{{post.images}}"
+        wx:key="index"
+        src="{{item.url}}"
+        w="218"
+        h="218"
+        radius="16rpx"
+        label=""
+        show-text="{{false}}"
+      />
+    </view>
+  </block>
+
+  <view wx:if="{{post.topics.length}}" class="pc-topics">
+    <topic-chip
+      wx:for="{{post.topics}}"
+      wx:key="id"
+      name="{{item.name}}"
+      size="s"
+      data-id="{{item.id}}"
+      bind:tap="onTopic"
+    />
+  </view>
+
+  <view class="pc-actions">
+    <view class="pc-act" catchtap="onLike">
+      <view class="icon {{post.liked ? 'icon-like-fill pc-like-on' : 'icon-like'}} pc-icon"></view>
+      <text class="pc-count {{post.liked ? 'pc-count-on' : ''}}">{{likeText}}</text>
+    </view>
+    <view class="pc-act" catchtap="onComment">
+      <view class="icon icon-comment pc-icon"></view>
+      <text class="pc-count">{{commentText}}</text>
+    </view>
+    <view class="flex-1"></view>
+    <view class="pc-act" catchtap="onCollect">
+      <view class="icon {{post.collected ? 'icon-collect-fill pc-collect-on' : 'icon-collect'}} pc-icon"></view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,42 @@
+.es {
+  padding: 120rpx 64rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.es-compact {
+  padding: 64rpx 32rpx;
+}
+.es-icon {
+  width: 200rpx;
+  height: 200rpx;
+  color: #c7d3e6;
+}
+.es-icon-error {
+  color: #d7dde7;
+}
+.es-title {
+  margin-top: 32rpx;
+  font-size: 34rpx;
+  line-height: 48rpx;
+  font-weight: 600;
+  color: #101828;
+}
+.es-desc {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  color: #98a2b3;
+  text-align: center;
+}
+.es-btn {
+  margin-top: 40rpx;
+  height: 80rpx;
+  padding: 0 48rpx;
+  border-radius: 999rpx;
+  background: #2f6bff;
+  color: #ffffff;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+}
