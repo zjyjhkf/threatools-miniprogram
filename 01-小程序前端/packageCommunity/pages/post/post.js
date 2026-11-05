@@ -225,15 +225,42 @@ Page(
       this.setData({ inputFocus: false })
     },
 
+    /** A34 评论点赞：乐观更新 + 失败回滚 */
     onLikeComment(e) {
       if (!this.requireLogin()) return
       const { id, liked } = e.detail
       const idx = this.data.comments.findIndex(c => String(c.id) === String(id))
       if (idx < 0) return
+      if (this._likingComment) return
+      this._likingComment = true
+
+      const next = !liked
+      const count = this.data.comments[idx].likeCount + (liked ? -1 : 1)
       this.setData({
-        ['comments[' + idx + '].liked']: !liked,
-        ['comments[' + idx + '].likeCount']: this.data.comments[idx].likeCount + (liked ? -1 : 1)
+        ['comments[' + idx + '].liked']: next,
+        ['comments[' + idx + '].likeCount']: Math.max(0, count)
       })
+
+      api.likeComment(id, next).then(
+        res => {
+          this._likingComment = false
+          if (res && typeof res.likeCount === 'number') {
+            const i = this.data.comments.findIndex(c => String(c.id) === String(id))
+            if (i >= 0) this.setData({ ['comments[' + i + '].likeCount']: res.likeCount })
+          }
+        },
+        () => {
+          this._likingComment = false
+          const i = this.data.comments.findIndex(c => String(c.id) === String(id))
+          if (i >= 0) {
+            this.setData({
+              ['comments[' + i + '].liked']: liked,
+              ['comments[' + i + '].likeCount']: this.data.comments[i].likeCount + (liked ? 1 : -1)
+            })
+          }
+          ui.toast('操作失败，请重试')
+        }
+      )
     },
 
     onCommentLongPress(e) {
@@ -279,8 +306,18 @@ Page(
       if (this.data.dialog.type === 'deleteComment') {
         const c = this._pendingComment
         if (!c) return
-        this.setData({ comments: this.data.comments.filter(x => String(x.id) !== String(c.id)) })
-        ui.toast('已删除')
+        this._pendingComment = null
+        // A35：先落库再改 UI，失败不删（避免“假删除”）
+        api.deleteComment(c.id).then(
+          () => {
+            this.setData({ comments: this.data.comments.filter(x => String(x.id) !== String(c.id)) })
+            if (this.data.post && this.data.post.commentCount > 0) {
+              this.setData({ 'post.commentCount': this.data.post.commentCount - 1 })
+            }
+            ui.toast('已删除')
+          },
+          () => ui.toast('删除失败，请重试')
+        )
       }
     },
 

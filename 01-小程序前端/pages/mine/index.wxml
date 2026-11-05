@@ -1,5 +1,6 @@
 <view class="mine">
   <nav-bar title="我的" show-setting bind:action="goSettings" />
+  <offline-bar />
 
   <!-- 已登录 M02 -->
   <block wx:if="{{isLogin}}">

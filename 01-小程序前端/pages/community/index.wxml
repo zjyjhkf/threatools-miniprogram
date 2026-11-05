@@ -1,5 +1,6 @@
 <view class="pg">
   <nav-bar title="{{titles[tab]}}" show-search bind:search="goSearch" />
+  <offline-bar />
   <top-tabs tabs="{{tabs}}" current="{{tab}}" bind:change="onTabChange" />
 
   <view class="pg-body">

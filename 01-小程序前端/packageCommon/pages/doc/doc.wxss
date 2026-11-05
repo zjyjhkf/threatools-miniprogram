@@ -1,0 +1,54 @@
+/* 协议 / 隐私 / 关于：纯文本页（无设计稿，按 05-UI样式规则 实现） */
+.pg {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--bg-page);
+}
+
+.doc-scroll {
+  flex: 1;
+  min-height: 0;
+}
+
+.doc-meta {
+  padding: 24rpx var(--page-pad) 8rpx;
+  font-size: var(--fs-caption);
+  line-height: 34rpx;
+  color: var(--ink-400);
+}
+
+.doc-section {
+  padding: 24rpx var(--page-pad) 8rpx;
+}
+
+.doc-heading {
+  font-size: var(--fs-h3);
+  line-height: 48rpx;
+  font-weight: 600;
+  color: var(--ink-900);
+  margin-bottom: 16rpx;
+}
+
+.doc-p {
+  font-size: var(--fs-body);
+  line-height: 48rpx;
+  color: var(--ink-700);
+  margin-bottom: 16rpx;
+  text-align: justify;
+}
+
+.doc-footer {
+  padding: 48rpx var(--page-pad) 0;
+  text-align: center;
+}
+
+.doc-footer-line {
+  font-size: var(--fs-caption);
+  line-height: 40rpx;
+  color: var(--ink-400);
+}
+
+.doc-safe {
+  height: calc(48rpx + env(safe-area-inset-bottom));
+}

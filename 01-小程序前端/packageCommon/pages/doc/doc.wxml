@@ -1,0 +1,17 @@
+<view class="pg">
+  <nav-bar back title="{{title}}" bind:back="onBack" />
+  <scroll-view class="doc-scroll" scroll-y enhanced show-scrollbar="{{false}}">
+    <view class="doc-meta">更新日期：{{updatedAt}}</view>
+
+    <view class="doc-section" wx:for="{{sections}}" wx:key="heading">
+      <view class="doc-heading">{{item.heading}}</view>
+      <view class="doc-p" wx:for="{{item.paragraphs}}" wx:for-item="p" wx:key="*this">{{p}}</view>
+    </view>
+
+    <view class="doc-footer">
+      <view class="doc-footer-line">健衡运动社区 · v1.0.0</view>
+      <view class="doc-footer-line">© 2026 健衡健康科技</view>
+    </view>
+    <view class="doc-safe"></view>
+  </scroll-view>
+</view>

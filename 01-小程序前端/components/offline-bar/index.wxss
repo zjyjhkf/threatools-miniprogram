@@ -1,0 +1,13 @@
+.ob {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64rpx;
+  background: var(--bg-warn, #fef3c7);
+}
+
+.ob-txt {
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: var(--ink-warn, #b45309);
+}

@@ -27,16 +27,8 @@ Page(
     },
 
     showAgreement(e) {
-      const type = e.currentTarget.dataset.type
-      ui.dialog({
-        title: type === 'privacy' ? '隐私政策' : '用户协议',
-        content:
-          type === 'privacy'
-            ? '我们仅收集昵称、头像、性别、生日、城市与你主动填写的身体档案，用于展示个人主页与生成训练建议，不会用于其他用途，也不会对外公开你的身体数据。'
-            : '欢迎使用健衡运动社区。请在发布内容时遵守法律法规，不发布医疗诊断、广告导流与不实信息。平台对违规内容有权处理。',
-        confirmText: '我知道了',
-        cancelText: ''
-      })
+      const type = e.currentTarget.dataset.type || 'agreement'
+      wx.navigateTo({ url: '/packageCommon/pages/doc/doc?type=' + type })
     },
 
     clearCache() {

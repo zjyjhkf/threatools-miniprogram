@@ -1,10 +1,10 @@
 /**
- * 统一请求层 v2
- * - 自动带 Authorization / X-Request-Id
+ * 统一请求层 v3
  * - 统一解包 {code, message, data, requestId}
- * - 401 交给 auth.handleUnauthorized（全局去重）
- * - 网络/超时自动重试一次（仅 GET）
- * - 失败自动上报（不阻塞业务）
+ * - 401：先静默重登一次并重放，失败才引导登录（登录请求本身不参与，避免递归）
+ * - 网络/超时自动重试一次（仅幂等 GET；5xx 不重试，避免故障期放大流量）
+ * - 失败统一上报（带 requestId，不阻塞业务）
+ * - requestId 由后端生成（X-Request-Id / body.requestId），前端只透传
  */
 const env = require('../config/env')
 
@@ -26,8 +26,9 @@ function makeError(type, message, extra) {
   return err
 }
 
-function genRequestId() {
-  return 'wx' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8)
+/** 仅用于本地错误上报兜底（后端不可达时没有 requestId），不写入请求头 */
+function localTraceId() {
+  return 'local-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8)
 }
 
 function toast(message) {
@@ -37,40 +38,42 @@ function toast(message) {
   } catch (e) {}
 }
 
-function costTime(start) {
-  return Date.now() - start
+function headerRequestId(res) {
+  const header = (res && res.header) || {}
+  return header['X-Request-Id'] || header['x-request-id'] || ''
 }
 
-function wxSend(opts, requestId, startedAt) {
+function wxSend(opts, traceId, startedAt) {
   return new Promise((resolve, reject) => {
     const method = (opts.method || 'GET').toUpperCase()
-    const header = {
-      'content-type': 'application/json',
-      'X-Request-Id': requestId
-    }
+    const header = { 'content-type': 'application/json' }
     if (opts.auth !== false) {
       const token = require('./auth').getToken()
       if (token) header.Authorization = 'Bearer ' + token
     }
 
     wx.request({
-      url: (opts.fullURL || env.baseURL + opts.url),
+      url: opts.fullURL || env.baseURL + opts.url,
       method,
       data: opts.data || {},
       header,
       timeout: opts.timeout || env.TIMEOUT,
       success(res) {
-        resolve({ res, requestId, duration: costTime(startedAt) })
+        resolve({
+          res,
+          requestId: headerRequestId(res) || traceId,
+          duration: Date.now() - startedAt
+        })
       },
       fail(err) {
         const raw = (err && err.errMsg) || ''
         const timeout = raw.indexOf('timeout') >= 0
         reject(
-          makeError(timeout ? TYPES.TIMEOUT : TYPES.NETWORK, timeout ? '请求超时，请重试' : '网络异常，请检查网络', {
-            requestId,
-            duration: costTime(startedAt),
-            url: opts.url
-          })
+          makeError(
+            timeout ? TYPES.TIMEOUT : TYPES.NETWORK,
+            timeout ? '请求超时，请重试' : '网络异常，请检查网络',
+            { requestId: traceId, duration: Date.now() - startedAt, url: opts.url }
+          )
         )
       }
     })
@@ -83,7 +86,6 @@ function unwrap(payload) {
   const rid = body.requestId || requestId
 
   if (res.statusCode === 401 || body.code === 40101) {
-    require('./auth').handleUnauthorized()
     throw makeError(TYPES.AUTH, '登录已失效，请重新登录', { code: 40101, requestId: rid, duration })
   }
   if (res.statusCode === 429 || body.code === 42901) {
@@ -102,7 +104,11 @@ function unwrap(payload) {
     })
   }
   if (typeof body.code === 'undefined') {
-    throw makeError(TYPES.SERVER, '响应格式异常', { requestId: rid, duration, statusCode: res.statusCode })
+    throw makeError(TYPES.SERVER, '响应格式异常', {
+      requestId: rid,
+      duration,
+      statusCode: res.statusCode
+    })
   }
   if (body.code === 0) return body.data === undefined ? null : body.data
   throw makeError(TYPES.BIZ, body.message || '请求失败', { code: body.code, requestId: rid, duration })
@@ -123,30 +129,59 @@ function reportFailure(opts, err) {
   } catch (e) {}
 }
 
+/** 静默重登：复用 auth.login（内部并发去重），成功返回 true */
+function tryRelogin() {
+  try {
+    return require('./auth')
+      .login()
+      .then(() => true)
+      .catch(() => false)
+  } catch (e) {
+    return Promise.resolve(false)
+  }
+}
+
 /**
  * 请求入口
- * @param {Object} opts {url, method, data, auth, retry, silent}
+ * @param {Object} opts { url, method, data, auth, retry, silent, timeout, fullURL }
+ *   silent: 失败不弹 toast
+ *   retry:  覆盖默认重试次数（null = GET 1 次、其它 0 次）
  */
 function request(opts) {
-  const options = Object.assign({ method: 'GET', auth: true, retry: null, silent: false }, opts || {})
-  const requestId = genRequestId()
+  const options = Object.assign(
+    { method: 'GET', auth: true, retry: null, silent: false, _relogged: false },
+    opts || {}
+  )
+  const traceId = localTraceId()
   const startedAt = Date.now()
   const method = String(options.method).toUpperCase()
   const maxRetry = options.retry === null ? (method === 'GET' ? 1 : 0) : options.retry
 
   const attempt = left =>
-    wxSend(options, requestId, startedAt)
+    wxSend(options, traceId, startedAt)
       .then(unwrap)
       .catch(err => {
-        const retryable = err.type === TYPES.NETWORK || err.type === TYPES.TIMEOUT || err.type === TYPES.SERVER
+        // 401：只静默重登一次并重放；登录请求（auth:false）与已重登过的请求不参与
+        if (err.type === TYPES.AUTH && options.auth !== false && !options._relogged) {
+          return tryRelogin().then(ok => {
+            if (!ok) throw err
+            return request(Object.assign({}, options, { _relogged: true, retry: 0 }))
+          })
+        }
+        const retryable = err.type === TYPES.NETWORK || err.type === TYPES.TIMEOUT
         if (retryable && left > 0) return attempt(left - 1)
         throw err
       })
 
   return attempt(maxRetry).catch(err => {
-    const quiet = options.silent || err.type === TYPES.AUTH
-    if (!quiet) toast(err.message)
-    if (err.type !== TYPES.BIZ || (err.code >= 50000 && err.code < 60000)) reportFailure(options, err)
+    if (err.type === TYPES.AUTH) {
+      require('./auth').handleUnauthorized()
+    } else if (!options.silent) {
+      toast(err.message)
+    }
+    if (err.type !== TYPES.BIZ || (err.code >= 50000 && err.code < 60000)) {
+      reportFailure(options, err)
+    }
     throw err
   })
 }

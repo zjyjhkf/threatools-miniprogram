@@ -1,0 +1,82 @@
+name: jianheng
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: jh-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-123456}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-miniprogram}
+      MYSQL_USER: ${MYSQL_USER:-jh}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-jh123456}
+      TZ: Asia/Shanghai
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_general_ci
+      - --default-time-zone=+08:00
+      - --max_connections=200
+    volumes:
+      - jh-mysql-data:/var/lib/mysql
+      - ./backups:/backup
+    # 本机 3306 可能被已有 MySQL 占用，容器只映射到 127.0.0.1:3307，供 DBA/调试使用
+    ports:
+      - "127.0.0.1:3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${MYSQL_ROOT_PASSWORD:-123456}"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    networks: [jhnet]
+
+  api:
+    build: .
+    container_name: jh-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: mysql+aiomysql://${MYSQL_USER:-jh}:${MYSQL_PASSWORD:-jh123456}@mysql:3306/${MYSQL_DATABASE:-miniprogram}?charset=utf8mb4
+      UPLOAD_DIR: /data/upload
+      LOG_DIR: /app/logs
+      TZ: Asia/Shanghai
+    volumes:
+      - ./uploads:/data/upload
+      - ./logs:/app/logs
+    ports:
+      - "8000:8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks: [jhnet]
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
+
+  # 生产/内网访问入口：docker compose --profile nginx up -d
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: jh-nginx
+    restart: unless-stopped
+    profiles: ["nginx"]
+    depends_on: [api]
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./uploads:/var/www/uploads:ro
+    networks: [jhnet]
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
+
+volumes:
+  jh-mysql-data:
+
+networks:
+  jhnet:
+    driver: bridge

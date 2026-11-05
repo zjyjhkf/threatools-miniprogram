@@ -9,7 +9,8 @@
       "name": "common",
       "pages": [
         "pages/login/login",
-        "pages/search/search"
+        "pages/search/search",
+        "pages/doc/doc"
       ]
     },
     {
@@ -92,6 +93,7 @@
     ]
   },
   "usingComponents": {
+    "offline-bar": "/components/offline-bar/index",
     "nav-bar": "/components/nav-bar/index",
     "top-tabs": "/components/top-tabs/index",
     "search-bar": "/components/search-bar/index",

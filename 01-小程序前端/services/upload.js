@@ -3,10 +3,6 @@ const { request } = require('./request')
 const auth = require('./auth')
 const report = require('../utils/report')
 
-function genRequestId() {
-  return Date.now().toString(36) + Math.random().toString(36).slice(2, 8)
-}
-
 function toastError(message) {
   if (!env.SHOW_ERROR_TOAST) return
   wx.showToast({ title: message || '上传失败', icon: 'none', duration: 2000 })
@@ -42,8 +38,7 @@ function uploadFile(localPath, path, name) {
       filePath: localPath,
       name,
       header: {
-        ...(token ? { Authorization: 'Bearer ' + token } : {}),
-        'X-Request-Id': genRequestId()
+        ...(token ? { Authorization: 'Bearer ' + token } : {})
       },
       success: res => parse(res, resolve, reject),
       fail(err) {

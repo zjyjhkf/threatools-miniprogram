@@ -29,6 +29,11 @@ module.exports = {
     request({ url: '/posts/' + id + '/comments', data: { cursor, size } }),
   addComment: (id, content, replyToId) =>
     request({ url: '/posts/' + id + '/comments', method: 'POST', data: { content, replyToId } }),
+  /** A34 评论点赞 / 取消（1.0） */
+  likeComment: (commentId, on) =>
+    request({ url: '/comments/' + commentId + '/like', method: on ? 'POST' : 'DELETE' }),
+  /** A35 删除自己的评论（1.0） */
+  deleteComment: commentId => request({ url: '/comments/' + commentId, method: 'DELETE' }),
 
   /* 话题 */
   getHotTopics: limit => request({ url: '/topics/hot', data: { limit } }),
