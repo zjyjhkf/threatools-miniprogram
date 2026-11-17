@@ -1,0 +1,27 @@
+<view class="work" bindtap="onOpen">
+  <view class="work-cover">
+    <image
+      wx:if="{{item.cover.url && !failed}}"
+      class="work-cover-img"
+      src="{{item.cover.url}}"
+      mode="aspectFill"
+      lazy-load
+      binderror="onCoverError"
+    />
+    <view wx:else class="work-cover-ph">
+      <view class="icon icon-image work-cover-icon"></view>
+    </view>
+    <view wx:if="{{showStatus}}" class="work-status {{statusClass}}">{{statusText}}</view>
+  </view>
+
+  <view class="work-info">
+    <text class="work-title">{{item.title || item.content}}</text>
+    <view class="work-meta">
+      <text class="work-date">{{dayText}}</text>
+      <view class="work-like">
+        <view class="icon icon-heart work-like-icon"></view>
+        <text class="work-like-count">{{item.likeCount || 0}}</text>
+      </view>
+    </view>
+  </view>
+</view>

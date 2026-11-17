@@ -1,0 +1,18 @@
+<scroll-view wx:if="{{scroll}}" class="fc fc-scroll" scroll-x enable-flex show-scrollbar="{{false}}">
+  <view
+    class="fc-item {{checked[item.value] ? 'is-on' : ''}} {{variant === 'tab' ? 'is-tab' : ''}}"
+    wx:for="{{options}}"
+    wx:key="value"
+    data-item="{{item}}"
+    bindtap="onTap"
+  >{{item.label}}</view>
+</scroll-view>
+<view wx:else class="fc">
+  <view
+    class="fc-item {{checked[item.value] ? 'is-on' : ''}} {{variant === 'tab' ? 'is-tab' : ''}}"
+    wx:for="{{options}}"
+    wx:key="value"
+    data-item="{{item}}"
+    bindtap="onTap"
+  >{{item.label}}</view>
+</view>

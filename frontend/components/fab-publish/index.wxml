@@ -1,0 +1,3 @@
+<view wx:if="{{visible}}" class="fab" catchtap="onTap">
+  <view class="icon icon-edit fab-icon"></view>
+</view>

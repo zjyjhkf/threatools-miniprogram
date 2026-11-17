@@ -1,0 +1,104 @@
+<view class="play">
+  <view class="play-top" style="padding-top: {{statusBarHeight}}px">
+    <view class="icon icon-back play-back" bindtap="back"></view>
+    <text class="play-title ellipsis-1">{{course.title || '课程播放'}}</text>
+    <view class="play-full" bindtap="onFullscreen">
+      <view class="icon icon-more play-full-icon"></view>
+    </view>
+  </view>
+
+  <view class="player">
+    <video
+      id="player"
+      class="video"
+      src="{{src}}"
+      controls="{{false}}"
+      show-center-play-btn="{{false}}"
+      object-fit="contain"
+      enable-progress-gesture="{{false}}"
+      bindplay="onPlay"
+      bindpause="onPause"
+      bindtimeupdate="onTimeUpdate"
+      bindended="onEnded"
+      binderror="onVideoError"
+    ></video>
+
+    <view wx:if="{{!playing || error}}" class="player-mask" bindtap="onPlayTap">
+      <view wx:if="{{error}}" class="player-error">
+        <text class="player-error-text">视频加载失败，点击重试</text>
+      </view>
+      <view wx:else class="player-play">
+        <view class="icon icon-play player-play-icon"></view>
+      </view>
+    </view>
+
+    <view class="player-bar">
+      <text class="player-time">{{timeText}}</text>
+      <slider
+        class="player-slider"
+        value="{{progress}}"
+        min="0"
+        max="100"
+        block-size="12"
+        activeColor="#00a84a"
+        backgroundColor="rgba(255,255,255,0.28)"
+        bindchange="onSeek"
+      />
+      <text class="player-time">{{durText}}</text>
+      <view class="player-fullscreen" bindtap="onFullscreen">
+        <view class="icon icon-image player-fullscreen-icon"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="play-info">
+    <text class="play-chapter-idx">第 {{index + 1}} 节 / 共 {{chapters.length}} 节</text>
+    <text class="play-chapter-title">{{chapter.title}}</text>
+    <text class="play-coach">{{course.coach.name}} · 全部章节可学</text>
+  </view>
+
+  <view class="play-list">
+    <view class="play-list-head">
+      <text class="play-list-title">课程章节</text>
+      <view class="play-auto" bindtap="toggleAutoNext">
+        <text class="play-auto-text">播完自动下一节</text>
+        <view class="play-auto-switch {{autoNext ? 'is-on' : ''}}">
+          <view class="play-auto-dot"></view>
+        </view>
+      </view>
+    </view>
+    <scroll-view class="chapter-list" scroll-y scroll-top="{{chapterScrollTop}}">
+      <view
+        wx:for="{{chapters}}"
+        wx:key="id"
+        class="chapter {{chapter.id === item.id ? 'chapter-active' : ''}}"
+        data-index="{{index}}"
+        bindtap="selectChapter"
+      >
+        <text class="chapter-idx">{{item.idx}}</text>
+        <view class="flex-1">
+          <text class="chapter-title">{{item.title}}</text>
+          <text class="chapter-dur">{{item.durText}}</text>
+        </view>
+        <view wx:if="{{chapter.id === item.id}}" class="chapter-playing">
+          <text class="chapter-playing-text">播放中</text>
+        </view>
+        <view wx:else class="icon icon-play chapter-play"></view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="play-tools">
+    <view class="play-tool" bindtap="prevChapter">
+      <text class="play-tool-text">上一节</text>
+    </view>
+    <view class="play-tool play-tool-main" bindtap="onPlayTap">
+      <view class="icon {{playing ? 'icon-pause' : 'icon-play'}} play-tool-icon"></view>
+    </view>
+    <view class="play-tool" bindtap="nextChapter">
+      <text class="play-tool-text">下一节</text>
+    </view>
+  </view>
+
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+</view>

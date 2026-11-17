@@ -1,0 +1,46 @@
+<view class="prod">
+  <nav-bar title="产品与课程" show-search bind:search="goSearch" />
+  <offline-bar />
+
+  <view class="prod-tabs">
+    <view
+      class="prod-tab {{tab === index ? 'is-on' : ''}}"
+      wx:for="{{tabs}}"
+      wx:key="*this"
+      data-index="{{index}}"
+      bindtap="onTabTap"
+    >
+      <text class="prod-tab-text">{{item}}</text>
+      <view wx:if="{{tab === index}}" class="prod-tab-line"></view>
+    </view>
+  </view>
+
+  <view class="prod-body">
+    <swiper
+      class="prod-swiper"
+      current="{{tab}}"
+      duration="250"
+      circular="{{false}}"
+      bindchange="onSwiperChange"
+    >
+      <swiper-item>
+        <product-pane
+          id="pane0"
+          active="{{tab === 0}}"
+          bind:openproduct="openProduct"
+          bind:tabswitch="onTabSwitchTrack"
+        />
+      </swiper-item>
+      <swiper-item>
+        <course-pane
+          id="pane1"
+          active="{{tab === 1}}"
+          bind:opencourse="openCourse"
+          bind:tabswitch="onTabSwitchTrack"
+        />
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+</view>

@@ -1,0 +1,128 @@
+.up {
+  min-height: 100vh;
+  background: #f1fef9;
+  padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+/* 上浮不被裁切：父级无 overflow:hidden */
+.up-card {
+  position: relative;
+  margin: -80rpx 32rpx 0;
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 0 32rpx 32rpx;
+  box-shadow: 0 8rpx 24rpx rgba(16, 24, 40, 0.06);
+  z-index: 2;
+}
+.up-avatar {
+  position: relative;
+  top: -48rpx;
+  width: 128rpx;
+  height: 128rpx;
+  border: 4rpx solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -32rpx;
+}
+.up-avatar-ph {
+  width: 64rpx;
+  height: 64rpx;
+  color: #00a84a;
+}
+.up-info {
+  display: flex;
+  flex-direction: column;
+}
+.up-name {
+  font-size: 40rpx;
+  line-height: 56rpx;
+  font-weight: 700;
+  color: #101828;
+}
+.up-id {
+  font-size: 24rpx;
+  color: #98a2b3;
+}
+.up-bio {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  color: #667085;
+}
+.up-follow {
+  margin-top: 24rpx;
+  height: 80rpx;
+  border-radius: 999rpx;
+  background: var(--brand-600);
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.up-follow.is-on {
+  background: #f5fef9;
+  color: #667085;
+}
+.up-stats {
+  margin: 24rpx 32rpx 0;
+  height: 120rpx;
+  background: #ffffff;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+}
+.up-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.up-stat-value {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #101828;
+  font-variant-numeric: tabular-nums;
+}
+.up-stat-label {
+  margin-top: 4rpx;
+  font-size: 24rpx;
+  color: #98a2b3;
+}
+.up-stat-line {
+  width: 1rpx;
+  height: 48rpx;
+  background: #ddf3e6;
+}
+.up-grid {
+  margin: 24rpx 32rpx 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+}
+.up-grid-item {
+  position: relative;
+  width: 343rpx;
+  height: 343rpx;
+}
+.up-grid-text {
+  position: absolute;
+  left: 16rpx;
+  right: 16rpx;
+  bottom: 16rpx;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #00a84a;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.up-loading {
+  padding: 32rpx;
+}
+.up-space {
+  height: 40rpx;
+}

@@ -1,0 +1,58 @@
+<view class="pp">
+  <view class="pp-cats">
+    <filter-chips options="{{categories}}" value="{{category}}" scroll bind:change="onCategoryChange" />
+  </view>
+
+  <scroll-view
+    class="pp-scroll"
+    scroll-y
+    scroll-top="{{scrollTop}}"
+    refresher-enabled="{{true}}"
+    refresher-triggered="{{refreshing}}"
+    bindrefresherrefresh="onPullRefresh"
+  >
+    <view wx:if="{{status === 'loading'}}" class="pp-body">
+      <skeleton type="card" count="2" />
+    </view>
+
+    <empty-state
+      wx:elif="{{status === 'error'}}"
+      type="error"
+      title="网络开小差了"
+      desc="检查网络后重试"
+      btnText="点击重试"
+      bind:action="onRetry"
+    />
+
+    <empty-state
+      wx:elif="{{status === 'empty'}}"
+      type="empty"
+      title="该分类暂无产品"
+      desc="换个分类看看吧"
+      btnText="查看全部"
+      bind:action="onRetry"
+    />
+
+    <view wx:else class="pp-body">
+      <view class="pp-banner">
+        <view class="pp-banner-copy">
+          <text class="pp-banner-title">{{banner.title}}</text>
+          <text class="pp-banner-sub">{{banner.subtitle}}</text>
+          <text class="pp-banner-action">{{banner.action}} ›</text>
+        </view>
+        <view class="pp-banner-icon">
+          <view class="icon icon-run"></view>
+        </view>
+      </view>
+
+      <view class="pp-grid">
+        <view wx:for="{{list}}" wx:key="id" class="pp-item">
+          <product-card product="{{item}}" mode="grid" bind:tap="onProductTap" />
+        </view>
+      </view>
+
+      <view class="pp-note">0.1 版本仅提供产品了解，不提供购买</view>
+      <view class="pp-bottom-space"></view>
+    </view>
+  </scroll-view>
+</view>

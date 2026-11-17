@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "community-pane": "/panes/community-pane/index"
+  }
+}

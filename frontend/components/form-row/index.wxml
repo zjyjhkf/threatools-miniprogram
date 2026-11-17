@@ -1,0 +1,33 @@
+<view class="fr-wrap">
+  <view class="fr {{error ? 'is-error' : ''}}" catchtap="onTap">
+    <text class="fr-label">{{label}}</text>
+    <view class="fr-right">
+      <block wx:if="{{type === 'input'}}">
+        <input
+          class="fr-input"
+          value="{{value}}"
+          type="{{inputType}}"
+          maxlength="{{maxlength}}"
+          placeholder="{{placeholder}}"
+          placeholder-class="fr-ph"
+          disabled="{{disabled}}"
+          bindinput="onInput"
+        />
+      </block>
+      <block wx:elif="{{type === 'date'}}">
+        <picker mode="date" value="{{value}}" start="{{dateStart}}" end="{{dateEnd || today}}" bindchange="onDate">
+          <text class="fr-value {{empty ? 'is-empty' : ''}}">{{display}}</text>
+        </picker>
+      </block>
+      <block wx:elif="{{type === 'switch'}}">
+        <switch checked="{{value}}" color="#00a84a" bindchange="onSwitch" />
+      </block>
+      <block wx:else>
+        <text class="fr-value {{empty ? 'is-empty' : ''}}">{{display}}</text>
+      </block>
+      <text wx:if="{{unit}}" class="fr-unit">{{unit}}</text>
+      <view wx:if="{{arrow && type !== 'switch' && type !== 'input'}}" class="icon icon-arrow fr-arrow"></view>
+    </view>
+  </view>
+  <view wx:if="{{error}}" class="fr-error">{{error}}</view>
+</view>

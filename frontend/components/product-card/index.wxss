@@ -1,0 +1,47 @@
+:host {
+  display: block;
+}
+.pd-grid {
+  width: 330rpx;
+  background: #ffffff;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 24rpx rgba(16, 24, 40, 0.06);
+}
+.pd-grid-body {
+  padding: 20rpx 24rpx 24rpx;
+  display: flex;
+  flex-direction: column;
+}
+.pd-name {
+  font-size: 30rpx;
+  line-height: 42rpx;
+  font-weight: 600;
+  color: #101828;
+}
+.pd-tagline {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #98a2b3;
+  min-height: 68rpx;
+}
+.pd-link {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #00a84a;
+}
+.pd-row {
+  display: flex;
+  padding: 16rpx;
+  background: #ffffff;
+  border-radius: 24rpx;
+  box-sizing: border-box;
+}
+.pd-row-body {
+  margin-left: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4rpx 0;
+}

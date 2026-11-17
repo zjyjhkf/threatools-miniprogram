@@ -1,0 +1,149 @@
+<view class="publish">
+  <nav-bar title="发布动态" back right bind:back="onBack">
+    <view slot="right">
+      <view class="pub-submit {{canPublish && !submitting ? 'is-on' : 'is-disabled'}}" bindtap="submit">发布</view>
+    </view>
+  </nav-bar>
+
+  <view class="pub-body">
+    <view class="pub-editor">
+      <textarea
+        class="pub-textarea"
+        value="{{content}}"
+        placeholder="分享你的训练日常、放松方法或体态改善经验…"
+        placeholder-class="pub-ph"
+        maxlength="500"
+        bindinput="onContentInput"
+      />
+      <view class="pub-counter {{contentLen >= 500 ? 'is-limit' : ''}}">{{contentLen}}/500</view>
+    </view>
+
+    <view class="pub-grid">
+      <view wx:for="{{images}}" wx:key="index" class="pub-img-item">
+        <image class="pub-img" src="{{item}}" mode="aspectFill" data-index="{{index}}" bindtap="previewLocal" />
+        <view class="pub-img-del" data-index="{{index}}" catchtap="removeImage">
+          <view class="icon icon-close pub-img-del-icon"></view>
+        </view>
+      </view>
+      <view wx:if="{{images.length < 9}}" class="pub-img-add" bindtap="addImage">
+        <view class="icon icon-plus pub-add-icon"></view>
+        <text class="pub-add-text">{{images.length}}/9</text>
+      </view>
+    </view>
+
+    <view class="pub-rows">
+      <view class="pub-row" bindtap="openTopicSheet">
+        <view class="pub-row-left">
+          <view class="icon icon-hash pub-row-icon"></view>
+          <text class="pub-row-label">选择话题</text>
+        </view>
+        <view class="pub-row-right">
+          <view wx:if="{{topics.length}}" class="pub-topics">
+            <text class="pub-topic-text ellipsis-1">#{{item.name}}</text>
+          </view>
+          <text wx:else class="pub-row-value">{{topics.length}}/3</text>
+          <view class="icon icon-arrow pub-row-arrow"></view>
+        </view>
+      </view>
+
+      <view class="pub-row" bindtap="openVisibility">
+        <view class="pub-row-left">
+          <view class="icon icon-visibility pub-row-icon"></view>
+          <text class="pub-row-label">谁可以看</text>
+        </view>
+        <view class="pub-row-right">
+          <text class="pub-row-value">{{visibility === 'public' ? '公开' : '仅关注我的人'}}</text>
+          <view class="icon icon-arrow pub-row-arrow"></view>
+        </view>
+      </view>
+
+      <view class="pub-row pub-row-disabled">
+        <view class="pub-row-left">
+          <view class="icon icon-location pub-row-icon"></view>
+          <text class="pub-row-label pub-row-label-disabled">所在位置</text>
+        </view>
+        <view class="pub-row-right">
+          <text class="pub-row-value pub-row-value-disabled">不显示</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="pub-tip">发布后立即展示在运动社区，管理员会事后审核</view>
+  </view>
+
+  <!-- D08 选话题 -->
+  <picker-sheet
+    show="{{topicShow}}"
+    title="选择话题"
+    mode="custom"
+    confirmText="完成"
+    bind:confirm="closeTopicSheet"
+    bind:cancel="closeTopicSheet"
+  >
+    <view class="ts">
+      <view class="ts-selected" wx:if="{{topics.length}}">
+        <view wx:for="{{topics}}" wx:key="id" class="ts-chip" data-id="{{item.id}}" bindtap="removeTopic">
+          <text>#{{item.name}}</text>
+          <view class="icon icon-close ts-chip-close"></view>
+        </view>
+        <text class="ts-count">{{topics.length}}/3</text>
+      </view>
+
+      <view class="ts-create">
+        <input
+          class="ts-input"
+          value="{{newTopicName}}"
+          placeholder="创建话题（2–20 字）"
+          placeholder-class="pub-ph"
+          bindinput="onNewTopicInput"
+        />
+        <view class="ts-create-btn {{creating ? 'is-disabled' : ''}}" bindtap="createTopic">创建</view>
+      </view>
+
+      <view class="ts-search">
+        <search-bar value="{{topicKeyword}}" placeholder="搜索已有话题" bind:input="onTopicKeyword" />
+      </view>
+
+      <view class="ts-list">
+        <view
+          wx:for="{{filteredTopics}}"
+          wx:key="id"
+          class="ts-item {{topics.length >= 3 ? 'is-disabled' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="toggleTopic"
+        >
+          <text class="ts-item-name">#{{item.name}}</text>
+          <text class="ts-item-count">{{item.postCount}} 条讨论</text>
+        </view>
+        <view wx:if="{{!filteredTopics.length}}" class="ts-empty">没有找到相关话题，可直接创建</view>
+      </view>
+    </view>
+  </picker-sheet>
+
+  <!-- 可见范围 -->
+  <view wx:if="{{visibilityShow}}" class="vis-mask" bindtap="closeVisibility">
+    <view class="vis" catchtap="closeVisibility">
+      <view class="vis-title">谁可以看</view>
+      <view class="vis-item" data-value="public" bindtap="pickVisibility">
+        <text>公开</text>
+        <view wx:if="{{visibility === 'public'}}" class="icon icon-check vis-check"></view>
+      </view>
+      <view class="vis-item" data-value="followers" bindtap="pickVisibility">
+        <text>仅关注我的人</text>
+        <view wx:if="{{visibility === 'followers'}}" class="icon icon-check vis-check"></view>
+      </view>
+    </view>
+  </view>
+
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+  <dialog
+    show="{{dialog.show}}"
+    title="{{dialog.title}}"
+    content="{{dialog.content}}"
+    confirmText="{{dialog.confirmText}}"
+    cancelText="{{dialog.cancelText}}"
+    danger="{{dialog.danger}}"
+    bind:confirm="onDialogConfirm"
+    bind:cancel="closeDialog"
+  />
+</view>

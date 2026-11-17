@@ -1,0 +1,40 @@
+<view class="tile" bindtap="onOpen">
+  <view class="tile-cover" style="height: {{coverH}}rpx">
+    <image
+      wx:if="{{item.cover.url && !failed}}"
+      class="tile-cover-img"
+      src="{{item.cover.url}}"
+      mode="aspectFill"
+      lazy-load
+      binderror="onCoverError"
+    />
+    <view wx:else class="tile-cover-ph">
+      <view class="icon icon-image tile-cover-icon"></view>
+      <text wx:if="{{coverLabel}}" class="tile-cover-text">{{coverLabel}}</text>
+    </view>
+  </view>
+
+  <view class="tile-info">
+    <view class="tile-title-row">
+      <view class="icon icon-run tile-title-icon"></view>
+      <text class="tile-title">{{title}}</text>
+    </view>
+
+    <view wx:if="{{item.metric}}" class="tile-stat">
+      <view class="icon {{item.metric.icon === 'timer' ? 'icon-timer' : 'icon-pin'}} tile-stat-icon"></view>
+      <text class="tile-stat-text">{{item.metric.text}}</text>
+    </view>
+
+    <view class="tile-author">
+      <view class="tile-avatar" catchtap="onAuthor">
+        <image wx:if="{{item.author.avatar}}" class="tile-avatar-img" src="{{item.author.avatar}}" mode="aspectFill" />
+        <view wx:else class="icon icon-user tile-avatar-icon"></view>
+      </view>
+      <text class="tile-name">{{item.author.nickname}}</text>
+      <view class="tile-like {{item.liked ? 'is-liked' : ''}}" catchtap="onLike">
+        <view class="icon {{item.liked ? 'icon-like-fill' : 'icon-like'}} tile-like-icon"></view>
+        <text class="tile-like-count">{{item.likeCount || ''}}</text>
+      </view>
+    </view>
+  </view>
+</view>

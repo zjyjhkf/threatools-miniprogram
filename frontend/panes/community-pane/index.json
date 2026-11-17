@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "filter-chips": "/components/filter-chips/index",
+    "feed-tile": "/components/feed-tile/index",
+    "work-card": "/components/work-card/index",
+    "skeleton": "/components/skeleton/index",
+    "empty-state": "/components/empty-state/index",
+    "loading-more": "/components/loading-more/index"
+  }
+}

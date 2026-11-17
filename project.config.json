@@ -1,8 +1,8 @@
 {
-  "miniprogramRoot": "01-小程序前端/",
+  "miniprogramRoot": "frontend/",
   "compileType": "miniprogram",
   "projectname": "jianheng-community",
-  "description": "健衡运动社区 1.0（前端 01-小程序前端 + 后端 02-后端服务）",
+  "description": "健衡运动社区 1.0（前端 frontend + 后端 backend）",
   "appid": "wx1d74ed07f229eba7",
   "libVersion": "3.17.6",
   "setting": {
@@ -13,14 +13,34 @@
     "urlCheck": false,
     "coverView": true,
     "showShadowRootInWxmlPanel": true,
-    "compileHotReLoad": true
+    "compileHotReLoad": true,
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
   },
   "packOptions": {
     "ignore": [
-      { "value": "02-后端服务", "type": "folder" },
-      { "value": "前置文档", "type": "folder" }
+      {
+        "value": "tools",
+        "type": "folder"
+      }
     ],
     "include": []
   },
-  "condition": {}
+  "condition": {},
+  "simulatorPluginLibVersion": {},
+  "editorSetting": {}
 }

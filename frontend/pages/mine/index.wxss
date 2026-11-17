@@ -1,0 +1,219 @@
+/* M01 / M02 我的：浅绿页面 + 白色资料卡 + 少量绿 */
+.mine {
+  min-height: 100vh;
+  background: var(--bg-page);
+  padding-bottom: 24rpx;
+  box-sizing: border-box;
+}
+
+/* ---------- 资料卡 ---------- */
+.profile-card {
+  margin: 24rpx 32rpx 0;
+  padding: 32rpx;
+  background: var(--bg-card);
+  border-radius: var(--r-card);
+  box-shadow: var(--sh-card);
+}
+.profile-guest {
+  padding-bottom: 32rpx;
+}
+.profile-main {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+.profile-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  background: var(--brand-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-avatar-ph {
+  width: 64rpx;
+  height: 64rpx;
+  color: var(--brand-700);
+}
+.profile-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.profile-name {
+  font-size: 36rpx;
+  line-height: 48rpx;
+  font-weight: 700;
+  color: var(--ink-900);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.profile-id {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: var(--ink-500);
+}
+.profile-bio {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  color: var(--ink-700);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.profile-edit {
+  flex: none;
+  padding: 12rpx 16rpx;
+  font-size: 24rpx;
+  line-height: 32rpx;
+  font-weight: 600;
+  color: var(--brand-700);
+}
+
+/* ---------- 完善度 ---------- */
+.complete-card {
+  margin: 24rpx 32rpx 0;
+  background: var(--bg-card);
+  border-radius: var(--r-card);
+  box-shadow: var(--sh-card);
+  padding: 28rpx 32rpx;
+  box-sizing: border-box;
+}
+.complete-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.complete-title {
+  font-size: 30rpx;
+  line-height: 42rpx;
+  font-weight: 600;
+  color: var(--ink-900);
+}
+.complete-count {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: var(--brand-700);
+}
+.complete-bar {
+  margin-top: 20rpx;
+  height: 12rpx;
+  border-radius: var(--r-full);
+  background: var(--brand-100);
+  overflow: hidden;
+}
+.complete-bar-inner {
+  height: 12rpx;
+  border-radius: var(--r-full);
+  background: var(--brand-600);
+}
+.complete-foot {
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.complete-desc {
+  font-size: 24rpx;
+  color: var(--ink-500);
+}
+.complete-action {
+  font-size: 24rpx;
+  font-weight: 600;
+  color: var(--brand-700);
+  padding: 8rpx 0;
+}
+.complete-done {
+  margin: 24rpx 32rpx 0;
+  height: 88rpx;
+  background: var(--bg-card);
+  border-radius: var(--r-card);
+  box-shadow: var(--sh-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.complete-done-text {
+  font-size: 28rpx;
+  color: var(--brand-700);
+  font-weight: 600;
+}
+.complete-done-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 12rpx;
+  color: var(--brand-600);
+}
+
+/* ---------- 功能组 ---------- */
+.group {
+  margin: 24rpx 32rpx 0;
+  background: var(--bg-card);
+  border-radius: var(--r-card);
+  overflow: hidden;
+}
+.group-guest {
+  opacity: 0.7;
+}
+.cell-label {
+  font-size: 28rpx;
+  color: var(--ink-700);
+}
+.cell-disabled {
+  color: var(--ink-400);
+}
+.cell-right {
+  display: flex;
+  align-items: center;
+}
+.cell-value {
+  font-size: 26rpx;
+  color: var(--ink-400);
+  margin-right: 8rpx;
+}
+.cell-arrow {
+  width: 28rpx;
+  height: 28rpx;
+  color: var(--ink-400);
+}
+
+/* ---------- 未登录 ---------- */
+.guest-btn {
+  margin-top: 32rpx;
+  height: 88rpx;
+  border-radius: var(--r-full);
+  background: var(--brand-600);
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.guest-btn:active {
+  background: var(--brand-700);
+}
+.guest-note {
+  margin: 32rpx 32rpx 0;
+  font-size: 24rpx;
+  line-height: 38rpx;
+  color: var(--ink-400);
+  text-align: center;
+}
+
+.version {
+  padding: 40rpx 0 8rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.version-text {
+  font-size: 22rpx;
+  line-height: 34rpx;
+  color: var(--ink-400);
+}

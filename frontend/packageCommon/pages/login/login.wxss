@@ -1,0 +1,185 @@
+/* G01 登录：浅绿底 + 白色产品卡 + 实心绿按钮（UI 2.1） */
+page {
+  height: 100%;
+}
+
+.login {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 0 48rpx calc(48rpx + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--bg-page-top) 0%, var(--bg-page) 55%, var(--brand-50) 100%);
+  overflow: hidden;
+}
+
+/* ---------- 品牌区 ---------- */
+.brand {
+  padding-top: 104rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.brand-logo {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 44rpx;
+  background: var(--bg-card);
+  border: 1rpx solid var(--line-200);
+  box-shadow: var(--sh-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.brand-logo-icon {
+  width: 80rpx;
+  height: 80rpx;
+  color: var(--brand-600);
+}
+.brand-name {
+  margin-top: 32rpx;
+  font-size: 48rpx;
+  line-height: 66rpx;
+  font-weight: 700;
+  color: var(--ink-900);
+  letter-spacing: 2rpx;
+}
+.brand-slogan {
+  margin-top: 14rpx;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  color: var(--ink-500);
+  letter-spacing: 1rpx;
+}
+.brand-line {
+  margin-top: 22rpx;
+  width: 56rpx;
+  height: 6rpx;
+  border-radius: 3rpx;
+  background: var(--brand-600);
+}
+
+/* ---------- 产品三卡 ---------- */
+.products {
+  margin-top: 64rpx;
+  display: flex;
+  gap: 24rpx;
+}
+.product {
+  flex: 1;
+  min-width: 0;
+  height: 264rpx;
+  padding: 40rpx 12rpx 32rpx;
+  box-sizing: border-box;
+  border-radius: var(--r-card);
+  background: var(--bg-card);
+  border: 1rpx solid var(--line-200);
+  box-shadow: var(--sh-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.product-icon {
+  width: 76rpx;
+  height: 76rpx;
+  color: var(--brand-600);
+}
+.product-name {
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: var(--ink-700);
+  text-align: center;
+}
+
+/* ---------- 价值点 ---------- */
+.values {
+  margin-top: 64rpx;
+  padding: 0 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.value {
+  display: flex;
+  align-items: center;
+}
+.value-icon {
+  width: 40rpx;
+  height: 40rpx;
+  color: var(--brand-600);
+  margin-right: 12rpx;
+}
+.value-text {
+  font-size: 26rpx;
+  line-height: 38rpx;
+  color: var(--ink-700);
+}
+
+/* ---------- 操作区 ---------- */
+.actions {
+  margin-top: auto;
+  padding-top: 80rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.login-btn {
+  height: 96rpx;
+  border-radius: var(--r-full);
+  background: var(--brand-600);
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16rpx 32rpx rgba(0, 168, 74, 0.18);
+}
+.login-btn:active {
+  background: var(--brand-700);
+}
+.login-btn.is-loading {
+  opacity: 0.72;
+}
+
+.agree {
+  margin-top: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.agree-box {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 12rpx;
+  border-radius: 8rpx;
+  border: 1.5rpx solid var(--line-300);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.agree-box.is-on {
+  background: var(--brand-600);
+  border-color: var(--brand-600);
+}
+.agree-check {
+  width: 22rpx;
+  height: 22rpx;
+  color: #ffffff;
+}
+.agree-text {
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: var(--ink-500);
+}
+.agree-link {
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: var(--brand-700);
+}

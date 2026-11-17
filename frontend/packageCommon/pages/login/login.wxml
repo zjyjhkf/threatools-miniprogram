@@ -1,0 +1,60 @@
+<view class="login">
+  <view class="login-status" style="height: {{statusBarHeight}}px"></view>
+
+  <view class="brand">
+    <view class="brand-logo">
+      <view class="icon icon-activity brand-logo-icon"></view>
+    </view>
+    <text class="brand-name">{{brand}}</text>
+    <text class="brand-slogan">{{slogan}}</text>
+    <view class="brand-line"></view>
+  </view>
+
+  <view class="products">
+    <view class="product">
+      <view class="icon icon-activity product-icon"></view>
+      <text class="product-name">空气压力波按摩仪</text>
+    </view>
+    <view class="product">
+      <view class="icon icon-zap product-icon"></view>
+      <text class="product-name">筋膜枪</text>
+    </view>
+    <view class="product">
+      <view class="icon icon-refresh product-icon"></view>
+      <text class="product-name">电动泡沫轴</text>
+    </view>
+  </view>
+
+  <view class="values">
+    <view wx:for="{{values}}" wx:key="text" class="value">
+      <view class="icon icon-{{item.icon}} value-icon"></view>
+      <text class="value-text">{{item.text}}</text>
+    </view>
+  </view>
+
+  <view class="actions">
+    <view class="login-btn {{loading ? 'is-loading' : ''}}" bindtap="onLogin">
+      {{loading ? '登录中…' : '微信一键登录'}}
+    </view>
+    <view class="agree">
+      <view class="agree-box {{agreed ? 'is-on' : ''}}" bindtap="toggleAgree">
+        <view wx:if="{{agreed}}" class="icon icon-check agree-check"></view>
+      </view>
+      <text class="agree-text" bindtap="toggleAgree">我已阅读并同意</text>
+      <text class="agree-link" data-type="user" bindtap="showAgreement">《用户协议》</text>
+      <text class="agree-text">和</text>
+      <text class="agree-link" data-type="privacy" bindtap="showAgreement">《隐私政策》</text>
+    </view>
+  </view>
+
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+  <dialog
+    show="{{dialog.show}}"
+    title="{{dialog.title}}"
+    content="{{dialog.content}}"
+    confirmText="{{dialog.confirmText}}"
+    cancelText="{{dialog.cancelText}}"
+    bind:confirm="onDialogConfirm"
+    bind:cancel="closeDialog"
+  />
+</view>

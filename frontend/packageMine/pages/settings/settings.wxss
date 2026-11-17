@@ -1,0 +1,45 @@
+.settings {
+  min-height: 100vh;
+  background: #f1fef9;
+  padding-bottom: calc(48rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+.st-group {
+  margin: 24rpx 32rpx 0;
+  background: #ffffff;
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+.st-value {
+  font-size: 26rpx;
+  color: #98a2b3;
+  margin-right: 8rpx;
+}
+.st-arrow {
+  width: 28rpx;
+  height: 28rpx;
+  color: #98a2b3;
+}
+.st-logout {
+  margin: 40rpx 32rpx 0;
+  height: 96rpx;
+  border-radius: 999rpx;
+  background: #ffffff;
+  color: #ef4444;
+  font-size: 30rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.st-footer {
+  margin-top: 64rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.st-footer-text {
+  font-size: 22rpx;
+  line-height: 34rpx;
+  color: #98a2b3;
+}

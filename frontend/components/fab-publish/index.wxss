@@ -1,0 +1,23 @@
+/* 社区全屏无底部栏：距底 48rpx + 安全区 */
+.fab {
+  position: fixed;
+  right: 32rpx;
+  bottom: calc(48rpx + env(safe-area-inset-bottom));
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 999rpx;
+  background: var(--brand-600);
+  box-shadow: 0 12rpx 32rpx rgba(16, 24, 40, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.fab:active {
+  opacity: 0.86;
+}
+.fab-icon {
+  width: 46rpx;
+  height: 46rpx;
+  color: #ffffff;
+}

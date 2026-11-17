@@ -1,0 +1,33 @@
+<view class="pg">
+  <nav-bar title="运动社区" back show-search bind:back="onBack" bind:search="goSearch" />
+  <offline-bar />
+
+  <view class="pg-body">
+    <community-pane
+      id="pane0"
+      active="{{true}}"
+      initial-type="{{initialType}}"
+      bind:needlogin="onNeedLogin"
+      bind:openpost="openPost"
+      bind:openauthor="openAuthor"
+      bind:opentopic="openTopic"
+      bind:opentopics="openTopics"
+      bind:tabswitch="onPaneTabSwitch"
+      bind:publish="goPublish"
+    />
+  </view>
+
+  <fab-publish wx:if="{{activeType !== 'myworks'}}" bind:tap="goPublish" />
+
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+  <dialog
+    show="{{dialog.show}}"
+    title="{{dialog.title}}"
+    content="{{dialog.content}}"
+    confirmText="{{dialog.confirmText}}"
+    cancelText="{{dialog.cancelText}}"
+    danger="{{dialog.danger}}"
+    bind:confirm="onDialogConfirm"
+    bind:cancel="closeDialog"
+  />
+</view>

@@ -1,0 +1,36 @@
+.cib {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(112rpx + env(safe-area-inset-bottom));
+  padding: 20rpx 32rpx env(safe-area-inset-bottom);
+  box-sizing: border-box;
+  background: #ffffff;
+  box-shadow: 0 -8rpx 24rpx rgba(16, 24, 40, 0.06);
+  display: flex;
+  align-items: center;
+  z-index: 100;
+}
+.cib-input {
+  flex: 1;
+  height: 72rpx;
+  background: #f5fef9;
+  border-radius: 999rpx;
+  padding: 0 28rpx;
+  font-size: 28rpx;
+  color: #101828;
+  box-sizing: border-box;
+}
+.cib-ph {
+  color: #98a2b3;
+}
+.cib-send {
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  color: #98a2b3;
+}
+.cib-send.is-on {
+  color: #00a84a;
+  font-weight: 600;
+}

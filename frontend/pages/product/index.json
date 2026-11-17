@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "product-pane": "/panes/product-pane/index",
+    "course-pane": "/panes/course-pane/index"
+  }
+}

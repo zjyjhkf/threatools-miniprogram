@@ -1,0 +1,18 @@
+page {
+  height: 100%;
+  overflow: hidden;
+}
+/* D01 运动社区全屏：页面底白（05 §8 例外） */
+.pg {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+/* 剩余空间交给定位容器，swiper 绝对铺满，规避各基础库对 swiper 高度的处理差异 */
+.pg-body {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}

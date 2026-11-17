@@ -1,0 +1,13 @@
+<view class="result">
+  <nav-bar title="" back bind:back="goCommunity" />
+
+  <view class="result-card">
+    <view class="icon icon-{{view.icon}} result-icon {{status === 'fail' ? 'is-fail' : status === 'success' ? 'is-success' : ''}}"></view>
+    <text class="result-title">{{view.title}}</text>
+    <text class="result-desc">{{view.desc}}</text>
+    <view class="result-btn" bindtap="onPrimary">{{view.primary}}</view>
+    <view class="result-link" bindtap="goCommunity">返回运动社区</view>
+  </view>
+
+  <toast show="{{toast.show}}" text="{{toast.text}}" />
+</view>

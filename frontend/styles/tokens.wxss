@@ -1,0 +1,84 @@
+/* 设计令牌：UI 2.1 浅绿底 + 白卡 + 小面积绿（2026-11-16）
+ * 依据：07-UI改版-绿色主题与首页重构 / 05-UI样式规则
+ * 面积口径：浅绿页面约 50%，白卡约 35%，浅绿功能块约 8%，饱和绿 ≤8%
+ */
+page {
+  /* 浅色表面：画面主体 */
+  --bg-page-top: #EDFEF7;
+  --bg-page: #F1FEF9;
+  --bg-hero: #E7FDF2;
+  --bg-soft: #F3FEF8;
+  --bg-mint: #EFFDF7;
+  --bg-card: #FFFFFF;
+
+  /* 品牌绿：只做按钮/选中/短线/图标 */
+  --brand-600: #00A84A;
+  --brand-700: #008C3E;
+  --brand-500: #18CE69;
+  --brand-200: #C9F0D9;
+  --brand-100: #E8F8EF;
+  --brand-50: #F4FFFA;
+  /* 兼容旧令牌：主按钮一律实心绿，不再使用渐变 */
+  --brand-grad: #00A84A;
+
+  /* 语义 */
+  --accent-600: #F79009;
+  --success-600: #12B76A;
+  --warning-600: #F59E0B;
+  --danger-600: #EF4444;
+
+  /* 文字 */
+  --ink-900: #101828;
+  --ink-700: #344054;
+  --ink-500: #667085;
+  --ink-400: #98A2B3;
+
+  /* 背景与线 */
+  --line-200: #DDF3E6;
+  --line-300: #CDEBD9;
+  --bg-input: #F5FEF9;
+  --bg-skeleton: #E6F8EE;
+  --bg-mask: rgba(16, 24, 40, 0.45);
+  --bg-warn: #FEF3C7;
+  --ink-warn: #B45309;
+  --bg-danger-soft: #FEF3F2;
+
+  /* 深色（C03 / S05 视频页） */
+  --dark-1: #000000;
+  --dark-2: #06130D;
+  --dark-3: #0A1F14;
+  --dark-4: #062A18;
+
+  /* 字阶 */
+  --fs-h1: 48rpx;
+  --fs-h2: 40rpx;
+  --fs-h3: 34rpx;
+  --fs-body: 28rpx;
+  --fs-body-s: 26rpx;
+  --fs-caption: 24rpx;
+  --fs-micro: 20rpx;
+
+  /* 圆角 / 阴影 / 间距 */
+  --r-s: 16rpx;
+  --r-m: 24rpx;
+  --r-card: 28rpx;
+  --r-l: 32rpx;
+  --r-full: 999rpx;
+  --sh-card: 0 8rpx 24rpx rgba(6, 42, 24, 0.05);
+  --sh-soft: 0 4rpx 16rpx rgba(6, 42, 24, 0.04);
+  --sh-float: 0 12rpx 32rpx rgba(6, 42, 24, 0.12);
+  --page-pad: 32rpx;
+  --card-gap: 24rpx;
+  --block-gap: 40rpx;
+
+  background: var(--bg-page);
+  color: var(--ink-900);
+  font-size: var(--fs-body);
+  line-height: 44rpx;
+  font-family: -apple-system, "PingFang SC", "HarmonyOS Sans", "Noto Sans SC", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabnum {
+  font-variant-numeric: tabular-nums;
+}

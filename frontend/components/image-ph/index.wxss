@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  line-height: 0;
+}
+.ph-img {
+  display: block;
+  background: #e8f8ef;
+}
+.ph {
+  background: #e8f8ef;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.ph-icon {
+  width: 56rpx;
+  height: 56rpx;
+  color: #00a84a;
+  opacity: 0.6;
+}
+.ph-label {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #18ce69;
+}

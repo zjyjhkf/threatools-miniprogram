@@ -1,0 +1,156 @@
+<view class="cp">
+  <view class="cp-filter">
+    <filter-chips variant="tab" options="{{types}}" value="{{type}}" bind:change="onTypeChange" />
+    <view class="cp-topics" bindtap="onTopics">
+      <text class="cp-topics-text">话题广场</text>
+      <view class="icon icon-arrow cp-topics-arrow"></view>
+    </view>
+  </view>
+
+  <view wx:if="{{type === 'myworks' && isLogin && worksStatus === 'ok'}}" class="cp-stats">
+    <text class="cp-stats-strong">{{worksTotal}}</text>
+    <text class="cp-stats-label">作品</text>
+    <view class="cp-stats-line"></view>
+    <text class="cp-stats-strong">{{worksLikes}}</text>
+    <text class="cp-stats-label">获赞</text>
+  </view>
+
+  <scroll-view
+    class="cp-scroll"
+    scroll-y
+    scroll-top="{{scrollTop}}"
+    lower-threshold="200"
+    refresher-enabled
+    refresher-triggered="{{refreshing}}"
+    bindrefresherrefresh="onRefresh"
+    bindscrolltolower="onLoadMore"
+  >
+    <view wx:if="{{offline}}" class="cp-offline">网络不可用</view>
+
+    <!-- 推荐 / 关注：双列瀑布流 -->
+    <block wx:if="{{type !== 'myworks'}}">
+      <view wx:if="{{status === 'loading'}}" class="cp-masonry">
+        <view class="cp-col">
+          <skeleton type="waterfall" count="2" offset="0" />
+        </view>
+        <view class="cp-col">
+          <skeleton type="waterfall" count="2" offset="2" />
+        </view>
+      </view>
+
+      <empty-state
+        wx:elif="{{status === 'error'}}"
+        type="error"
+        title="网络开小差了"
+        desc="检查网络后重试"
+        btnText="点击重试"
+        bind:action="onRetry"
+      />
+
+      <empty-state
+        wx:elif="{{status === 'needlogin'}}"
+        type="empty"
+        title="登录后查看关注动态"
+        desc="关注感兴趣的作者，第一时间看到 TA 的作品"
+        btnText="微信一键登录"
+        bind:action="onLoginTap"
+      />
+
+      <empty-state
+        wx:elif="{{status === 'empty' && type === 'follow'}}"
+        type="empty"
+        title="还没有关注的人"
+        desc="关注感兴趣的作者，这里就会出现 TA 的动态"
+        btnText="去推荐看看"
+        bind:action="onEmptyAction"
+      />
+
+      <empty-state
+        wx:elif="{{status === 'empty'}}"
+        type="empty"
+        title="这里还很安静"
+        desc="成为第一个分享运动日常的人"
+        btnText="刷新看看"
+        bind:action="onEmptyAction"
+      />
+
+      <view wx:else class="cp-body">
+        <view class="cp-masonry">
+          <view class="cp-col">
+            <feed-tile
+              wx:for="{{leftList}}"
+              wx:key="id"
+              item="{{item}}"
+              bind:tap="onCardTap"
+              bind:like="onLike"
+              bind:author="onAuthor"
+            />
+          </view>
+          <view class="cp-col">
+            <feed-tile
+              wx:for="{{rightList}}"
+              wx:key="id"
+              item="{{item}}"
+              bind:tap="onCardTap"
+              bind:like="onLike"
+              bind:author="onAuthor"
+            />
+          </view>
+        </view>
+        <loading-more status="{{moreStatus}}" bind:retry="onRetryMore" />
+        <view class="cp-bottom-space"></view>
+      </view>
+    </block>
+
+    <!-- 我的作品 -->
+    <block wx:else>
+      <view wx:if="{{worksStatus === 'guest'}}" class="cp-guest">
+        <view class="cp-guest-icon icon icon-user"></view>
+        <text class="cp-guest-title">登录后查看我的作品</text>
+        <text class="cp-guest-desc">你的每一次分享都会沉淀在这里</text>
+        <view class="cp-guest-btn" bindtap="onLoginTap">微信一键登录</view>
+      </view>
+
+      <view wx:elif="{{worksStatus === 'loading'}}" class="cp-works">
+        <view class="cp-works-item">
+          <skeleton type="card" count="1" />
+        </view>
+        <view class="cp-works-item">
+          <skeleton type="card" count="1" />
+        </view>
+      </view>
+
+      <empty-state
+        wx:elif="{{worksStatus === 'error'}}"
+        type="error"
+        title="加载失败"
+        desc="检查网络后重试"
+        btnText="点击重试"
+        bind:action="onRetry"
+      />
+
+      <view wx:elif="{{worksStatus === 'empty'}}" class="cp-guest">
+        <view class="cp-guest-icon icon icon-image"></view>
+        <text class="cp-guest-title">还没有作品</text>
+        <text class="cp-guest-desc">记录你的第一次训练与分享</text>
+        <view class="cp-guest-btn" bindtap="onPublish">发布第一个作品</view>
+      </view>
+
+      <view wx:else class="cp-works-wrap">
+        <view class="cp-works">
+          <view
+            class="cp-works-item"
+            wx:for="{{myworks}}"
+            wx:key="id"
+            data-id="{{item.id}}"
+            bindtap="onWorkTap"
+          >
+            <work-card item="{{item}}" show-status="{{true}}" />
+          </view>
+        </view>
+        <loading-more status="{{worksMoreStatus}}" bind:retry="onRetryMore" />
+        <view class="cp-bottom-space"></view>
+      </view>
+    </block>
+  </scroll-view>
+</view>

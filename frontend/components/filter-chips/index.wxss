@@ -1,0 +1,53 @@
+.fc {
+  display: flex;
+  align-items: center;
+}
+.fc-scroll {
+  white-space: nowrap;
+  width: 100%;
+}
+.fc-item {
+  display: inline-flex;
+  align-items: center;
+  height: 56rpx;
+  padding: 0 24rpx;
+  margin-right: 16rpx;
+  border-radius: 999rpx;
+  background: #f5fef9;
+  color: #667085;
+  font-size: 26rpx;
+  flex-shrink: 0;
+}
+.fc-item.is-on {
+  background: #e8f8ef;
+  color: #00a84a;
+  font-weight: 600;
+}
+
+/* tab 变体（D01 筛选行）：30rpx 标签、间距 40、选中 40×6 下划线 */
+.fc-item.is-tab {
+  height: auto;
+  padding: 0 0 16rpx;
+  margin-right: 40rpx;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink-500, #667085);
+  font-size: 30rpx;
+  position: relative;
+}
+.fc-item.is-tab.is-on {
+  background: transparent;
+  color: var(--ink-900, #101828);
+  font-weight: 600;
+}
+.fc-item.is-tab.is-on::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 40rpx;
+  height: 6rpx;
+  margin-left: -20rpx;
+  border-radius: 3rpx;
+  background: var(--brand-600, #00a84a);
+}

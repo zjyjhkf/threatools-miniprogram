@@ -1,0 +1,9 @@
+.lm {
+  padding: 32rpx 0 40rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #98a2b3;
+}
+.lm-error {
+  color: #00a84a;
+}

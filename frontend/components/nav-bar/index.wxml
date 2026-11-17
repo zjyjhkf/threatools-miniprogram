@@ -1,0 +1,26 @@
+<view
+  class="nav {{overlay ? 'nav-overlay' : ''}} {{transparent ? 'nav-transparent' : ''}} {{theme === 'dark' ? 'nav-dark' : ''}}"
+  style="padding-top: {{statusBarHeight}}px"
+>
+  <!-- 右侧有操作（自定义按钮 / 搜索 / 设置）时用三段式布局，避免压住微信胶囊与返回键 -->
+  <view wx:if="{{right || showSearch || showSetting}}" class="nav-inner">
+    <view class="nav-lead" bindtap="onBack">
+      <view wx:if="{{back}}" class="icon icon-back nav-icon"></view>
+    </view>
+    <view class="nav-title nav-title-flex">{{title}}</view>
+    <view class="nav-tail">
+      <slot name="right"></slot>
+      <view wx:if="{{showSearch}}" class="icon icon-search nav-icon" bindtap="onSearch"></view>
+      <view wx:if="{{showSetting}}" class="icon icon-setting nav-icon" bindtap="onSetting"></view>
+      <view class="nav-capsule-gap" style="width: {{capsuleGap}}px"></view>
+    </view>
+  </view>
+
+  <view wx:else class="nav-inner">
+    <view class="nav-side" bindtap="onBack">
+      <view wx:if="{{back}}" class="icon icon-back nav-icon"></view>
+    </view>
+    <view class="nav-title">{{title}}</view>
+    <view class="nav-side nav-side-right" style="right: {{capsuleGap}}px"></view>
+  </view>
+</view>

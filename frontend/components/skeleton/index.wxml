@@ -1,0 +1,33 @@
+<block wx:if="{{type === 'card'}}">
+  <view wx:for="{{list}}" wx:key="index" class="sk-card">
+    <view class="sk-row">
+      <view class="sk-avatar sk-blink"></view>
+      <view class="sk-lines">
+        <view class="sk-line sk-blink" style="width: 200rpx"></view>
+        <view class="sk-line sk-blink" style="width: 120rpx; margin-top: 12rpx"></view>
+      </view>
+    </view>
+    <view class="sk-line sk-blink" style="width: 100%; margin-top: 24rpx"></view>
+    <view class="sk-line sk-blink" style="width: 80%; margin-top: 12rpx"></view>
+    <view class="sk-block sk-blink"></view>
+  </view>
+</block>
+
+<!-- D01 双列瀑布流骨架：假高度 430/500 交错，不参与真实布局计算 -->
+<block wx:elif="{{type === 'waterfall'}}">
+  <view wx:for="{{list}}" wx:key="index" class="sk-tile">
+    <view class="sk-cover sk-blink" style="height: {{heights[(offset + index) % 4]}}rpx"></view>
+    <view class="sk-line sk-blink" style="width: 90%; margin-top: 16rpx"></view>
+    <view class="sk-line sk-blink" style="width: 60%; margin-top: 10rpx"></view>
+  </view>
+</block>
+
+<block wx:else>
+  <view class="sk-detail">
+    <view class="sk-hero sk-blink"></view>
+    <view class="sk-line sk-blink" style="width: 80%; margin-top: 32rpx"></view>
+    <view class="sk-line sk-blink" style="width: 60%; margin-top: 16rpx"></view>
+    <view class="sk-line sk-blink" style="width: 100%; margin-top: 32rpx"></view>
+    <view class="sk-line sk-blink" style="width: 100%; margin-top: 16rpx"></view>
+  </view>
+</block>

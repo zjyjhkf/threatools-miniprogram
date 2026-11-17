@@ -1,0 +1,45 @@
+.sb {
+  display: flex;
+  align-items: center;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+}
+.sb-box {
+  flex: 1;
+  height: 72rpx;
+  background: #f5fef9;
+  border-radius: 999rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+}
+.sb-icon {
+  width: 32rpx;
+  height: 32rpx;
+  color: #98a2b3;
+  margin-right: 12rpx;
+}
+.sb-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #101828;
+  height: 72rpx;
+  line-height: 72rpx;
+}
+.sb-placeholder,
+.sb-ph {
+  color: #98a2b3;
+}
+.sb-clear {
+  width: 32rpx;
+  height: 32rpx;
+  color: #98a2b3;
+  padding: 8rpx;
+  margin-left: 8rpx;
+}
+.sb-cancel {
+  font-size: 28rpx;
+  color: #00a84a;
+  margin-left: 24rpx;
+}

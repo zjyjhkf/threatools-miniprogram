@@ -1,0 +1,152 @@
+/* 组件宿主需撑满容器，否则内部 height:100% 链路断裂 */
+:host {
+  display: block;
+  height: 100%;
+}
+/* D01 容器：白底、左右 24 */
+.cp {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+}
+.cp-filter {
+  height: 88rpx;
+  padding: 0 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card);
+}
+.cp-topics {
+  display: flex;
+  align-items: center;
+}
+.cp-topics-text {
+  font-size: 24rpx;
+  color: var(--ink-500);
+}
+.cp-topics-arrow {
+  width: 24rpx;
+  height: 24rpx;
+  color: var(--ink-400);
+}
+.cp-scroll {
+  flex: 1;
+  height: 0;
+}
+.cp-offline {
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  background: var(--bg-warn);
+  color: var(--ink-warn);
+  font-size: 24rpx;
+}
+/* 我的作品统计：作品 N | 获赞 M */
+.cp-stats {
+  height: 72rpx;
+  padding: 0 24rpx;
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+}
+.cp-stats-strong {
+  font-size: 34rpx;
+  line-height: 44rpx;
+  font-weight: 700;
+  color: var(--ink-900);
+}
+.cp-stats-label {
+  margin-left: 8rpx;
+  font-size: 22rpx;
+  color: var(--ink-500);
+}
+.cp-stats-line {
+  width: 1rpx;
+  height: 24rpx;
+  margin: 0 20rpx;
+  background: var(--line-200);
+}
+/* 双列瀑布流：列间距 16，列内条目间距 32，两侧留 24 */
+.cp-body {
+  padding: 0 24rpx;
+}
+.cp-masonry {
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+  padding: 0 24rpx;
+}
+.cp-body .cp-masonry {
+  padding: 0;
+}
+.cp-col {
+  width: 343rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
+}
+/* 我的作品：两列网格（343 + 16 + 343） */
+.cp-works-wrap {
+  padding: 0 24rpx;
+}
+.cp-works {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  padding-top: 8rpx;
+}
+.cp-works-item {
+  width: 343rpx;
+}
+/* 未登录 / 空态：浅绿插画 + 绿色主按钮 */
+.cp-guest {
+  margin: 96rpx 24rpx 0;
+  padding: 64rpx 32rpx;
+  border-radius: var(--r-card);
+  background: var(--bg-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cp-guest-icon {
+  width: 160rpx;
+  height: 160rpx;
+  color: var(--brand-600);
+  opacity: 0.35;
+}
+.cp-guest-title {
+  margin-top: 24rpx;
+  font-size: 34rpx;
+  line-height: 48rpx;
+  font-weight: 600;
+  color: var(--ink-900);
+}
+.cp-guest-desc {
+  margin-top: 8rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  color: var(--ink-500);
+  text-align: center;
+}
+.cp-guest-btn {
+  margin-top: 40rpx;
+  height: 88rpx;
+  padding: 0 56rpx;
+  border-radius: var(--r-full);
+  background: var(--brand-600);
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cp-guest-btn:active {
+  background: var(--brand-700);
+}
+/* 列表底部留白，保证最后一张卡可完整滚出、不被 FAB 遮挡 */
+.cp-bottom-space {
+  height: calc(120rpx + env(safe-area-inset-bottom));
+}
