@@ -2,6 +2,16 @@
   <nav-bar title="我的" transparent show-setting bind:action="goSettings" />
   <offline-bar />
 
+  <view class="group">
+    <view class="cell" bindtap="goDevices">
+      <text class="cell-label">我的设备</text>
+      <view class="cell-right">
+        <text class="cell-value">{{deviceCount}}</text>
+        <view class="icon icon-arrow cell-arrow"></view>
+      </view>
+    </view>
+  </view>
+
   <!-- 已登录 M02 -->
   <block wx:if="{{isLogin}}">
     <view class="profile-card">

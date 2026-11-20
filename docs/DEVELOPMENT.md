@@ -122,6 +122,23 @@ docker compose exec api python -m scripts.seed
 
 > 前端所有页面都依赖 8000 端口的后端接口；后端没起来时，点任何模块都会弹「网络异常，请检查网络」。改完代码想立刻看效果，务必保持后端进程在跑（`curl http://127.0.0.1:8000/healthz` 返回 `"db":"ok"`）。
 
+## BLE 设备联调
+
+在 `frontend` 运行：
+
+```bash
+node tools/check.js
+node tools/test-ble-codec.js
+node tools/test-ble-flow.js
+node tools/test-device-store.js
+```
+
+本机仿真覆盖分段广播、历史缓存过滤、RSSI、权限状态、型号筛选、停扫及握手控制。真机走查使用微信开发者工具预览，从「设备 → 连接设备 → 设备介绍 → 开始连接设备」进入。准备可连接样机，确认设备已开机进入配对模式且未连接其他手机。授权后返回页面会重新扫一轮；Android 6–11 同时检查系统定位和微信位置权限。
+
+若 15 秒后仍无设备，先判断提示是零 BLE 上报还是有上报无匹配。同一手机可用 nRF Connect 或 LightBlue 检查主广播与扫描响应。核对 NUS Service UUID `6E400001-B5A3-F393-E0A9-E50E24DCCA9E` 和 `JH-{MODEL}-{SN4}` 名称。扫描工具连接过样机时，先断开再回小程序验证。握手成功后查看控制页和「诊断与日志」，记录机型、系统、微信版本、发现数、匹配数和握手结果。
+
+BLE 真机验收依赖配对实物样机，开发者工具编译和模拟测试用于前端回归。
+
 ## 代码 Review 路线（建议按此顺序）
 
 | 顺序 | 文件 | 看什么 |

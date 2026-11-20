@@ -1,0 +1,131 @@
+page {
+  background: var(--bg-page);
+}
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f7fff9, var(--bg-page) 600rpx);
+  padding: 0 var(--page-pad);
+}
+
+.summary {
+  margin-top: 20rpx;
+  padding: 24rpx;
+  border-radius: var(--r-card);
+  background: linear-gradient(145deg, #e3faed, #fff 88%);
+  border: 1rpx solid var(--brand-200);
+}
+
+.summary-title {
+  font-size: 31rpx;
+  font-weight: 700;
+  margin-bottom: 6rpx;
+}
+
+.summary-title .icon {
+  margin-right: 10rpx;
+  color: var(--brand-700);
+}
+
+.summary-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20rpx;
+  padding: 10rpx 0;
+}
+
+.summary-k {
+  font-size: 23rpx;
+  color: var(--ink-500);
+}
+
+.summary-v {
+  font-size: 23rpx;
+  color: var(--ink-900);
+  font-weight: 500;
+  text-align: right;
+}
+
+.summary-v.is-on {
+  color: var(--brand-700);
+}
+
+.summary-v.is-fault {
+  color: #B42318;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 24rpx;
+}
+
+.filter {
+  height: 60rpx;
+  padding: 0 24rpx;
+  border-radius: 999rpx;
+  background: var(--bg-card);
+  border: 1rpx solid var(--line-200);
+  color: var(--ink-500);
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+}
+
+.filter.is-on {
+  background: var(--brand-100);
+  border-color: var(--brand-200);
+  color: var(--brand-700);
+  font-weight: 600;
+}
+
+.filter-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 16rpx;
+}
+
+.filter-action {
+  font-size: 22rpx;
+  color: var(--brand-700);
+  font-weight: 600;
+}
+
+.log-box {
+  margin-top: 16rpx;
+  height: calc(100vh - 678rpx);
+  min-height: 260rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-radius: var(--r-card);
+  background: var(--bg-card);
+  border: 1rpx solid var(--line-200);
+}
+
+.log-line {
+  font-family: 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 20rpx;
+  line-height: 34rpx;
+  color: var(--ink-600);
+  padding: 6rpx 0;
+  border-bottom: 1rpx solid var(--bg-soft);
+  word-break: break-all;
+}
+
+.log-empty {
+  padding: 60rpx 0;
+  text-align: center;
+  font-size: 22rpx;
+  color: var(--ink-400);
+}
+
+.tip {
+  margin-top: 16rpx;
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+  font-size: 20rpx;
+  line-height: 30rpx;
+  color: var(--ink-400);
+}

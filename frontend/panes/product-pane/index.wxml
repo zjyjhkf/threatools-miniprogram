@@ -11,6 +11,23 @@
     refresher-triggered="{{refreshing}}"
     bindrefresherrefresh="onPullRefresh"
   >
+    <view class="pp-connect-wrap">
+      <view class="pp-connect {{ble.connected ? 'is-on' : ''}}" bindtap="onConnectTap">
+        <view class="pp-connect-copy">
+          <view class="pp-connect-head">
+            <text class="pp-connect-title">{{ble.connected ? '设备已连接' : '连接康复设备'}}</text>
+            <view class="pp-connect-dot {{ble.connected ? 'is-on' : ''}}"></view>
+          </view>
+          <text class="pp-connect-sub">{{connectTip}}</text>
+          <text wx:if="{{ble.connected}}" class="pp-connect-name ellipsis-1">{{ble.deviceName}}</text>
+          <text class="pp-connect-action">{{ble.connected ? '查看设备状态' : '立即连接'}} ›</text>
+        </view>
+        <view class="pp-connect-icon">
+          <view class="icon icon-zap"></view>
+        </view>
+      </view>
+    </view>
+
     <view wx:if="{{status === 'loading'}}" class="pp-body">
       <skeleton type="card" count="2" />
     </view>
@@ -34,17 +51,6 @@
     />
 
     <view wx:else class="pp-body">
-      <view class="pp-banner">
-        <view class="pp-banner-copy">
-          <text class="pp-banner-title">{{banner.title}}</text>
-          <text class="pp-banner-sub">{{banner.subtitle}}</text>
-          <text class="pp-banner-action">{{banner.action}} ›</text>
-        </view>
-        <view class="pp-banner-icon">
-          <view class="icon icon-run"></view>
-        </view>
-      </view>
-
       <view class="pp-grid">
         <view wx:for="{{list}}" wx:key="id" class="pp-item">
           <product-card product="{{item}}" mode="grid" bind:tap="onProductTap" />

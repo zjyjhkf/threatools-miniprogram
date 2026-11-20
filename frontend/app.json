@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/home/index",
-    "pages/product/index",
+    "pages/device/index",
+    "pages/discover/index",
     "pages/community/index",
     "pages/mine/index"
   ],
@@ -43,6 +43,17 @@
       ]
     },
     {
+      "root": "packageDevice",
+      "name": "device",
+      "pages": [
+        "pages/intro/index",
+        "pages/add/index",
+        "pages/control/index",
+        "pages/settings/index",
+        "pages/diagnose/index"
+      ]
+    },
+    {
       "root": "packageMine",
       "name": "mine",
       "pages": [
@@ -55,13 +66,14 @@
     }
   ],
   "preloadRule": {
-    "pages/home/index": {
+    "pages/device/index": {
       "network": "wifi",
       "packages": [
+        "packageDevice",
         "packageCommunity"
       ]
     },
-    "pages/product/index": {
+    "pages/discover/index": {
       "network": "wifi",
       "packages": [
         "packageCourse",
@@ -92,12 +104,12 @@
     "borderStyle": "white",
     "list": [
       {
-        "pagePath": "pages/home/index",
-        "text": "首页"
+        "pagePath": "pages/device/index",
+        "text": "设备"
       },
       {
-        "pagePath": "pages/product/index",
-        "text": "产品"
+        "pagePath": "pages/discover/index",
+        "text": "发现"
       },
       {
         "pagePath": "pages/mine/index",

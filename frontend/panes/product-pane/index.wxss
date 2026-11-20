@@ -23,56 +23,89 @@
 .pp-body {
   padding: 8rpx 32rpx 0;
 }
-.pp-banner {
+/* 设备连接入口：替代原「专业康复装备」banner */
+.pp-connect-wrap {
+  padding: 8rpx 32rpx 0;
+}
+.pp-connect {
   position: relative;
-  height: 300rpx;
+  height: 284rpx;
   border-radius: var(--r-card);
   background: var(--bg-hero);
-  padding: 40rpx;
+  border: 1rpx solid var(--line-200);
+  padding: 36rpx;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
   overflow: hidden;
 }
-.pp-banner-copy {
+.pp-connect.is-on {
+  background: var(--brand-100);
+  border-color: var(--brand-200);
+}
+.pp-connect-copy {
   position: relative;
   z-index: 1;
+  flex: 1;
+  min-width: 0;
+  padding-right: 176rpx;
   display: flex;
   flex-direction: column;
 }
-.pp-banner-title {
+.pp-connect-head {
+  display: flex;
+  align-items: center;
+}
+.pp-connect-title {
   font-size: 40rpx;
   line-height: 56rpx;
   font-weight: 700;
   color: var(--ink-900);
 }
-.pp-banner-sub {
+.pp-connect-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: var(--ink-400);
+  margin-left: 14rpx;
+  flex: none;
+}
+.pp-connect-dot.is-on {
+  background: var(--brand-600);
+}
+.pp-connect-sub {
   margin-top: 8rpx;
-  font-size: 26rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
   color: var(--ink-500);
 }
-.pp-banner-action {
-  margin-top: 24rpx;
+.pp-connect-name {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: var(--brand-700);
+}
+.pp-connect-action {
+  margin-top: 20rpx;
   font-size: 24rpx;
   color: var(--brand-700);
 }
-.pp-banner-icon {
+.pp-connect-icon {
   position: absolute;
   right: 32rpx;
   top: 50%;
   transform: translateY(-50%);
-  width: 168rpx;
-  height: 168rpx;
+  width: 152rpx;
+  height: 152rpx;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.pp-banner-icon .icon {
-  width: 72rpx;
-  height: 72rpx;
+.pp-connect-icon .icon {
+  width: 64rpx;
+  height: 64rpx;
   color: var(--brand-200);
 }
 .pp-grid {

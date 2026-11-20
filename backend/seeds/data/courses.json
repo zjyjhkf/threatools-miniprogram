@@ -19,18 +19,18 @@
     "sort": 100,
     "relatedIds": ["3", "2"],
     "chapters": [
-      { "id": "11", "idx": 1, "title": "热身与呼吸", "duration": 180, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "12", "idx": 2, "title": "小腿放松", "duration": 240, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "13", "idx": 3, "title": "大腿前侧", "duration": 300, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "14", "idx": 4, "title": "髂胫束", "duration": 300, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "15", "idx": 5, "title": "臀部激活", "duration": 240, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "16", "idx": 6, "title": "足底放松", "duration": 180, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "17", "idx": 7, "title": "髋屈肌拉伸", "duration": 240, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "18", "idx": 8, "title": "腘绳肌放松", "duration": 300, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "19", "idx": 9, "title": "小腿后侧进阶", "duration": 300, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "110", "idx": 10, "title": "单腿平衡", "duration": 180, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "101", "idx": 1, "title": "热身与呼吸", "duration": 180, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "102", "idx": 2, "title": "小腿放松", "duration": 240, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "103", "idx": 3, "title": "大腿前侧", "duration": 300, "locked": false, "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
+      { "id": "104", "idx": 4, "title": "髂胫束", "duration": 300, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "105", "idx": 5, "title": "臀部激活", "duration": 240, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "106", "idx": 6, "title": "足底放松", "duration": 180, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "107", "idx": 7, "title": "髋屈肌拉伸", "duration": 240, "locked": false, "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
+      { "id": "108", "idx": 8, "title": "腘绳肌放松", "duration": 300, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "109", "idx": 9, "title": "小腿后侧进阶", "duration": 300, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "110", "idx": 10, "title": "单腿平衡", "duration": 180, "locked": false, "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
       { "id": "111", "idx": 11, "title": "呼吸收尾", "duration": 120, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "112", "idx": 12, "title": "拉伸与放松", "duration": 300, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" }
+      { "id": "112", "idx": 12, "title": "拉伸与放松", "duration": 300, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" }
     ]
   },
   {
@@ -46,17 +46,17 @@
     "coachAvatar": "",
     "coachTitle": "康复训练师 · 认证",
     "intro": "4 个常用部位的正确打法，避开骨骼与关节，每处不超过 1 分钟。",
-    "suitableFor": ["久坐人群", "运动后放松"],
+    "suitableFor": ["久坐人群", "运动后放松", "器材新手"],
     "learnCount": 8600,
     "collectCount": 460,
     "isMain": false,
     "sort": 90,
     "relatedIds": ["3", "1"],
     "chapters": [
-      { "id": "21", "idx": 1, "title": "工具与手法", "duration": 60, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "22", "idx": 2, "title": "小腿内侧", "duration": 60, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "23", "idx": 3, "title": "肩颈外侧", "duration": 81, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "24", "idx": 4, "title": "大腿外侧", "duration": 60, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" }
+      { "id": "201", "idx": 1, "title": "工具与手法", "duration": 60, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "202", "idx": 2, "title": "小腿内侧", "duration": 60, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "203", "idx": 3, "title": "肩颈外侧", "duration": 81, "locked": false, "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
+      { "id": "204", "idx": 4, "title": "大腿外侧", "duration": 60, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" }
     ]
   },
   {
@@ -72,17 +72,17 @@
     "coachAvatar": "",
     "coachTitle": "跑步教练",
     "intro": "只针对小腿的 10 分钟放松序列，跑完当天做最有效。",
-    "suitableFor": ["跑步爱好者", "小腿易紧张"],
+    "suitableFor": ["跑步爱好者", "小腿易紧张", "跑后恢复"],
     "learnCount": 15400,
     "collectCount": 690,
     "isMain": false,
     "sort": 80,
     "relatedIds": ["1", "2"],
     "chapters": [
-      { "id": "31", "idx": 1, "title": "靠墙小腿拉伸", "duration": 120, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "32", "idx": 2, "title": "泡沫轴滚压", "duration": 180, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "33", "idx": 3, "title": "足底放松", "duration": 120, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "34", "idx": 4, "title": "提踵放松", "duration": 180, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" }
+      { "id": "301", "idx": 1, "title": "靠墙小腿拉伸", "duration": 120, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "302", "idx": 2, "title": "泡沫轴滚压", "duration": 180, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "303", "idx": 3, "title": "足底放松", "duration": 120, "locked": false, "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
+      { "id": "304", "idx": 4, "title": "提踵放松", "duration": 180, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" }
     ]
   },
   {
@@ -105,10 +105,10 @@
     "sort": 70,
     "relatedIds": ["1", "6"],
     "chapters": [
-      { "id": "41", "idx": 1, "title": "颈部侧屈", "duration": 120, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "42", "idx": 2, "title": "肩胛后缩", "duration": 180, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "43", "idx": 3, "title": "胸椎旋转", "duration": 240, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "44", "idx": 4, "title": "靠墙站立收尾", "duration": 210, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" }
+      { "id": "401", "idx": 1, "title": "颈部侧屈", "duration": 120, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "402", "idx": 2, "title": "肩胛后缩", "duration": 180, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "403", "idx": 3, "title": "胸椎旋转", "duration": 240, "locked": false, "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
+      { "id": "404", "idx": 4, "title": "靠墙站立收尾", "duration": 210, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" }
     ]
   },
   {
@@ -124,17 +124,17 @@
     "coachAvatar": "",
     "coachTitle": "跑步教练",
     "intro": "从足底到背部的一次完整滚压，适合训练日之后的深度恢复。",
-    "suitableFor": ["训练日恢复", "全身紧张"],
+    "suitableFor": ["训练日恢复", "全身紧张", "有器材基础"],
     "learnCount": 9800,
     "collectCount": 520,
     "isMain": false,
     "sort": 60,
     "relatedIds": ["3", "1"],
     "chapters": [
-      { "id": "51", "idx": 1, "title": "足底与小腿", "duration": 240, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "52", "idx": 2, "title": "大腿与臀部", "duration": 300, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "53", "idx": 3, "title": "背部与肩胛", "duration": 240, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "54", "idx": 4, "title": "呼吸收尾", "duration": 160, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" }
+      { "id": "501", "idx": 1, "title": "足底与小腿", "duration": 240, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "502", "idx": 2, "title": "大腿与臀部", "duration": 300, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "503", "idx": 3, "title": "背部与肩胛", "duration": 240, "locked": false, "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
+      { "id": "504", "idx": 4, "title": "呼吸收尾", "duration": 160, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" }
     ]
   },
   {
@@ -150,17 +150,173 @@
     "coachAvatar": "",
     "coachTitle": "康复训练师 · 认证",
     "intro": "14 个进阶核心动作，适合已有训练基础、想提升躯干稳定与下肢发力效率的人群。",
-    "suitableFor": ["有训练基础", "腰腹力量提升"],
+    "suitableFor": ["有训练基础", "腰腹力量提升", "运动表现"],
     "learnCount": 6200,
     "collectCount": 380,
     "isMain": false,
     "sort": 50,
     "relatedIds": ["1", "4"],
     "chapters": [
-      { "id": "61", "idx": 1, "title": "死虫式", "duration": 300, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "62", "idx": 2, "title": "侧桥", "duration": 360, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "63", "idx": 3, "title": "鸟狗式", "duration": 300, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { "id": "64", "idx": 4, "title": "放松收尾", "duration": 360, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" }
+      { "id": "601", "idx": 1, "title": "死虫式", "duration": 300, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "602", "idx": 2, "title": "侧桥", "duration": 360, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "603", "idx": 3, "title": "鸟狗式", "duration": 300, "locked": false, "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
+      { "id": "604", "idx": 4, "title": "放松收尾", "duration": 360, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" }
+    ]
+  },
+  {
+    "id": "7",
+    "title": "踝关节稳定性训练",
+    "cover": "",
+    "videoCover": "",
+    "duration": 660,
+    "actionCount": 7,
+    "difficulty": "middle",
+    "category": "rehab",
+    "coachName": "陈丹",
+    "coachAvatar": "",
+    "coachTitle": "运动康复师",
+    "intro": "崴脚后必练的 7 个动作，从单脚站立到平衡垫，重建踝关节的本体感觉。",
+    "suitableFor": ["崴脚康复期", "跑步易崴脚", "平衡能力差"],
+    "learnCount": 7300,
+    "collectCount": 410,
+    "isMain": false,
+    "sort": 45,
+    "relatedIds": ["1", "6"],
+    "chapters": [
+      { "id": "701", "idx": 1, "title": "踝泵与热敷", "duration": 120, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "702", "idx": 2, "title": "单脚站立", "duration": 180, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "703", "idx": 3, "title": "弹力带抗阻", "duration": 180, "locked": false, "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
+      { "id": "704", "idx": 4, "title": "平衡垫进阶", "duration": 180, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" }
+    ]
+  },
+  {
+    "id": "8",
+    "title": "圆肩驼背矫正计划",
+    "cover": "",
+    "videoCover": "",
+    "duration": 1080,
+    "actionCount": 9,
+    "difficulty": "middle",
+    "category": "posture",
+    "coachName": "康复小林",
+    "coachAvatar": "",
+    "coachTitle": "康复训练师",
+    "intro": "从胸小肌松解到中下斜方激活，9 个动作纠正圆肩，坚持两周体态明显变化。",
+    "suitableFor": ["久坐办公", "圆肩驼背", "肩前侧紧张"],
+    "learnCount": 18300,
+    "collectCount": 1120,
+    "isMain": false,
+    "sort": 40,
+    "relatedIds": ["4", "1"],
+    "chapters": [
+      { "id": "801", "idx": 1, "title": "胸小肌松解", "duration": 240, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "802", "idx": 2, "title": "胸椎伸展", "duration": 240, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "803", "idx": 3, "title": "中下斜方激活", "duration": 300, "locked": false, "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
+      { "id": "804", "idx": 4, "title": "靠墙天使", "duration": 300, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" }
+    ]
+  },
+  {
+    "id": "9",
+    "title": "久坐腰背放松",
+    "cover": "",
+    "videoCover": "",
+    "duration": 540,
+    "actionCount": 6,
+    "difficulty": "beginner",
+    "category": "recovery",
+    "coachName": "陈丹",
+    "coachAvatar": "",
+    "coachTitle": "运动康复师",
+    "intro": "办公室 9 分钟版，椅子上就能完成，缓解久坐后的腰背僵硬。",
+    "suitableFor": ["久坐办公", "腰背僵硬", "碎片时间"],
+    "learnCount": 11200,
+    "collectCount": 630,
+    "isMain": false,
+    "sort": 35,
+    "relatedIds": ["4", "10"],
+    "chapters": [
+      { "id": "901", "idx": 1, "title": "坐姿转体", "duration": 120, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "902", "idx": 2, "title": "猫牛式", "duration": 120, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "903", "idx": 3, "title": "仰卧抱膝", "duration": 150, "locked": false, "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
+      { "id": "904", "idx": 4, "title": "腰方肌拉伸", "duration": 150, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" }
+    ]
+  },
+  {
+    "id": "10",
+    "title": "睡前全身拉伸",
+    "cover": "",
+    "videoCover": "",
+    "duration": 720,
+    "actionCount": 8,
+    "difficulty": "beginner",
+    "category": "stretch",
+    "coachName": "周雨",
+    "coachAvatar": "",
+    "coachTitle": "跑步教练",
+    "intro": "在床上就能做的 12 分钟低强度拉伸，帮助入睡、缓解一天紧绷。",
+    "suitableFor": ["睡前放松", "睡眠质量差", "全身紧绷"],
+    "learnCount": 24600,
+    "collectCount": 1580,
+    "isMain": false,
+    "sort": 30,
+    "relatedIds": ["5", "9"],
+    "chapters": [
+      { "id": "1001", "idx": 1, "title": "颈部与肩背", "duration": 180, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "1002", "idx": 2, "title": "脊柱逐节放松", "duration": 180, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "1003", "idx": 3, "title": "髋与大腿后侧", "duration": 180, "locked": false, "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
+      { "id": "1004", "idx": 4, "title": "腹式呼吸收尾", "duration": 180, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" }
+    ]
+  },
+  {
+    "id": "11",
+    "title": "膝关节术后进阶",
+    "cover": "",
+    "videoCover": "",
+    "duration": 1500,
+    "actionCount": 15,
+    "difficulty": "advanced",
+    "category": "rehab",
+    "coachName": "李敏",
+    "coachAvatar": "",
+    "coachTitle": "康复训练师 · 认证",
+    "intro": "面向术后 8 周以上人群，包含股四头肌力量、单腿控制与步态重建，建议在治疗师评估后练习。",
+    "suitableFor": ["术后康复期", "股四头肌无力", "步态异常"],
+    "learnCount": 4100,
+    "collectCount": 290,
+    "isMain": false,
+    "sort": 25,
+    "relatedIds": ["6", "7"],
+    "chapters": [
+      { "id": "1101", "idx": 1, "title": "关节活动度", "duration": 300, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "1102", "idx": 2, "title": "股四头肌激活", "duration": 360, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "1103", "idx": 3, "title": "单腿控制", "duration": 420, "locked": false, "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
+      { "id": "1104", "idx": 4, "title": "步态重建", "duration": 420, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" }
+    ]
+  },
+  {
+    "id": "12",
+    "title": "跑者髋部激活",
+    "cover": "",
+    "videoCover": "",
+    "duration": 1380,
+    "actionCount": 12,
+    "difficulty": "advanced",
+    "category": "posture",
+    "coachName": "周雨",
+    "coachAvatar": "",
+    "coachTitle": "跑步教练",
+    "intro": "跑前 8 分钟髋部激活，改善跨步受限与膝内扣，适合每周跑量 30 公里以上的人群。",
+    "suitableFor": ["进阶跑者", "髋部无力", "膝内扣"],
+    "learnCount": 5600,
+    "collectCount": 340,
+    "isMain": false,
+    "sort": 20,
+    "relatedIds": ["3", "6"],
+    "chapters": [
+      { "id": "1201", "idx": 1, "title": "臀中肌激活", "duration": 300, "locked": false, "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { "id": "1202", "idx": 2, "title": "髋屈肌动态拉伸", "duration": 360, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" },
+      { "id": "1203", "idx": 3, "title": "侧向弹力带", "duration": 360, "locked": false, "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
+      { "id": "1204", "idx": 4, "title": "跑姿整合", "duration": 360, "locked": false, "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4" }
     ]
   }
 ]

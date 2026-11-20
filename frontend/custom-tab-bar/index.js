@@ -3,8 +3,8 @@ Component({
   data: {
     selected: 0,
     list: [
-      { pagePath: '/pages/home/index', text: '首页', icon: 'home' },
-      { pagePath: '/pages/product/index', text: '产品', icon: 'box' },
+      { pagePath: '/pages/device/index', text: '设备', icon: 'device' },
+      { pagePath: '/pages/discover/index', text: '发现', icon: 'compass' },
       { pagePath: '/pages/mine/index', text: '我的', icon: 'user' }
     ]
   },

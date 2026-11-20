@@ -17,7 +17,7 @@ function backAfterLogin() {
   if (pages.length > 1) {
     wx.navigateBack({ delta: 1 })
   } else {
-    wx.switchTab({ url: '/pages/home/index' })
+    wx.switchTab({ url: '/pages/device/index' })
   }
 }
 

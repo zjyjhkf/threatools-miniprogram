@@ -1,0 +1,38 @@
+<view class="page">
+  <nav-bar title="诊断与日志" back transparent bind:back="onBack" />
+
+  <view class="summary">
+    <view class="summary-title"><text class="icon icon-bluetooth"></text>连接概况</view>
+    <view class="summary-row">
+      <view class="summary-k">连接状态</view>
+      <view class="summary-v {{connected ? 'is-on' : ''}}">{{handshaked ? '已握手' : connected ? '已连接未握手' : '未连接'}}</view>
+    </view>
+    <view class="summary-row">
+      <view class="summary-k">MTU</view>
+      <view class="summary-v">{{mtu}}</view>
+    </view>
+    <view class="summary-row">
+      <view class="summary-k">协议阶段</view>
+      <view class="summary-v">{{phase}}</view>
+    </view>
+    <view class="summary-row" wx:if="{{protocolError}}">
+      <view class="summary-k">协议错误</view>
+      <view class="summary-v is-fault">{{protocolError}}</view>
+    </view>
+  </view>
+
+  <view class="filter-row">
+    <view class="filter {{filter === item.key ? 'is-on' : ''}}" wx:for="{{filters}}" wx:key="key" data-key="{{item.key}}" bindtap="onFilterTap">{{item.text}}</view>
+    <view class="filter-actions">
+      <view class="filter-action" bindtap="onCopy">复制</view>
+      <view class="filter-action" bindtap="onClear">清空</view>
+    </view>
+  </view>
+
+  <scroll-view class="log-box" scroll-y>
+    <view class="log-empty" wx:if="{{!filtered.length}}">暂无日志</view>
+    <view class="log-line" wx:for="{{filtered}}" wx:key="*this">{{item}}</view>
+  </scroll-view>
+
+  <view class="tip">日志仅保存在本机，最多 80 条。扫描记录包含发现数和匹配数。</view>
+</view>

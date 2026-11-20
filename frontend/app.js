@@ -2,6 +2,7 @@ const auth = require('./services/auth')
 const log = require('./utils/log')
 const track = require('./utils/track')
 const env = require('./config/env')
+const ble = require('./utils/ble')
 
 App({
   globalData: {
@@ -36,6 +37,13 @@ App({
         })
       })
     }
+  },
+
+  onHide() {
+    // 切后台停止扫描省电；已建立的连接保留，设备侧按 5s 安全停机
+    try {
+      ble.stopScan()
+    } catch (e) {}
   },
 
   onError(msg) {

@@ -1,8 +1,10 @@
 /** 全局常量与枚举（与 04/05 文档字段严格一致） */
 
 const ROUTES = {
-  home: '/pages/home/index',
-  product: '/pages/product/index',
+  home: '/pages/device/index',
+  device: '/pages/device/index',
+  discover: '/pages/discover/index',
+  product: '/pages/discover/index',
   community: '/pages/community/index',
   mine: '/pages/mine/index',
   login: '/packageCommon/pages/login/login',
@@ -16,6 +18,11 @@ const ROUTES = {
   courseDetail: '/packageCourse/pages/detail/detail',
   coursePlay: '/packageCourse/pages/play/play',
   productDetail: '/packageProduct/pages/detail/detail',
+  deviceIntro: '/packageDevice/pages/intro/index',
+  deviceAdd: '/packageDevice/pages/add/index',
+  deviceControl: '/packageDevice/pages/control/index',
+  deviceSettings: '/packageDevice/pages/settings/index',
+  deviceDiagnose: '/packageDevice/pages/diagnose/index',
   profile: '/packageMine/pages/profile/profile',
   profileEdit: '/packageMine/pages/profile-edit/profile-edit',
   bodyProfile: '/packageMine/pages/body-profile/body-profile',

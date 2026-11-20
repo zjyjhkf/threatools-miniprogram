@@ -1,0 +1,194 @@
+page {
+  background: var(--bg-page);
+}
+
+.page {
+  min-height: 100vh;
+  padding: 0 var(--page-pad) calc(36rpx + env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, #f7fff9, var(--bg-page) 600rpx);
+}
+
+.section-heading {
+  margin: 22rpx 0;
+}
+
+.section-title {
+  font-size: 46rpx;
+  line-height: 60rpx;
+  font-weight: 750;
+}
+
+.section-sub {
+  margin-top: 8rpx;
+  color: var(--ink-600);
+  font-size: 25rpx;
+  line-height: 36rpx;
+}
+
+.scan-card {
+  padding: 24rpx;
+  border-radius: var(--r-card);
+  border: 1rpx solid var(--brand-200);
+  background: radial-gradient(ellipse at 50% 5%, #d6f9e4, #fff 76%);
+}
+
+.radar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 216rpx;
+}
+
+.radar-ring {
+  position: absolute;
+  box-sizing: border-box;
+  border: 2rpx solid var(--brand-200);
+  border-radius: 50%;
+}
+
+.ring-1 { width: 212rpx; height: 212rpx; }
+.ring-2 { width: 176rpx; height: 176rpx; }
+.ring-3 { width: 140rpx; height: 140rpx; }
+
+.is-scanning .ring-1 {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: 0.5; transform: scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-scanning .ring-1 { animation: none; }
+}
+
+.radar-center {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 106rpx;
+  height: 106rpx;
+  border-radius: 50%;
+  background: var(--brand-700);
+  color: #fff;
+  box-shadow: 0 8rpx 24rpx rgba(0, 140, 62, 0.22);
+}
+
+.radar-center .icon { font-size: 50rpx; }
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  margin: 16rpx 0;
+  color: var(--ink-600);
+  font-size: 26rpx;
+  font-weight: 600;
+  text-align: center;
+  line-height: 36rpx;
+}
+
+.status.is-warn,
+.status.is-on { color: var(--brand-700); }
+.status.is-fault { color: #b42318; }
+
+.status-dot {
+  flex: none;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.scan-actions { display: flex; gap: 16rpx; }
+
+.scan-btn,
+.scan-settings {
+  flex: 1;
+  margin: 0;
+  border-radius: 999rpx;
+  font-size: 25rpx;
+  line-height: 76rpx;
+  padding: 0 20rpx;
+}
+
+.scan-btn::after,
+.scan-settings::after { border: 0; }
+
+.scan-btn { background: var(--brand-700); color: #fff; }
+.scan-btn[disabled] { background: var(--brand-100); color: var(--ink-600); }
+.scan-settings { background: var(--brand-50); border: 1rpx solid var(--brand-300); color: var(--brand-700); }
+
+.sec-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 30rpx 0 14rpx;
+}
+
+.sec-title { font-size: 34rpx; font-weight: 700; }
+.sec-count { font-size: 24rpx; color: var(--ink-600); }
+
+.device,
+.scan-empty {
+  margin-bottom: 14rpx;
+  padding: 22rpx;
+  border: 1rpx solid var(--line-300);
+  border-radius: var(--r-card);
+  background: #fff;
+}
+
+.device { display: flex; align-items: center; gap: 16rpx; }
+.device-icon {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 20rpx;
+  color: var(--brand-700);
+  background: var(--brand-100);
+}
+
+.device-icon .icon { font-size: 36rpx; }
+.device-body { flex: 1; min-width: 0; }
+.device-name,
+.scan-empty-title {
+  color: var(--ink-900);
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.device-name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.device-meta,
+.scan-empty-sub { color: var(--ink-600); font-size: 23rpx; line-height: 34rpx; }
+.device-action {
+  flex: none;
+  padding: 4rpx 18rpx;
+  border-radius: 999rpx;
+  background: var(--brand-100);
+  color: var(--brand-700);
+  font-size: 24rpx;
+  font-weight: 700;
+}
+
+.device-action.is-busy { color: var(--ink-600); }
+
+.help {
+  margin-top: 22rpx;
+  border-radius: var(--r-m);
+  background: var(--brand-100);
+}
+
+.help-head { display: flex; align-items: center; gap: 12rpx; padding: 18rpx 22rpx; }
+.help-icon,
+.help-arrow { color: var(--brand-700); }
+.help-title { flex: 1; font-size: 26rpx; font-weight: 600; }
+.help-arrow { font-size: 24rpx; }
+.help-body { padding: 0 22rpx 18rpx; }
+.help-line + .help-line { margin-top: 8rpx; }
+.help-line { font-size: 23rpx; line-height: 35rpx; color: var(--ink-700); }

@@ -1,4 +1,5 @@
 const api = require('../../services/api')
+const ble = require('../../utils/ble')
 const { PRODUCT_CATEGORIES } = require('../../config/constants')
 
 Component({
@@ -9,7 +10,8 @@ Component({
   data: {
     categories: PRODUCT_CATEGORIES,
     category: 'all',
-    banner: null,
+    ble: { connected: false, deviceName: '', adapterReady: false, supported: true },
+    connectTip: '通过蓝牙连接健衡设备，开启数据回传',
     list: [],
     loading: false,
     firstLoaded: false,
@@ -30,10 +32,39 @@ Component({
   },
   lifetimes: {
     attached() {
+      this._supported = ble.isSupported()
+      this._onBle = s => this.applyBle(s)
+      ble.onState(this._onBle)
+      this.applyBle(ble.snapshot())
       if (this.data.active && !this.data.firstLoaded) this.reload()
+    },
+    detached() {
+      ble.offState(this._onBle)
     }
   },
   methods: {
+    applyBle(s) {
+      const supported = this._supported !== false
+      let connectTip = '通过蓝牙连接健衡设备，开启数据回传'
+      if (!supported) {
+        connectTip = '当前环境不支持蓝牙，请用真机预览'
+      } else if (s.connected) {
+        connectTip = '数据通道已就绪，可查看设备状态'
+      } else if (s.adapterReady) {
+        connectTip = '搜索并连接附近的康复设备'
+      }
+
+      this.setData({
+        ble: {
+          connected: s.connected,
+          deviceName: s.deviceName,
+          adapterReady: s.adapterReady,
+          supported: supported
+        },
+        connectTip: connectTip
+      })
+    },
+
     reload() {
       if (this.data.loading) return Promise.resolve()
       this.setData({ loading: true, status: 'loading' })
@@ -42,7 +73,6 @@ Component({
         .then(res => {
           this._lastLoadedAt = Date.now()
           this.setData({
-            banner: res.banner,
             list: res.list,
             status: res.list.length ? 'ok' : 'empty',
             firstLoaded: true,
@@ -72,6 +102,10 @@ Component({
 
     onProductTap(e) {
       this.triggerEvent('openproduct', { id: e.detail.id })
+    },
+
+    onConnectTap() {
+      this.triggerEvent('openconnect')
     },
 
     onRetry() {

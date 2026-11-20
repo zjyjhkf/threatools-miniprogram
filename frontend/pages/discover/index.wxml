@@ -1,0 +1,74 @@
+<view class="page">
+  <nav-bar title="发现" show-search bind:search="goSearch" />
+
+  <view class="hero">
+    <view class="hero-title">设备之外</view>
+    <view class="hero-sub">康复知识 · 训练课程 · 产品服务</view>
+  </view>
+
+  <view class="guides">
+    <view class="guide" bindtap="goDeviceGuide">
+      <view class="guide-icon"><text class="icon icon-device"></text></view>
+      <view class="guide-title">设备指南</view>
+      <view class="guide-sub">连接与使用</view>
+    </view>
+    <view class="guide" data-key="guide" bindtap="onTabTap">
+      <view class="guide-icon"><text class="icon icon-run"></text></view>
+      <view class="guide-title">康复课程</view>
+      <view class="guide-sub">按部位训练</view>
+    </view>
+    <view class="guide" data-key="service" bindtap="onTabTap">
+      <view class="guide-icon"><text class="icon icon-box"></text></view>
+      <view class="guide-title">产品服务</view>
+      <view class="guide-sub">设备与配件</view>
+    </view>
+  </view>
+
+  <view class="tabs">
+    <view class="tab {{tab === item.key ? 'is-on' : ''}}" wx:for="{{tabs}}" wx:key="key" data-key="{{item.key}}" bindtap="onTabTap">
+      {{item.text}}
+      <view class="tab-line" wx:if="{{tab === item.key}}"></view>
+    </view>
+    <view class="tab-link" wx:if="{{tab === 'recommend'}}" bindtap="goCommunity">社区全部 ›</view>
+  </view>
+
+  <view class="state" wx:if="{{status === 'loading'}}">加载中…</view>
+
+  <view class="state" wx:elif="{{status === 'error'}}">
+    <view class="state-text">{{errorText}}</view>
+    <view class="state-btn" bindtap="onRetry">重新加载</view>
+  </view>
+
+  <view class="state" wx:elif="{{status === 'empty'}}">
+    <view class="state-text">这里还没有内容</view>
+    <view class="state-btn" bindtap="onRetry">刷新看看</view>
+  </view>
+
+  <block wx:else>
+    <block wx:if="{{tab === 'recommend'}}">
+      <view class="post" wx:for="{{posts}}" wx:key="id" data-id="{{item.id}}" bindtap="openPost">
+        <image class="post-cover" wx:if="{{item.cover}}" src="{{item.cover}}" mode="aspectFill" />
+        <view class="post-cover ph" wx:else><text class="icon icon-image"></text></view>
+        <view class="post-body">
+          <view class="post-title">{{item.title}}</view>
+          <view class="post-meta">
+            <view class="post-author">{{item.author}}</view>
+            <view class="post-like"><text class="icon icon-heart"></text>{{item.likeText}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <block wx:elif="{{tab === 'guide'}}">
+      <course-card wx:for="{{courses}}" wx:key="id" course="{{item}}" mode="row" bind:tap="openCourse" />
+    </block>
+
+    <block wx:else>
+      <view class="product-grid">
+        <product-card wx:for="{{products}}" wx:key="id" product="{{item}}" mode="grid" bind:tap="openProduct" />
+      </view>
+    </block>
+  </block>
+
+  <view class="tab-space"></view>
+</view>

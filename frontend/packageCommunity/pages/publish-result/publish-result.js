@@ -80,7 +80,7 @@ Page(
     onShareAppMessage() {
       return {
         title: '健衡运动社区 · 科学运动，从一次放松开始',
-        path: '/pages/home/index'
+        path: '/pages/device/index'
       }
     }
   })

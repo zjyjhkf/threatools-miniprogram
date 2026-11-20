@@ -1,0 +1,124 @@
+<view class="page">
+  <nav-bar title="设备控制" back transparent bind:back="onBack" />
+
+  <view class="head-card">
+    <view class="head-top">
+      <view class="head-icon"><text class="icon icon-{{icon}}"></text></view>
+      <view class="head-body">
+        <view class="head-name">{{alias}}</view>
+        <view class="head-meta">{{modelText}}<text wx:if="{{sn}}"> · {{sn}}</text></view>
+      </view>
+      <view class="status {{statusClass}}"><view class="status-dot"></view>{{statusText}}</view>
+    </view>
+    <view class="head-stats">
+      <view class="stat">
+        <view class="stat-value">{{battery ? battery + '%' : '--'}}</view>
+        <view class="stat-label">电量</view>
+      </view>
+      <view class="stat">
+        <view class="stat-value">{{maxLevel}}</view>
+        <view class="stat-label">最高档位</view>
+      </view>
+      <view class="stat">
+        <view class="stat-value">{{fw || '--'}}</view>
+        <view class="stat-label">固件</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="notice" wx:if="{{!handshaked}}">
+    <view class="notice-text">{{connecting || reconnecting ? '正在建立连接，请保持设备靠近手机。' : '设备未连接，连接并握手后才能控制。'}}</view>
+    <view class="notice-btn" bindtap="onReconnect">{{connecting || reconnecting ? '重新连接' : '连接设备'}}</view>
+  </view>
+
+  <block wx:if="{{handshaked}}">
+    <view class="panel" wx:if="{{deviceState !== 0}}">
+      <view class="panel-head">
+        <view class="panel-title">运行状态</view>
+        <view class="panel-sub" wx:if="{{deviceState === 1}}">运行中</view>
+        <view class="panel-sub" wx:elif="{{deviceState === 2}}">已暂停</view>
+        <view class="panel-sub is-fault" wx:else>设备故障</view>
+      </view>
+      <view class="remain {{deviceState === 1 ? 'is-running' : ''}}">
+        <view class="remain-value">{{remainText}}</view>
+        <view class="remain-label">剩余时间</view>
+      </view>
+      <view class="fault" wx:if="{{faultText}}">
+        <text class="icon icon-error fault-icon"></text>
+        <view class="fault-text">{{faultText}}</view>
+      </view>
+    </view>
+
+    <view class="panel">
+      <view class="panel-title">模式</view>
+      <view class="chips">
+        <view class="chip {{mode === index ? 'is-on' : ''}}" wx:for="{{modes}}" wx:key="*this" data-index="{{index}}" bindtap="onModeTap">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="panel level-panel">
+      <view class="panel-title"><text class="icon icon-activity panel-icon"></text>{{levelLabel}}</view>
+      <view class="level-row">
+        <button class="level-btn" disabled="{{!canLevel || level <= 1}}" aria-label="降低档位" data-delta="-1" bindtap="onLevelTap">−</button>
+        <view class="level-value">
+          <view class="level-num">{{level}}</view>
+          <view class="level-max">/ {{maxLevel}} 档</view>
+        </view>
+        <button class="level-btn" disabled="{{!canLevel || level >= maxLevel}}" aria-label="提高档位" data-delta="1" bindtap="onLevelTap">＋</button>
+      </view>
+      <view class="level-bar">
+        <view class="level-fill" style="width: {{level / maxLevel * 100}}%"></view>
+      </view>
+    </view>
+
+    <view class="panel">
+      <view class="panel-title">训练时长</view>
+      <view class="chips">
+        <view class="chip {{duration === item.value ? 'is-on' : ''}}" wx:for="{{durations}}" wx:key="value" data-index="{{index}}" bindtap="onDurationTap">{{item.text}}</view>
+      </view>
+    </view>
+
+    <view class="actions">
+      <view class="action primary" wx:if="{{canStart && deviceState === 0}}" bindtap="onStart">启动设备</view>
+      <view class="action primary" wx:if="{{canPause}}" bindtap="onPause">暂停</view>
+      <view class="action primary" wx:if="{{canResume}}" bindtap="onResume">继续</view>
+      <view class="action danger" wx:if="{{handshaked}}" bindtap="onStop">停止</view>
+    </view>
+
+    <view class="panel" wx:if="{{telemetry.length}}">
+      <view class="panel-title">实时数据</view>
+      <view class="tele-grid">
+        <view class="tele" wx:for="{{telemetry}}" wx:key="key">
+          <view class="tele-text">{{item.text}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view class="panel" wx:if="{{!handshaked}}">
+    <view class="panel-title">连接说明</view>
+    <view class="tip-line">1. 保持设备开机，手机蓝牙已开启。</view>
+    <view class="tip-line">2. 首次连接会自动完成协议握手。</view>
+    <view class="tip-line">3. 握手失败时，请重启设备后重试。</view>
+  </view>
+
+  <view class="links">
+    <view class="link" bindtap="onSettings">
+      <text class="icon icon-setting link-icon"></text>
+      <view class="link-text">设备设置</view>
+      <text class="link-arrow">›</text>
+    </view>
+    <view class="link" bindtap="onDiagnose">
+      <text class="icon icon-timer link-icon"></text>
+      <view class="link-text">诊断与日志</view>
+      <text class="link-arrow">›</text>
+    </view>
+    <view class="link" bindtap="onAddDevice">
+      <text class="icon icon-plus link-icon"></text>
+      <view class="link-text">添加新设备</view>
+      <text class="link-arrow">›</text>
+    </view>
+  </view>
+
+  <view class="bottom-space {{handshaked ? 'with-actions' : ''}}"></view>
+</view>

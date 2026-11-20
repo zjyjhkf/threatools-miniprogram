@@ -1,0 +1,57 @@
+<view class="page">
+  <nav-bar title="{{title}}" back transparent bind:back="onBack" />
+
+  <view class="section-heading">
+    <view class="section-title">连接附近设备</view>
+    <view class="section-sub">将已开机的设备靠近手机并进入配对模式</view>
+  </view>
+
+  <view class="scan-card">
+    <view class="radar {{scanning ? 'is-scanning' : ''}}">
+      <view class="radar-ring ring-1"></view>
+      <view class="radar-ring ring-2"></view>
+      <view class="radar-ring ring-3"></view>
+      <view class="radar-center"><text class="icon icon-bluetooth"></text></view>
+    </view>
+    <view class="status {{statusClass}}"><view class="status-dot"></view>{{statusText}}</view>
+
+    <view class="scan-actions" wx:if="{{supported}}">
+      <button class="scan-btn" disabled="{{scanning || !!connectingId}}" bindtap="onRescan">{{scanning ? '搜索中…' : '重新扫描'}}</button>
+      <button class="scan-settings" wx:if="{{scanIssue === 'bluetooth-off' || scanIssue === 'bluetooth-permission' || scanIssue === 'location-permission'}}" bindtap="onOpenSettings">{{scanIssue === 'bluetooth-off' ? '蓝牙设置' : '权限设置'}}</button>
+    </view>
+  </view>
+
+  <block wx:if="{{supported}}">
+    <view class="sec-head">
+      <view class="sec-title">附近的设备</view>
+      <view class="sec-count" wx:if="{{devices.length}}">{{devices.length}} 台</view>
+    </view>
+
+    <view class="device" wx:for="{{devices}}" wx:key="deviceId" data-id="{{item.deviceId}}" data-name="{{item.name}}" bindtap="onConnectTap">
+      <view class="device-icon"><text class="icon icon-{{item.icon}}"></text></view>
+      <view class="device-body">
+        <view class="device-name">{{item.name}}</view>
+        <view class="device-meta">{{item.modelText}} · {{item.signalText}}<text wx:if="{{item.rssi}}"> ({{item.rssi}} dBm)</text></view>
+      </view>
+      <view class="device-action {{item.connecting ? 'is-busy' : ''}}">{{item.connecting ? '连接中' : '连接 ›'}}</view>
+    </view>
+
+    <view class="scan-empty" wx:if="{{!devices.length && !scanIssue}}">
+      <view class="scan-empty-title">{{scanning ? '等待设备广播' : '暂未找到设备'}}</view>
+      <view class="scan-empty-sub">{{resultHint || '设备出现后会自动显示在这里。'}}</view>
+    </view>
+
+    <view class="help">
+      <view class="help-head" bindtap="onToggleHelp">
+        <text class="icon icon-error help-icon"></text>
+        <view class="help-title">搜索不到设备？</view>
+        <text class="help-arrow">{{showHelp ? '收起' : '展开'}}</text>
+      </view>
+      <view class="help-body" wx:if="{{showHelp}}">
+        <view class="help-line">1. 确认设备处于配对模式，并断开它与其他手机的连接。</view>
+        <view class="help-line">2. 开启系统蓝牙，并允许微信使用蓝牙或附近设备权限。</view>
+        <view class="help-line">3. Android 6–11 还需开启系统定位，并允许微信使用位置权限。</view>
+      </view>
+    </view>
+  </block>
+</view>

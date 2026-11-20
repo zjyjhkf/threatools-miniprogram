@@ -1,6 +1,7 @@
 const api = require('../../services/api')
 const auth = require('../../services/auth')
 const store = require('../../store/store')
+const deviceStore = require('../../store/device')
 const mixin = require('../../utils/page-mixin')
 const ui = require('../../utils/ui')
 const { ROUTES } = require('../../config/constants')
@@ -16,12 +17,14 @@ Page(
       done: false,
       favoriteCount: 0,
       worksCount: 0,
+      deviceCount: 0,
       version: '健衡 v' + env.VERSION,
       copyright: '© 2026 健衡健康科技'
     }),
 
     onShow() {
       this.syncTabBar()
+      this.setData({ deviceCount: deviceStore.list().length })
       this.refresh()
     },
 
@@ -116,6 +119,10 @@ Page(
     goMyWorks() {
       if (!this.requireLogin()) return
       wx.navigateTo({ url: ROUTES.community + '?tab=myworks' })
+    },
+
+    goDevices() {
+      wx.switchTab({ url: ROUTES.device })
     },
 
     goSettings() {

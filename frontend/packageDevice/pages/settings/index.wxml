@@ -1,0 +1,60 @@
+<view class="page">
+  <nav-bar title="设备设置" back transparent bind:back="onBack" />
+
+  <view class="card alias-card">
+    <view class="card-title">设备名称</view>
+    <view class="alias-row">
+      <input class="alias-input" value="{{alias}}" maxlength="12" placeholder="给设备起个名字" bindinput="onAliasInput" />
+      <view class="save-btn" bindtap="onSaveAlias">保存</view>
+    </view>
+    <view class="hint">最多 12 个字，仅保存在本机</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">设备信息</view>
+    <view class="row">
+      <view class="row-k">型号</view>
+      <view class="row-v">{{device.modelText}}</view>
+    </view>
+    <view class="row">
+      <view class="row-k">序列号</view>
+      <view class="row-v">{{device.sn || '待握手后同步'}}</view>
+    </view>
+    <view class="row">
+      <view class="row-k">固件</view>
+      <view class="row-v">{{device.fw || '待握手后同步'}}</view>
+    </view>
+    <view class="row">
+      <view class="row-k">能力</view>
+      <view class="row-v">{{capsText}}</view>
+    </view>
+    <view class="row">
+      <view class="row-k">设备 ID</view>
+      <view class="row-v mono">{{device.deviceId}}</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">连接</view>
+    <view class="row">
+      <view class="row-k">当前状态</view>
+      <view class="row-v {{connected ? 'is-on' : ''}}">{{connected ? '已连接' : '未连接'}}</view>
+    </view>
+    <view class="btn-row">
+      <view class="btn" bindtap="onHello">重新握手</view>
+      <view class="btn" wx:if="{{connected}}" bindtap="onDisconnect">断开连接</view>
+    </view>
+  </view>
+
+  <view class="card link-card" bindtap="onDiagnose">
+    <view class="link-body">
+      <view class="link-title">诊断与日志</view>
+      <view class="link-sub">查看收发包记录与错误信息</view>
+    </view>
+    <text class="link-arrow">›</text>
+  </view>
+
+  <view class="danger-btn" bindtap="onRemove"><text class="icon icon-error"></text>移除设备</view>
+  <view class="version">{{version}}</view>
+  <view class="bottom-space"></view>
+</view>
